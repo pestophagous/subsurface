@@ -24,8 +24,8 @@
 #define cube(x) (x * x * x)
 
 // Subsurface appears to produce marginally less conservative plans than our benchmarks
-// Introduce 1% additional conservatism
-#define subsurface_conservatism_factor 1.01
+// Introduce 1.2% additional conservatism
+#define subsurface_conservatism_factor 1.012
 
 
 extern bool in_planner();
@@ -69,7 +69,7 @@ struct vpmb_config vpmb_config = {
 	.crit_radius_N2 = 0.55,
 	.crit_radius_He = 0.45,
 	.crit_volume_lambda = 199.58,
-	.gradient_of_imperm = 8.2,
+	.gradient_of_imperm = 8.30865,		// = 8.2 atm
 	.surface_tension_gamma = 0.18137175,	// = 0.0179 N/msw
 	.skin_compression_gammaC = 2.6040525,	// = 0.257 N/msw
 	.regeneration_time = 20160.0,
@@ -369,7 +369,6 @@ double calc_surface_phase(double surface_pressure, double he_pressure, double n2
 void vpmb_start_gradient()
 {
 	int ci;
-	double gradient_n2, gradient_he;
 
 	for (ci = 0; ci < 16; ++ci) {
 		initial_n2_gradient[ci] = bottom_n2_gradient[ci] = 2.0 * (vpmb_config.surface_tension_gamma / vpmb_config.skin_compression_gammaC) * ((vpmb_config.skin_compression_gammaC - vpmb_config.surface_tension_gamma) / n2_regen_radius[ci]);
@@ -380,7 +379,6 @@ void vpmb_start_gradient()
 void vpmb_next_gradient(double deco_time, double surface_pressure)
 {
 	int ci;
-	double gradient_n2, gradient_he;
 	double n2_b, n2_c;
 	double he_b, he_c;
 	double desat_time;
@@ -511,7 +509,8 @@ void add_segment(double pressure, const struct gasmix *gasmix, int period_in_sec
 		tissue_n2_sat[ci] += n2_satmult * pn2_oversat * n2_f;
 		tissue_he_sat[ci] += he_satmult * phe_oversat * he_f;
 	}
-	calc_crushing_pressure(pressure);
+	if(prefs.deco_mode == VPMB && in_planner())
+		calc_crushing_pressure(pressure);
 	return;
 }
 

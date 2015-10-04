@@ -5,6 +5,7 @@
         <file alias="subsurface-mobile-icon">icons/subsurface-mobile-icon.png</file>
         <file alias="plus">icons/plus.png</file>
         <file alias="trash">icons/trash.png</file>
+        <file alias="trashForbidden">icons/trash-forbidden.png</file>
         <file alias="units">icons/units.png</file>
         <file alias="advanced">icons/advanced.png</file>
         <file alias="network">icons/network.png</file>
@@ -65,6 +66,7 @@
         <file>icons/ostc3.png</file>
         <file>icons/suunto_vyper.png</file>
         <file alias="facebook">icons/facebook.png</file>
+        <file alias="georeference">icons/georeference.png</file>
         <file alias="filter-reset">icons/edit-undo.svg</file>
         <file alias="filter-hide">icons/go-top.svg</file>
         <file alias="filter-close">icons/process-stop.svg</file>

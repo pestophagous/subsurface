@@ -51,6 +51,10 @@
 #include <qthelper.h>
 #include <QtConcurrentRun>
 
+#if defined(FBSUPPORT)
+#include "socialnetworks.h"
+#endif
+
 QProgressDialog *progressDialog = NULL;
 bool progressDialogCanceled = false;
 
@@ -233,6 +237,16 @@ MainWindow::MainWindow() : QMainWindow(),
 	connect(geoLookup, SIGNAL(finished()), information(), SLOT(enableGeoLookupEdition()));
 #ifndef NO_PRINTING
 	find_all_templates();
+#endif
+
+#if defined(FBSUPPORT)
+	FacebookManager *fb = FacebookManager::instance();
+	connect(fb, SIGNAL(justLoggedIn(bool)), ui.actionFacebook, SLOT(setEnabled(bool)));
+	connect(fb, SIGNAL(justLoggedOut(bool)), ui.actionFacebook, SLOT(setEnabled(bool)));
+	connect(ui.actionFacebook, SIGNAL(triggered(bool)), fb, SLOT(sendDive()));
+	ui.actionFacebook->setEnabled(fb->loggedIn());
+#else
+	ui.actionFacebook->setEnabled(false);
 #endif
 
 	ui.menubar->show();
@@ -634,15 +648,19 @@ bool MainWindow::plannerStateClean()
 	return true;
 }
 
+void MainWindow::refreshProfile()
+{
+	showProfile();
+	graphics()->replot(get_dive(selected_dive));
+	DivePictureModel::instance()->updateDivePictures();
+}
+
 void MainWindow::planCanceled()
 {
 	// while planning we might have modified the displayed_dive
 	// let's refresh what's shown on the profile
-	showProfile();
-	graphics()->replot();
+	refreshProfile();
 	refreshDisplay(false);
-	graphics()->plotDive(get_dive(selected_dive));
-	DivePictureModel::instance()->updateDivePictures();
 }
 
 void MainWindow::planCreated()
@@ -1400,6 +1418,15 @@ int MainWindow::file_save_as(void)
 	QString filename;
 	const char *default_filename = existing_filename;
 
+	// if the default is to save to cloud storage, pick something that will work as local file:
+	// simply extract the branch name which should be the users email address
+	if (default_filename && strstr(default_filename, prefs.cloud_git_url)) {
+		QString filename(default_filename);
+		filename.remove(prefs.cloud_git_url);
+		filename.remove(0, filename.indexOf("[") + 1);
+		filename.replace("]", ".ssrf");
+		default_filename = strdup(qPrintable(filename));
+	}
 	// create a file dialog that allows us to save to a new file
 	QFileDialog selection_dialog(this, tr("Save file as"), default_filename,
 					 tr("Subsurface XML files (*.ssrf *.xml *.XML)"));
@@ -1442,9 +1469,12 @@ int MainWindow::file_save_as(void)
 int MainWindow::file_save(void)
 {
 	const char *current_default;
+	bool is_cloud = false;
 
 	if (!existing_filename)
 		return file_save_as();
+
+	is_cloud = (strncmp(existing_filename, "http", 4) == 0);
 
 	if (information()->isEditing())
 		information()->acceptChanges();
@@ -1457,10 +1487,16 @@ int MainWindow::file_save(void)
 		if (!current_def_dir.exists())
 			current_def_dir.mkpath(current_def_dir.absolutePath());
 	}
+	if (is_cloud)
+		showProgressBar();
 	if (save_dives(existing_filename)) {
 		getNotificationWidget()->showNotification(get_error_string(), KMessageWidget::Error);
+		if (is_cloud)
+			hideProgressBar();
 		return -1;
 	}
+	if (is_cloud)
+		hideProgressBar();
 	getNotificationWidget()->showNotification(get_error_string(), KMessageWidget::Error);
 	mark_divelist_changed(false);
 	addRecentFile(QStringList() << QString(existing_filename));
@@ -1547,6 +1583,7 @@ void MainWindow::loadFiles(const QStringList fileNames)
 	QByteArray fileNamePtr;
 	QStringList failedParses;
 
+	showProgressBar();
 	for (int i = 0; i < fileNames.size(); ++i) {
 		int error;
 
@@ -1565,6 +1602,7 @@ void MainWindow::loadFiles(const QStringList fileNames)
 			failedParses.append(fileNames.at(i));
 		}
 	}
+	hideProgressBar();
 	if (!showWarning)
 		getNotificationWidget()->hideNotification();
 	process_dives(false, false);
@@ -1799,7 +1837,7 @@ void MainWindow::showProgressBar()
 
 	progressDialog = new QProgressDialog(tr("Contacting cloud service..."), tr("Cancel"), 0, 100, this);
 	progressDialog->setWindowModality(Qt::WindowModal);
-	progressDialog->setMinimumDuration(0);
+	progressDialog->setMinimumDuration(200);
 	progressDialogCanceled = false;
 	connect(progressDialog, SIGNAL(canceled()), this, SLOT(cancelCloudStorageOperation()));
 }

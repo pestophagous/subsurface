@@ -114,7 +114,7 @@ static int qt_serial_open(serial_t **out, dc_context_t *context, const char* dev
 #if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
 	// First try to connect on RFCOMM channel 1. This is the default channel for most devices
 	QBluetoothAddress remoteDeviceAddress(devaddr);
-	serial_port->socket->connectToService(remoteDeviceAddress, 1);
+	serial_port->socket->connectToService(remoteDeviceAddress, 1, QIODevice::ReadWrite | QIODevice::Unbuffered);
 	timer.start(msec);
 	loop.exec();
 
@@ -126,7 +126,7 @@ static int qt_serial_open(serial_t **out, dc_context_t *context, const char* dev
 	} else if (serial_port->socket->state() == QBluetoothSocket::UnconnectedState) {
 		// Try to connect on channel number 5. Maybe this is a Shearwater Petrel2 device.
 		qDebug() << "Connection on channel 1 failed. Trying on channel number 5.";
-		serial_port->socket->connectToService(remoteDeviceAddress, 5);
+		serial_port->socket->connectToService(remoteDeviceAddress, 5, QIODevice::ReadWrite | QIODevice::Unbuffered);
 		timer.start(msec);
 		loop.exec();
 
@@ -234,10 +234,8 @@ static int qt_serial_read(serial_t *device, void* data, unsigned int size)
 	unsigned int nbytes = 0;
 	int rc;
 
-	while(nbytes < size)
+	while(nbytes < size && device->socket->state() == QBluetoothSocket::ConnectedState)
 	{
-		device->socket->waitForReadyRead(device->timeout);
-
 		rc = device->socket->read((char *) data + nbytes, size - nbytes);
 
 		if (rc < 0) {
@@ -248,8 +246,15 @@ static int qt_serial_read(serial_t *device, void* data, unsigned int size)
 		} else if (rc == 0) {
 			// Wait until the device is available for read operations
 			QEventLoop loop;
+			QTimer timer;
+			timer.setSingleShot(true);
+			loop.connect(&timer, SIGNAL(timeout()), SLOT(quit()));
 			loop.connect(device->socket, SIGNAL(readyRead()), SLOT(quit()));
+			timer.start(device->timeout);
 			loop.exec();
+
+			if (!timer.isActive())
+				return nbytes;
 		}
 
 		nbytes += rc;
@@ -286,10 +291,8 @@ static int qt_serial_write(serial_t *device, const void* data, unsigned int size
 	unsigned int nbytes = 0;
 	int rc;
 
-	while(nbytes < size)
+	while(nbytes < size && device->socket->state() == QBluetoothSocket::ConnectedState)
 	{
-		device->socket->waitForBytesWritten(device->timeout);
-
 		rc = device->socket->write((char *) data + nbytes, size - nbytes);
 
 		if (rc < 0) {

@@ -22,7 +22,6 @@ class CylindersModel;
 class ExtraDataModel;
 class DivePictureModel;
 class QCompleter;
-class LocationManagementEditHelper;
 
 struct Completers {
 	QCompleter *divemaster;
@@ -55,7 +54,6 @@ public:
 	void refreshDisplayedDiveSite();
 	void nextInputField(QKeyEvent *event);
 	void showAndTriggerEditSelective(struct dive_components what);
-	virtual bool eventFilter(QObject*, QEvent*);
 
 signals:
 	void addDiveFinished();
@@ -69,11 +67,12 @@ slots:
 	void updateDiveInfo(bool clear = false);
 	void acceptChanges();
 	void rejectChanges();
-	void on_location_editingFinished();
+	void on_location_diveSiteSelected();
 	void on_location_textChanged();
 	void on_divemaster_textChanged();
 	void on_buddy_textChanged();
 	void on_suit_textChanged(const QString &text);
+	void on_diveTripLocation_textEdited(const QString& text);
 	void on_notes_textChanged();
 	void on_airtemp_textChanged(const QString &text);
 	void divetype_Changed(int);
@@ -124,9 +123,8 @@ private:
 	dive_trip_t *currentTrip;
 	dive_trip_t displayedTrip;
 	bool acceptingEdit;
-	LocationManagementEditHelper *locationManagementEditHelper;
 	void updateDisplayedDiveSite();
-	void updateDiveSite(int divenr);
+	uint32_t updateDiveSite(uint32_t pickedUuid, int divenr);
 };
 
 #endif // MAINTAB_H

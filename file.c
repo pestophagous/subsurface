@@ -436,7 +436,7 @@ int parse_file(const char *filename)
 	char *fmt;
 	int ret;
 
-	git = is_git_repository(filename, &branch, NULL);
+	git = is_git_repository(filename, &branch, NULL, false);
 	if (prefs.cloud_git_url &&
 	    strstr(filename, prefs.cloud_git_url)
 	    && git == dummy_git_repository)
@@ -844,7 +844,6 @@ int parse_csv_file(const char *filename, char **params, int pnr, const char *csv
 	struct memblock mem;
 	time_t now;
 	struct tm *timep = NULL;
-	int previous;
 	char tmpbuf[MAXCOLDIGITS];
 
 	/* Increase the limits for recursion and variables on XSLT
@@ -889,7 +888,6 @@ int parse_csv_file(const char *filename, char **params, int pnr, const char *csv
 		fprintf(stderr, "%s/xslt/csv2xml.xslt -\n", SUBSURFACE_SOURCE);
 	}
 
-	previous = dive_table.nr;
 	ret = parse_xml_buffer(filename, mem.buffer, mem.size, &dive_table, (const char **)params);
 
 	free(mem.buffer);

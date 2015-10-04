@@ -37,7 +37,7 @@
      <number>0</number>
     </property>
     <item row="2" column="1">
-     <widget class="KMessageWidget" name="diveNotesMessage" native="true"/>
+     <widget class="KMessageWidget" name="diveNotesMessage"/>
     </item>
     <item row="3" column="1">
      <widget class="QScrollArea" name="scrollArea">
@@ -56,7 +56,7 @@
          <x>0</x>
          <y>0</y>
          <width>445</width>
-         <height>760</height>
+         <height>726</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -206,7 +206,7 @@
              <number>2</number>
             </property>
             <item>
-             <widget class="QLineEdit" name="location"/>
+             <widget class="DiveLocationLineEdit" name="location"/>
             </item>
             <item>
              <widget class="QToolButton" name="editDiveSiteButton">
@@ -226,6 +226,9 @@
              <widget class="QtWaitingSpinner" name="waitingSpinner" native="true"/>
             </item>
            </layout>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="diveTripLocation"/>
           </item>
          </layout>
         </item>
@@ -470,39 +473,6 @@
                <property name="bottomMargin">
                 <number>0</number>
                </property>
-               <item>
-                <spacer name="verticalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QPushButton" name="facebookPublish">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="icon">
-                  <iconset resource="../subsurface.qrc">
-                   <normaloff>:/facebook</normaloff>:/facebook</iconset>
-                 </property>
-                 <property name="iconSize">
-                  <size>
-                   <width>32</width>
-                   <height>32</height>
-                  </size>
-                 </property>
-                 <property name="flat">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
               </layout>
              </widget>
             </item>
@@ -537,7 +507,7 @@
      <number>5</number>
     </property>
     <item row="0" column="0">
-     <widget class="KMessageWidget" name="diveEquipmentMessage" native="true"/>
+     <widget class="KMessageWidget" name="diveEquipmentMessage"/>
     </item>
     <item row="1" column="0">
      <widget class="QScrollArea" name="scrollArea_2">
@@ -555,8 +525,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>100</width>
-         <height>30</height>
+         <width>70</width>
+         <height>16</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="equipmentTabScrollAreaLayout">
@@ -632,7 +602,7 @@
      <number>5</number>
     </property>
     <item row="0" column="0">
-     <widget class="KMessageWidget" name="diveInfoMessage" native="true"/>
+     <widget class="KMessageWidget" name="diveInfoMessage"/>
     </item>
     <item row="1" column="0">
      <widget class="QScrollArea" name="scrollArea_3">
@@ -1169,7 +1139,7 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="KMessageWidget" name="diveStatisticsMessage" native="true"/>
+     <widget class="KMessageWidget" name="diveStatisticsMessage"/>
     </item>
    </layout>
   </widget>
@@ -1234,7 +1204,7 @@
  <customwidgets>
   <customwidget>
    <class>KMessageWidget</class>
-   <extends>QWidget</extends>
+   <extends>QFrame</extends>
    <header>kmessagewidget.h</header>
    <container>1</container>
   </customwidget>
@@ -1271,6 +1241,11 @@
    <extends>QWidget</extends>
    <header>qtwaitingspinner.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>DiveLocationLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>locationinformation.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

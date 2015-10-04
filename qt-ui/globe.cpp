@@ -251,11 +251,16 @@ void GlobeGPS::reload()
 void GlobeGPS::centerOnDiveSite(struct dive_site *ds)
 {
 	if (!dive_site_has_gps_location(ds)) {
-		zoomOutForNoGPS();
+		// this is not intuitive and at times causes trouble - let's comment it out for now
+		// zoomOutForNoGPS();
 		return;
 	}
 	qreal longitude = ds->longitude.udeg / 1000000.0;
 	qreal latitude = ds->latitude.udeg / 1000000.0;
+
+	if(IS_FP_SAME(longitude, centerLongitude()) && IS_FP_SAME(latitude,centerLatitude())) {
+		return;
+	}
 
 	// if no zoom is set up, set the zoom as seen from 3km above
 	// if we come back from a dive without GPS data, reset to the last zoom value
@@ -324,8 +329,9 @@ void GlobeGPS::prepareForGetDiveCoordinates()
 	messageWidget->setCloseButtonVisible(false);
 	messageWidget->animatedShow();
 	editingDiveLocation = true;
-	if (!dive_has_gps_location(current_dive))
-		zoomOutForNoGPS();
+	// this is not intuitive and at times causes trouble - let's comment it out for now
+	// if (!dive_has_gps_location(current_dive))
+	//	zoomOutForNoGPS();
 }
 
 void GlobeGPS::changeDiveGeoPosition(qreal lon, qreal lat, GeoDataCoordinates::Unit unit)

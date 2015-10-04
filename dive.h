@@ -498,7 +498,7 @@ struct dive_table {
 	struct dive **dives;
 };
 
-extern struct dive_table dive_table;
+extern struct dive_table dive_table, downloadTable;
 extern struct dive displayed_dive;
 extern struct dive_site displayed_dive_site;
 extern int selected_dive;
@@ -561,6 +561,8 @@ static inline struct divecomputer *get_dive_dc(struct dive *dive, int nr)
 	}
 	return dc;
 }
+
+extern timestamp_t dive_endtime(const struct dive *dive);
 
 extern void make_first_dc(void);
 extern int count_divecomputers(void);
@@ -680,6 +682,7 @@ struct user_info {
 
 extern void subsurface_user_info(struct user_info *);
 extern int subsurface_rename(const char *path, const char *newpath);
+extern int subsurface_dir_rename(const char *path, const char *newpath);
 extern int subsurface_open(const char *path, int oflags, mode_t mode);
 extern FILE *subsurface_fopen(const char *path, const char *mode);
 extern void *subsurface_opendir(const char *path);
@@ -718,6 +721,7 @@ extern void fixup_dc_duration(struct divecomputer *dc);
 extern int dive_getUniqID(struct dive *d);
 extern unsigned int dc_airtemp(struct divecomputer *dc);
 extern unsigned int dc_watertemp(struct divecomputer *dc);
+extern int split_dive(struct dive *);
 extern struct dive *merge_dives(struct dive *a, struct dive *b, int offset, bool prefer_downloaded);
 extern struct dive *try_to_merge(struct dive *a, struct dive *b, bool prefer_downloaded);
 extern void renumber_dives(int start_nr, bool selected_only);

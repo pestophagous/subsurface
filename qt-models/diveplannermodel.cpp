@@ -218,12 +218,16 @@ QVariant DivePlannerPointsModel::data(const QModelIndex &index, int role) const
 		case REMOVE:
 			if (rowCount() > 1)
 				return p.entered ? trashIcon() : QVariant();
+			else
+				return trashForbiddenIcon();
 		}
 	} else if (role == Qt::SizeHintRole) {
 		switch (index.column()) {
 		case REMOVE:
 			if (rowCount() > 1)
 				return p.entered ? trashIcon().size() : QVariant();
+			else
+				return trashForbiddenIcon().size();
 		}
 	} else if (role == Qt::FontRole) {
 		if (divepoints.at(index.row()).entered) {
@@ -302,7 +306,7 @@ QVariant DivePlannerPointsModel::headerData(int section, Qt::Orientation orienta
 		case GAS:
 			return tr("Used gas");
 		case CCSETPOINT:
-			return tr("CC set point");
+			return tr("CC setpoint");
 		}
 	} else if (role == Qt::FontRole) {
 		return defaultModelFont();

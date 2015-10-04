@@ -627,6 +627,33 @@ extern "C" const char *system_default_directory(void)
 	return filename;
 }
 
+extern "C" char *move_away(const char *old_path)
+{
+	if (verbose > 1)
+		qDebug() << "move away" << old_path;
+	QDir oldDir(old_path);
+	QDir newDir;
+	QString newPath;
+	int i = 0;
+	do {
+		newPath = QString(old_path) + QString(".%1").arg(++i);
+		newDir.setPath(newPath);
+	} while(newDir.exists());
+	if (verbose > 1)
+		qDebug() << "renaming to" << newPath;
+	if (!oldDir.rename(old_path, newPath)) {
+		if (verbose)
+			qDebug() << "rename of" << old_path << "to" << newPath << "failed";
+		// this next one we only try on Windows... if we are on a different platform
+		// we simply give up and return an empty string
+#ifdef WIN32
+		if (subsurface_dir_rename(old_path, qPrintable(newPath)) == 0)
+#endif
+			return strdup("");
+	}
+	return strdup(qPrintable(newPath));
+}
+
 extern "C" char *get_file_name(const char *fileName)
 {
 	QFileInfo fileInfo(fileName);
@@ -1051,22 +1078,34 @@ extern "C" char * hashstring(char * filename)
 	return hashOf[QString(filename)].toHex().data();
 }
 
+const QString hashfile_name()
+{
+	return QString(system_default_directory()).append("/hashes");
+}
+
+extern "C" char *hashfile_name_string()
+{
+	return strdup(hashfile_name().toUtf8().data());
+}
+
 void read_hashes()
 {
-	QFile hashfile(QString(system_default_directory()).append("/hashes"));
+	QFile hashfile(hashfile_name());
 	if (hashfile.open(QIODevice::ReadOnly)) {
 		QDataStream stream(&hashfile);
 		stream >> localFilenameOf;
+		stream >> hashOf;
 		hashfile.close();
 	}
 }
 
 void write_hashes()
 {
-	QSaveFile hashfile(QString(system_default_directory()).append("/hashes"));
+	QSaveFile hashfile(hashfile_name());
 	if (hashfile.open(QIODevice::WriteOnly)) {
 		QDataStream stream(&hashfile);
 		stream << localFilenameOf;
+		stream << hashOf;
 		hashfile.commit();
 	} else {
 		qDebug() << "cannot open" << hashfile.fileName();
@@ -1124,6 +1163,20 @@ void updateHash(struct picture *picture) {
 	free(old);
 }
 
+void hashPicture(struct picture *picture)
+{
+	learnHash(picture, hashFile(QString(picture->filename)));
+	mark_divelist_changed((true));
+
+}
+
+extern "C" void cache_picture(struct picture *picture)
+{
+	QString filename = picture->filename;
+	if (!hashOf.contains(filename))
+		QtConcurrent::run(hashPicture, picture);
+}
+
 void learnImages(const QDir dir, int max_recursions, bool recursed)
 {
 	QDir current(dir);
@@ -1167,13 +1220,22 @@ extern "C" bool picture_exists(struct picture *picture)
 	return same_string(hash.toHex().data(), picture->hash);
 }
 
+const QString picturedir()
+{
+	return QString(system_default_directory()).append("/picturedata/");
+}
+
+extern "C" char *picturedir_string()
+{
+	return strdup(picturedir().toUtf8().data());
+}
+
 /* when we get a picture from git storage (local or remote) and can't find the picture
  * based on its hash, we create a local copy with the hash as filename and the appropriate
  * suffix */
 extern "C" void savePictureLocal(struct picture *picture, const char *data, int len)
 {
-	QString dirname(system_default_directory());
-	dirname += "/picturedata/";
+	QString dirname = picturedir();
 	QDir localPictureDir(dirname);
 	localPictureDir.mkpath(dirname);
 	QString suffix(picture->filename);
@@ -1338,8 +1400,16 @@ int getCloudURL(QString &filename)
 		prefs.cloud_storage_email_encoded = strdup(qPrintable(email));
 	}
 	filename = QString(QString(prefs.cloud_git_url) + "/%1[%1]").arg(email);
-	qDebug() << "cloud URL set as" << filename;
+	if (verbose)
+		qDebug() << "cloud URL set as" << filename;
 	return 0;
+}
+
+extern "C" char *cloud_url()
+{
+	QString filename;
+	getCloudURL(filename);
+	return strdup(filename.toUtf8().data());
 }
 
 void loadPreferences()

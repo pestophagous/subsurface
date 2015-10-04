@@ -55,6 +55,13 @@
 #define OSTC3_GRAPHICAL_SPEED_INDICATOR	0x40
 #define OSTC3_ALWAYS_SHOW_PPO2		0x41
 
+#define OSTC3_HW_OSTC_3			0x0A
+#define OSTC3_HW_OSTC_3P		0x1A
+#define OSTC3_HW_OSTC_CR		0x05
+#define OSTC3_HW_OSTC_SPORT		0x12
+#define OSTC3_HW_OSTC_2			0x11
+
+
 #define SUUNTO_VYPER_MAXDEPTH             0x1e
 #define SUUNTO_VYPER_TOTAL_TIME           0x20
 #define SUUNTO_VYPER_NUMBEROFDIVES        0x22
@@ -401,7 +408,34 @@ static dc_status_t read_ostc3_settings(dc_device_t *device, DeviceDetails *m_dev
 	dc_status_t rc;
 	dc_event_progress_t progress;
 	progress.current = 0;
-	progress.maximum = 51;
+	progress.maximum = 52;
+	unsigned char hardware[1];
+
+	//Read hardware type
+	rc = hw_ostc3_device_hardware (device, hardware, sizeof (hardware));
+	if (rc != DC_STATUS_SUCCESS)
+		return rc;
+	EMIT_PROGRESS();
+
+	// FIXME: can we grab this info from libdivecomputer descriptor
+	// instead of hard coded here?
+	switch(hardware[0]) {
+	case OSTC3_HW_OSTC_3:
+		m_deviceDetails->model = "3";
+		break;
+	case OSTC3_HW_OSTC_3P:
+		m_deviceDetails->model = "3+";
+		break;
+	case OSTC3_HW_OSTC_CR:
+		m_deviceDetails->model = "CR";
+		break;
+	case OSTC3_HW_OSTC_SPORT:
+		m_deviceDetails->model = "Sport";
+		break;
+	case OSTC3_HW_OSTC_2:
+		m_deviceDetails->model = "2";
+		break;
+	}
 
 	//Read gas mixes
 	gas gas1;
@@ -614,9 +648,17 @@ static dc_status_t read_ostc3_settings(dc_device_t *device, DeviceDetails *m_dev
 	READ_SETTING(OSTC3_BOTTOM_GAS_CONSUMPTION, bottomGasConsumption);
 	READ_SETTING(OSTC3_DECO_GAS_CONSUMPTION, decoGasConsumption);
 	READ_SETTING(OSTC3_MOD_WARNING, modWarning);
-	READ_SETTING(OSTC3_DYNAMIC_ASCEND_RATE, dynamicAscendRate);
-	READ_SETTING(OSTC3_GRAPHICAL_SPEED_INDICATOR, graphicalSpeedIndicator);
-	READ_SETTING(OSTC3_ALWAYS_SHOW_PPO2, alwaysShowppO2);
+
+	//Skip things not supported on the sport, if its a sport.
+	if (m_deviceDetails->model == "Sport") {
+		EMIT_PROGRESS();
+		EMIT_PROGRESS();
+		EMIT_PROGRESS();
+	} else {
+		READ_SETTING(OSTC3_DYNAMIC_ASCEND_RATE, dynamicAscendRate);
+		READ_SETTING(OSTC3_GRAPHICAL_SPEED_INDICATOR, graphicalSpeedIndicator);
+		READ_SETTING(OSTC3_ALWAYS_SHOW_PPO2, alwaysShowppO2);
+	}
 
 #undef READ_SETTING
 
@@ -870,9 +912,17 @@ static dc_status_t write_ostc3_settings(dc_device_t *device, DeviceDetails *m_de
 	WRITE_SETTING(OSTC3_BOTTOM_GAS_CONSUMPTION, bottomGasConsumption);
 	WRITE_SETTING(OSTC3_DECO_GAS_CONSUMPTION, decoGasConsumption);
 	WRITE_SETTING(OSTC3_MOD_WARNING, modWarning);
-	WRITE_SETTING(OSTC3_DYNAMIC_ASCEND_RATE, dynamicAscendRate);
-	WRITE_SETTING(OSTC3_GRAPHICAL_SPEED_INDICATOR, graphicalSpeedIndicator);
-	WRITE_SETTING(OSTC3_ALWAYS_SHOW_PPO2, alwaysShowppO2);
+
+	//Skip things not supported on the sport, if its a sport.
+	if (m_deviceDetails->model == "Sport") {
+	    EMIT_PROGRESS();
+	    EMIT_PROGRESS();
+	    EMIT_PROGRESS();
+	} else {
+	    WRITE_SETTING(OSTC3_DYNAMIC_ASCEND_RATE, dynamicAscendRate);
+	    WRITE_SETTING(OSTC3_GRAPHICAL_SPEED_INDICATOR, graphicalSpeedIndicator);
+	    WRITE_SETTING(OSTC3_ALWAYS_SHOW_PPO2, alwaysShowppO2);
+	}
 
 #undef WRITE_SETTING
 
@@ -1696,7 +1746,7 @@ ResetSettingsThread::ResetSettingsThread(QObject *parent, device_data_t *data) :
 
 void ResetSettingsThread::run()
 {
-	dc_status_t rc;
+	dc_status_t rc = DC_STATUS_SUCCESS;
 
 #if DC_VERSION_CHECK(0, 5, 0)
 	if (dc_device_get_type(m_data->device) == DC_FAMILY_HW_OSTC3) {

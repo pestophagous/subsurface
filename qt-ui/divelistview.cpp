@@ -22,6 +22,7 @@
 #include "divelistview.h"
 #include "divepicturemodel.h"
 #include "metrics.h"
+#include "helpers.h"
 
 //                                #  Date  Rtg Dpth  Dur  Tmp Wght Suit  Cyl  Gas  SAC  OTU  CNS  Loc
 static int defaultWidth[] =    {  70, 140, 90,  50,  50,  50,  50,  70,  50,  50,  70,  50,  50, 500};
@@ -575,12 +576,12 @@ static bool can_merge(const struct dive *a, const struct dive *b, enum asked_use
 	if (a->when > b->when)
 		return false;
 	/* Don't merge dives if there's more than half an hour between them */
-	if (a->when + a->duration.seconds + 30 * 60 < b->when) {
+	if (dive_endtime(a) + 30 * 60 < b->when) {
 		if (*have_asked == NOTYET) {
 			if (QMessageBox::warning(MainWindow::instance(),
 						 MainWindow::instance()->tr("Warning"),
 						 MainWindow::instance()->tr("Trying to merge dives with %1min interval in between").arg(
-							 (b->when - a->when  - a->duration.seconds) / 60),
+							 (b->when - dive_endtime(a)) / 60),
 					     QMessageBox::Ok | QMessageBox::Cancel) == QMessageBox::Cancel) {
 				*have_asked = DONTMERGE;
 				return false;
@@ -611,6 +612,20 @@ void DiveListView::mergeDives()
 			}
 		}
 	}
+	MainWindow::instance()->refreshProfile();
+	MainWindow::instance()->refreshDisplay();
+}
+
+void DiveListView::splitDives()
+{
+	int i;
+	struct dive *dive;
+
+	for_each_dive (i, dive) {
+		if (dive->selected)
+			split_dive(dive);
+	}
+	MainWindow::instance()->refreshProfile();
 	MainWindow::instance()->refreshDisplay();
 }
 
@@ -761,23 +776,16 @@ void DiveListView::deleteDive()
 	if (!d)
 		return;
 
-	//TODO: port this to C-code.
 	int i;
-	// after a dive is deleted the ones following it move forward in the dive_table
-	// so instead of using the for_each_dive macro I'm using an explicit for loop
-	// to make this easier to understand
 	int lastDiveNr = -1;
 	QList<struct dive*> deletedDives; //a list of all deleted dives to be stored in the undo command
 	for_each_dive (i, d) {
 		if (!d->selected)
 			continue;
-		struct dive* undo_entry = alloc_dive();
-		copy_dive(get_dive(i), undo_entry);
-		deletedDives.append(undo_entry);
-		delete_single_dive(i);
-		i--; // so the next dive isn't skipped... it's now #i
+		deletedDives.append(d);
 		lastDiveNr = i;
 	}
+	// the actual dive deletion is happening in the redo command that is implicitly triggered
 	UndoDeleteDive *undoEntry = new UndoDeleteDive(deletedDives);
 	MainWindow::instance()->undoStack->push(undoEntry);
 	if (amount_selected == 0) {
@@ -880,6 +888,7 @@ void DiveListView::contextMenuEvent(QContextMenuEvent *event)
 	if (amount_selected >= 1) {
 		popup.addAction(tr("Renumber dive(s)"), this, SLOT(renumberDives()));
 		popup.addAction(tr("Shift dive times"), this, SLOT(shiftTimes()));
+		popup.addAction(tr("Split selected dives"), this, SLOT(splitDives()));
 		popup.addAction(tr("Load image(s) from file(s)"), this, SLOT(loadImages()));
 		popup.addAction(tr("Load image(s) from web"), this, SLOT(loadWebImages()));
 	}

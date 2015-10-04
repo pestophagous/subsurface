@@ -405,7 +405,7 @@ static void create_dive_buffer(struct dive *dive, struct membuffer *b)
 	save_tags(b, dive->tag_list);
 	cond_put_format(dive->dive_site_uuid && get_dive_site_by_uuid(dive->dive_site_uuid),
 			b, "divesiteid %08x\n", dive->dive_site_uuid);
-	if (verbose && dive->dive_site_uuid && get_dive_site_by_uuid(dive->dive_site_uuid))
+	if (verbose && dive->dive_site_uuid && !get_dive_site_by_uuid(dive->dive_site_uuid))
 		fprintf(stderr, "removed reference to non-existant dive site with uuid %08x\n", dive->dive_site_uuid);
 	save_overview(b, dive);
 	save_cylinder_info(b, dive);
@@ -892,9 +892,23 @@ static void save_divesites(git_repository *repo, struct dir *tree)
 				if (d->dive_site_uuid == ds->uuid)
 					d->dive_site_uuid = 0;
 			}
-			delete_dive_site(get_dive_site(i)->uuid);
+			delete_dive_site(ds->uuid);
 			i--; // since we just deleted that one
 			continue;
+		} else if (ds->name &&
+			   (strncmp(ds->name, "Auto-created dive", 17) == 0 ||
+			    strncmp(ds->name, "New Dive", 8) == 0)) {
+			fprintf(stderr, "found an auto divesite %s\n", ds->name);
+			// these are the two default names for sites from
+			// the web service; if the site isn't used in any
+			// dive (really? you didn't rename it?), delete it
+			if (!is_dive_site_used(ds->uuid, false)) {
+				if (verbose)
+					fprintf(stderr, "Deleted unused auto-created dive site %s\n", ds->name);
+				delete_dive_site(ds->uuid);
+				i--; // since we just deleted that one
+				continue;
+			}
 		}
 		struct membuffer site_file_name = { 0 };
 		put_format(&site_file_name, "Site-%08x", ds->uuid);
@@ -1177,6 +1191,9 @@ int do_git_save(git_repository *repo, const char *branch, const char *remote, bo
 {
 	struct dir tree;
 	git_oid id;
+
+	if (verbose)
+		fprintf(stderr, "git storage: do git save\n");
 
 	/* Start with an empty tree: no subdirectories, no files */
 	tree.name[0] = 0;

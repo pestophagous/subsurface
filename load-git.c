@@ -186,7 +186,7 @@ static void parse_dive_gps(char *line, struct membuffer *str, void *_dive)
 		    (ds->latitude.udeg != latitude.udeg || ds->longitude.udeg != longitude.udeg)) {
 			const char *coords = printGPSCoords(latitude.udeg, longitude.udeg);
 			// we have a dive site that already has GPS coordinates
-			ds->notes = add_to_string(ds->notes, translate("gettextFromC", "multiple gps locations for this dive site; also %s\n"), coords);
+			ds->notes = add_to_string(ds->notes, translate("gettextFromC", "multiple GPS locations for this dive site; also %s\n"), coords);
 			free((void *)coords);
 		}
 		ds->latitude = latitude;
@@ -306,7 +306,7 @@ static void parse_site_geo(char *line, struct membuffer *str, void *_ds)
 	if (nr < TC_NR_CATEGORIES) {
 		struct taxonomy *t = &ds->taxonomy.category[nr];
 		t->value = strdup(mb_cstring(str));
-		sscanf(line, "cat %d origin %d \"", &t->category, &t->origin);
+		sscanf(line, "cat %d origin %d \"", &t->category, (int *)&t->origin);
 		ds->taxonomy.nr++;
 	}
 }
@@ -1444,7 +1444,7 @@ static int parse_site_entry(git_repository *repo, const git_tree_entry *entry, c
 	if (*suffix == '\0')
 		return report_error("Dive site without uuid");
 	uint32_t uuid = strtoul(suffix, NULL, 16);
-	struct dive_site *ds = alloc_dive_site(uuid);
+	struct dive_site *ds = alloc_or_get_dive_site(uuid);
 	git_blob *blob = git_tree_entry_blob(repo, entry);
 	if (!blob)
 		return report_error("Unable to read dive site file");
@@ -1531,7 +1531,7 @@ static int walk_tree_file(const char *root, const git_tree_entry *entry, git_rep
 	struct dive *dive = active_dive;
 	dive_trip_t *trip = active_trip;
 	const char *name = git_tree_entry_name(entry);
-	if (verbose)
+	if (verbose > 1)
 		fprintf(stderr, "git load handling file %s\n", name);
 	switch (*name) {
 	/* Picture file? They are saved as time offsets in the dive */

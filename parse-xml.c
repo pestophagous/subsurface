@@ -67,17 +67,9 @@ void clear_table(struct dive_table *table)
 void record_dive_to_table(struct dive *dive, struct dive_table *table)
 {
 	assert(table != NULL);
-	int nr = table->nr, allocated = table->allocated;
-	struct dive **dives = table->dives;
+	struct dive **dives = grow_dive_table(table);
+	int nr = table->nr;
 
-	if (nr >= allocated) {
-		allocated = (nr + 32) * 3 / 2;
-		dives = realloc(dives, allocated * sizeof(struct dive *));
-		if (!dives)
-			exit(1);
-		table->dives = dives;
-		table->allocated = allocated;
-	}
 	dives[nr] = fixup_dive(dive);
 	table->nr = nr + 1;
 }
@@ -1562,7 +1554,11 @@ static void dive_site_end(void)
 	if (!cur_dive_site)
 		return;
 	if (cur_dive_site->uuid) {
-		struct dive_site *ds = alloc_dive_site(0);
+		// we intentionally call this with '0' to ensure we get
+		// a new structure and then copy things into that new
+		// structure a few lines below (which sets the correct
+		// uuid)
+		struct dive_site *ds = alloc_or_get_dive_site(0);
 		if (cur_dive_site->taxonomy.nr == 0) {
 			free(cur_dive_site->taxonomy.category);
 			cur_dive_site->taxonomy.category = NULL;
@@ -3250,6 +3246,24 @@ int parse_divinglog_buffer(sqlite3 *handle, const char *url, const char *buffer,
 	return 0;
 }
 
+/*
+ * Parse a unsigned 32-bit integer in little-endian mode,
+ * that is seconds since Jan 1, 2000.
+ */
+static timestamp_t parse_dlf_timestamp(unsigned char *buffer)
+{
+	timestamp_t offset;
+
+	offset = buffer[3];
+	offset = (offset << 8) + buffer[2];
+	offset = (offset << 8) + buffer[1];
+	offset = (offset << 8) + buffer[0];
+
+	// Jan 1, 2000 is 946684800 seconds after Jan 1, 1970, which is
+	// the Unix epoch date that "timestamp_t" uses.
+	return offset + 946684800;
+}
+
 int parse_dlf_buffer(unsigned char *buffer, size_t size)
 {
 	unsigned char *ptr = buffer;
@@ -3272,8 +3286,7 @@ int parse_dlf_buffer(unsigned char *buffer, size_t size)
 	// (ptr[7] << 8) + ptr[6] Is "Serial"
 	snprintf(serial, sizeof(serial), "%d", (ptr[7] << 8) + ptr[6]);
 	cur_dc->serial = strdup(serial);
-	// Dive start time in seconds since 2000-01-01 00:00
-	cur_dc->when = (ptr[11] << 24) + (ptr[10] << 16) + (ptr[9] << 8) + ptr[8] + 946684800;
+	cur_dc->when = parse_dlf_timestamp(ptr + 8);
 	cur_dive->when = cur_dc->when;
 
 	cur_dc->duration.seconds = ((ptr[14] & 0xFE) << 16) + (ptr[13] << 8) + ptr[12];

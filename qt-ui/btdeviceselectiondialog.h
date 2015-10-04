@@ -14,18 +14,12 @@
 	#include <ws2bth.h>
 
 	#define SUCCESS				0
-	#define BTH_ADDR_STR_LEN                40
+	#define BTH_ADDR_BUF_LEN                40
+	#define BTH_ADDR_PRETTY_STRING_LEN	17	// there are 6 two-digit hex values and 5 colons
 
 	#undef ERROR				// this is already declared in our headers
 	#undef IGNORE				// this is already declared in our headers
 	#undef DC_VERSION			// this is already declared in libdivecomputer header
-#endif
-
-#if defined(Q_OS_WIN)
-Q_DECLARE_METATYPE(QBluetoothDeviceInfo)
-Q_DECLARE_METATYPE(QBluetoothDeviceDiscoveryAgent::Error)
-#elif QT_VERSION < 0x050500
-Q_DECLARE_METATYPE(QBluetoothDeviceInfo)
 #endif
 
 namespace Ui {

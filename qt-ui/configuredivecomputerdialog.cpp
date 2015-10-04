@@ -213,9 +213,10 @@ ConfigureDiveComputerDialog::ConfigureDiveComputerDialog(QWidget *parent) : QDia
 	settings.endGroup();
 }
 
-OstcFirmwareCheck::OstcFirmwareCheck(QString product)
+OstcFirmwareCheck::OstcFirmwareCheck(QString product) : parent(0)
 {
 	QUrl url;
+	memset(&devData, 1, sizeof(devData));
 	if (product == "OSTC 3") {
 		url = QUrl("http://www.heinrichsweikamp.net/autofirmware/ostc3_changelog.txt");
 		latestFirmwareHexFile = QString("http://www.heinrichsweikamp.net/autofirmware/ostc3_firmware.hex");
@@ -722,6 +723,8 @@ void ConfigureDiveComputerDialog::readSettings()
 	ui.progressBar->setValue(0);
 	ui.progressBar->setFormat("%p%");
 	ui.progressBar->setTextVisible(true);
+	// Fw update is no longer a option, needs to be done on a untouched device
+	ui.updateFirmwareButton->setEnabled(false);
 
 	config->readSettings(&device_data);
 }
@@ -802,6 +805,7 @@ void ConfigureDiveComputerDialog::reloadValuesOSTC3()
 	ui.serialNoLineEdit->setText(deviceDetails->serialNo);
 	ui.firmwareVersionLineEdit->setText(deviceDetails->firmwareVersion);
 	ui.customTextLlineEdit->setText(deviceDetails->customText);
+	ui.modelLineEdit->setText(deviceDetails->model);
 	ui.diveModeComboBox->setCurrentIndex(deviceDetails->diveMode);
 	ui.saturationSpinBox->setValue(deviceDetails->saturation);
 	ui.desaturationSpinBox->setValue(deviceDetails->desaturation);
@@ -1049,7 +1053,7 @@ void ConfigureDiveComputerDialog::reloadValuesSuuntoVyper()
 	ui.maxDepthDoubleSpinBox->setSuffix(depth_unit);
 	ui.totalTimeSpinBox->setValue(deviceDetails->totalTime);
 	ui.numberOfDivesSpinBox->setValue(deviceDetails->numberOfDives);
-	ui.modelLineEdit->setText(deviceDetails->model);
+	ui.modelLineEdit_1->setText(deviceDetails->model);
 	ui.firmwareVersionLineEdit_1->setText(deviceDetails->firmwareVersion);
 	ui.serialNoLineEdit_1->setText(deviceDetails->serialNo);
 	ui.customTextLlineEdit_1->setText(deviceDetails->customText);
@@ -1097,6 +1101,8 @@ void ConfigureDiveComputerDialog::on_restoreBackupButton_clicked()
 	QString restorePath = QFileDialog::getOpenFileName(this, tr("Restore dive computer settings"),
 							   filename, tr("Backup files (*.xml)"));
 	if (!restorePath.isEmpty()) {
+		// Fw update is no longer a option, needs to be done on a untouched device
+		ui.updateFirmwareButton->setEnabled(false);
 		if (!config->restoreXMLBackup(restorePath, deviceDetails)) {
 			QMessageBox::critical(this, tr("XML restore error"),
 					      tr("An error occurred while restoring the backup file.\n%1")
@@ -1243,4 +1249,5 @@ void ConfigureDiveComputerDialog::dc_close()
 	ui.logToFile->setEnabled(true);
 	ui.updateFirmwareButton->setEnabled(false);
 	ui.progressBar->setFormat("Disonnected from device");
+	ui.progressBar->setValue(0);
 }

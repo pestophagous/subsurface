@@ -6,6 +6,13 @@
 #include "ui_btdeviceselectiondialog.h"
 #include "btdeviceselectiondialog.h"
 
+#if defined(Q_OS_WIN)
+Q_DECLARE_METATYPE(QBluetoothDeviceDiscoveryAgent::Error)
+#endif
+#if QT_VERSION < 0x050500
+Q_DECLARE_METATYPE(QBluetoothDeviceInfo)
+#endif
+
 BtDeviceSelectionDialog::BtDeviceSelectionDialog(QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::BtDeviceSelectionDialog),
@@ -343,7 +350,7 @@ void BtDeviceSelectionDialog::pairingFinished(const QBluetoothAddress &address, 
 		pairingStatusLabel = tr("AUTHORIZED_PAIRED");
 		pairingColor = QColor(Qt::blue);
 		enableSaveButton = true;
-		dialogStatusMessage = tr("Device %1 was authorized paired.").arg(remoteDeviceStringAddress);
+		dialogStatusMessage = tr("Device %1 was paired and is authorized.").arg(remoteDeviceStringAddress);
 	}
 
 	// Find the items which represent the BTH device and update their state
@@ -588,8 +595,8 @@ void WinBluetoothDeviceDiscoveryAgent::run()
 
 		if (result == SUCCESS) {
 			// Found a device
-			QString deviceAddress(BTH_ADDR_STR_LEN, Qt::Uninitialized);
-			DWORD addressSize = BTH_ADDR_STR_LEN;
+			QString deviceAddress(BTH_ADDR_BUF_LEN, Qt::Uninitialized);
+			DWORD addressSize = BTH_ADDR_BUF_LEN;
 
 			// Collect the address of the device from the WSAQUERYSET
 			SOCKADDR_BTH *socketBthAddress = (SOCKADDR_BTH *) pResults->lpcsaBuffer->RemoteAddr.lpSockaddr;
@@ -609,13 +616,13 @@ void WinBluetoothDeviceDiscoveryAgent::run()
 				break;
 			}
 
-			// Save the name of the discovered device and truncate the address
-			QString deviceName = QString(pResults->lpszServiceInstanceName);
-			deviceAddress.truncate(addressSize / sizeof(wchar_t));
-
 			// Remove the round parentheses
 			deviceAddress.remove(')');
 			deviceAddress.remove('(');
+
+			// Save the name of the discovered device and truncate the address
+			QString deviceName = QString(pResults->lpszServiceInstanceName);
+			deviceAddress.truncate(BTH_ADDR_PRETTY_STRING_LEN);
 
 			// Create an object with information about the discovered device
 			QBluetoothDeviceInfo deviceInfo = QBluetoothDeviceInfo(QBluetoothAddress(deviceAddress), deviceName, 0);

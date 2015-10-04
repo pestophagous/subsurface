@@ -523,9 +523,22 @@ void save_dives_buffer(struct membuffer *b, const bool select_only)
 				if (d->dive_site_uuid == ds->uuid)
 					d->dive_site_uuid = 0;
 			}
-			delete_dive_site(get_dive_site(i)->uuid);
+			delete_dive_site(ds->uuid);
 			i--; // since we just deleted that one
 			continue;
+		} else if (ds->name &&
+			   (strncmp(ds->name, "Auto-created dive", 17) == 0 ||
+			    strncmp(ds->name, "New Dive", 8) == 0)) {
+			// these are the two default names for sites from
+			// the web service; if the site isn't used in any
+			// dive (really? you didn't rename it?), delete it
+			if (!is_dive_site_used(ds->uuid, false)) {
+				if (verbose)
+					fprintf(stderr, "Deleted unused auto-created dive site %s\n", ds->name);
+				delete_dive_site(ds->uuid);
+				i--; // since we just deleted that one
+				continue;
+			}
 		}
 		if (select_only && !is_dive_site_used(ds->uuid, true))
 				continue;
@@ -537,21 +550,19 @@ void save_dives_buffer(struct membuffer *b, const bool select_only)
 			put_degrees(b, ds->longitude, "", "'");
 		}
 		show_utf8(b, ds->description, " description='", "'", 1);
-		show_utf8(b, ds->notes, " notes='", "'", 1);
+		put_format(b, ">\n");
+		show_utf8(b, ds->notes, "  <notes>", " </notes>\n", 0);
 		if (ds->taxonomy.nr) {
-			put_format(b, ">\n");
 			for (int j = 0; j < ds->taxonomy.nr; j++) {
 				struct taxonomy *t = &ds->taxonomy.category[j];
 				if (t->category != TC_NONE) {
-					put_format(b, "<geo cat='%d'", t->category);
+					put_format(b, "  <geo cat='%d'", t->category);
 					put_format(b, " origin='%d'", t->origin);
 					show_utf8(b, t->value, " value='", "'/>\n", 1);
 				}
 			}
-			put_format(b, "</site>\n");
-		} else {
-			put_format(b, "/>\n");
 		}
+		put_format(b, "</site>\n");
 	}
 	put_format(b, "</divesites>\n<dives>\n");
 	for (trip = dive_trip_list; trip != NULL; trip = trip->next)
@@ -651,7 +662,7 @@ int save_dives_logic(const char *filename, const bool select_only)
 	const char *branch, *remote;
 	int error;
 
-	git = is_git_repository(filename, &branch, &remote);
+	git = is_git_repository(filename, &branch, &remote, false);
 	if (git)
 		return git_save_dives(git, branch, remote, select_only);
 

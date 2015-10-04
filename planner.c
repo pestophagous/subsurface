@@ -137,6 +137,13 @@ void tissue_at_end(struct dive *dive, char **cached_datap)
 	psample = sample = dc->sample;
 
 	for (i = 0; i < dc->samples; i++, sample++) {
+		o2pressure_t setpoint;
+
+		if (i)
+			setpoint = sample[-1].setpoint;
+		else
+			setpoint = sample[0].setpoint;
+
 		t1 = sample->time;
 		get_gas_at_time(dive, dc, t0, &gas);
 		if (i > 0)
@@ -165,7 +172,7 @@ void tissue_at_end(struct dive *dive, char **cached_datap)
 				max_bottom_ceiling_pressure.mbar = ceiling_pressure.mbar;
 		}
 
-		interpolate_transition(dive, t0, t1, lastdepth, sample->depth, &gas, sample->setpoint);
+		interpolate_transition(dive, t0, t1, lastdepth, sample->depth, &gas, setpoint);
 		psample = sample;
 		t0 = t1;
 	}
@@ -529,11 +536,11 @@ static void add_plan_to_notes(struct diveplan *diveplan, struct dive *dive, bool
 	char *temp = (char *)malloc(sz_temp);
 	char buf[1000], *deco;
 	int len, lastdepth = 0, lasttime = 0, lastsetpoint = -1, newdepth = 0, lastprintdepth = 0, lastprintsetpoint = -1;
-	struct gasmix lastprintgasmix = { -1, -1 };
+	struct gasmix lastprintgasmix = {{ -1 }, { -1 }};
 	struct divedatapoint *dp = diveplan->dp;
 	bool gaschange_after = !plan_verbatim;
 	bool gaschange_before;
-	bool lastentered;
+	bool lastentered = true;
 	struct divedatapoint *nextdp = NULL;
 
 	plan_verbatim = prefs.verbatim_plan;
@@ -573,7 +580,7 @@ static void add_plan_to_notes(struct diveplan *diveplan, struct dive *dive, bool
 
 	len = show_disclaimer ? snprintf(buffer, sz_buffer, "<div><b>%s<b></div><br>", disclaimer) : 0;
 	if (prefs.deco_mode == BUEHLMANN){
-		snprintf(temp, sz_temp, translate("gettextFromC", "based on Buhlmann ZHL-16B with GFlow = %d and GFhigh = %d"),
+		snprintf(temp, sz_temp, translate("gettextFromC", "based on Bühlmann ZHL-16B with GFlow = %d and GFhigh = %d"),
 			diveplan->gflow, diveplan->gfhigh);
 	} else if (prefs.deco_mode == VPMB){
 		if (prefs.conservatism_level == 0)
@@ -581,7 +588,7 @@ static void add_plan_to_notes(struct diveplan *diveplan, struct dive *dive, bool
 		else
 			snprintf(temp, sz_temp, translate("gettextFromC", "based on VPM-B at +%d conservatism"), prefs.conservatism_level);
 	} else if (prefs.deco_mode == RECREATIONAL){
-		snprintf(temp, sz_temp, translate("gettextFromC", "recreational mode based on Buhlmann ZHL-16B with GFlow = %d and GFhigh = %d"),
+		snprintf(temp, sz_temp, translate("gettextFromC", "recreational mode based on Bühlmann ZHL-16B with GFlow = %d and GFhigh = %d"),
 			diveplan->gflow, diveplan->gfhigh);
 	}
 	len += snprintf(buffer + len, sz_buffer - len, "<div><b>%s</b><br>%s</div><br>",
@@ -968,7 +975,6 @@ bool plan(struct diveplan *diveplan, char **cached_datap, bool is_planner, bool 
 	unsigned int *stoplevels = NULL;
 	bool stopping = false;
 	bool pendinggaschange = false;
-	bool clear_to_ascend;
 	int clock, previous_point_time;
 	int avg_depth, max_depth, bottom_time = 0;
 	int last_ascend_rate;
@@ -985,6 +991,7 @@ bool plan(struct diveplan *diveplan, char **cached_datap, bool is_planner, bool 
 		diveplan->surface_pressure = SURFACE_PRESSURE;
 	displayed_dive.surface_pressure.mbar = diveplan->surface_pressure;
 	clear_deco(displayed_dive.surface_pressure.mbar / 1000.0);
+	max_bottom_ceiling_pressure.mbar = first_ceiling_pressure.mbar = 0;
 	create_dive_from_plan(diveplan, is_planner);
 
 	// Do we want deco stop array in metres or feet?
@@ -1111,8 +1118,6 @@ bool plan(struct diveplan *diveplan, char **cached_datap, bool is_planner, bool 
 	}
 
 	if (best_first_ascend_cylinder != current_cylinder) {
-		stopping = true;
-
 		current_cylinder = best_first_ascend_cylinder;
 		gas = displayed_dive.cylinder[current_cylinder].gasmix;
 
@@ -1333,6 +1338,7 @@ bool plan(struct diveplan *diveplan, char **cached_datap, bool is_planner, bool 
 
 	free(stoplevels);
 	free(gaschanges);
+	free(bottom_cache);
 	return decodive;
 }
 

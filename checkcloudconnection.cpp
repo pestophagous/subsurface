@@ -10,7 +10,9 @@
 #include "checkcloudconnection.h"
 
 
-CheckCloudConnection::CheckCloudConnection(QObject *parent) : QObject(parent)
+CheckCloudConnection::CheckCloudConnection(QObject *parent) :
+	QObject(parent),
+	reply(0)
 {
 
 }
@@ -28,9 +30,10 @@ bool CheckCloudConnection::checkServer()
 	request.setRawHeader("User-Agent", getUserAgent().toUtf8());
 	request.setUrl(QString(prefs.cloud_base_url) + TEAPOT);
 	QNetworkAccessManager *mgr = new QNetworkAccessManager();
-	QNetworkReply *reply = mgr->get(request);
+	reply = mgr->get(request);
 	connect(&timer, SIGNAL(timeout()), &loop, SLOT(quit()));
 	connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+	connect(reply, SIGNAL(sslErrors(QList<QSslError>)), this, SLOT(sslErrors(QList<QSslError>)));
 	timer.start(2000); // wait two seconds
 	loop.exec();
 	if (timer.isActive()) {
@@ -40,23 +43,53 @@ bool CheckCloudConnection::checkServer()
 		    reply->readAll() == QByteArray(MILK)) {
 			reply->deleteLater();
 			mgr->deleteLater();
+			if (verbose > 1)
+				qWarning() << "Cloud storage: successfully checked connection to cloud server";
 			return true;
 		}
-		// qDebug() << "did not get expected response - server unreachable" <<
-		//	    reply->error() << reply->errorString() <<
-		//	    reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt() <<
-		//	    reply->readAll();
 	} else {
 		disconnect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
 		reply->abort();
 	}
+	if (verbose)
+		qDebug() << "connection test to cloud server failed" <<
+			    reply->error() << reply->errorString() <<
+			    reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt() <<
+			    reply->readAll();
 	reply->deleteLater();
 	mgr->deleteLater();
+	if (verbose)
+		qWarning() << "Cloud storage: unable to connect to cloud server";
 	return false;
+}
+
+void CheckCloudConnection::sslErrors(QList<QSslError> errorList)
+{
+	if (verbose) {
+		qDebug() << "Received error response trying to set up https connection with cloud storage backend:";
+		Q_FOREACH (QSslError err, errorList) {
+			qDebug() << err.errorString();
+		}
+	}
+	QSslConfiguration conf = reply->sslConfiguration();
+	QSslCertificate cert = conf.peerCertificate();
+	QByteArray hexDigest = cert.digest().toHex();
+	if (reply->url().toString().contains(prefs.cloud_base_url) &&
+	    hexDigest == "13ff44c62996cfa5cd69d6810675490e") {
+		if (verbose)
+			qDebug() << "Overriding SSL check as I recognize the certificate digest" << hexDigest;
+		reply->ignoreSslErrors();
+	} else {
+		if (verbose)
+			qDebug() << "got invalid SSL certificate with hex digest" << hexDigest;
+	}
 }
 
 // helper to be used from C code
 extern "C" bool canReachCloudServer()
 {
-	return CheckCloudConnection::checkServer();
+	if (verbose)
+		qWarning() << "Cloud storage: checking connection to cloud server";
+	CheckCloudConnection *checker = new CheckCloudConnection;
+	return checker->checkServer();
 }

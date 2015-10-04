@@ -9,6 +9,7 @@
 #include "libdivecomputer.h"
 #include "device.h"
 #include "divelist.h"
+#include "qthelperfromc.h"
 
 /* one could argue about the best place to have this variable -
  * it's used in the UI, but it seems to make the most sense to have it
@@ -797,6 +798,19 @@ static void fixup_pressure(struct dive *dive, struct sample *sample, enum cylind
 	if (index < 0)
 		return;
 	if (!pressure)
+		return;
+
+	/*
+	 * Ignore surface samples for tank pressure information.
+	 *
+	 * At the beginning of the dive, let the cylinder cool down
+	 * if the diver starts off at the surface. And at the end
+	 * of the dive, there may be surface pressures where the
+	 * diver has already turned off the air supply (especially
+	 * for computers like the Uemis Zurich that end up saving
+	 * quite a bit of samples after the dive has ended).
+	 */
+	if (sample->depth.mm < SURFACE_THRESHOLD)
 		return;
 
 	/* FIXME! sensor -> cylinder mapping? */
@@ -2216,6 +2230,11 @@ static int likely_same_dive(struct dive *a, struct dive *b)
 {
 	int match, fuzz = 20 * 60;
 
+	/* don't merge manually added dives with anything */
+	if (same_string(a->dc.model, "manually added dive") ||
+	    same_string(b->dc.model, "manually added dive"))
+		return 0;
+
 	/* Don't try to merge dives with different trip information */
 	if (a->divetrip != b->divetrip) {
 		/*
@@ -2742,28 +2761,48 @@ int count_dives_with_suit(const char *suit)
 	return counter;
 }
 
-
+/*
+ * Merging two dives can be subtle, because there's two different ways
+ * of merging:
+ *
+ * (a) two distinctly _different_ dives that have the same dive computer
+ *     are merged into one longer dive, because the user asked for it
+ *     in the divelist.
+ *
+ *     Because this case is with teh same dive computer, we *know* the
+ *     two must have a different start time, and "offset" is the relative
+ *     time difference between the two.
+ *
+ * (a) two different dive computers that we migth want to merge into
+ *     one single dive with multiple dive computers.
+ *
+ *     This is the "try_to_merge()" case, which will have offset == 0,
+ *     even if the dive times migth be different.
+ */
 struct dive *merge_dives(struct dive *a, struct dive *b, int offset, bool prefer_downloaded)
 {
 	struct dive *res = alloc_dive();
 	struct dive *dl = NULL;
 
-	/* Aim for newly downloaded dives to be 'b' (keep old dive data first) */
-	if (a->downloaded && !b->downloaded) {
-		struct dive *tmp = a;
-		a = b;
-		b = tmp;
+	if (offset) {
+		/*
+		 * If "likely_same_dive()" returns true, that means that
+		 * it is *not* the same dive computer, and we do not want
+		 * to try to turn it into a single longer dive. So we'd
+		 * join them as two separate dive computers at zero offset.
+		 */
+		if (likely_same_dive(a, b))
+			offset = 0;
+	} else {
+		/* Aim for newly downloaded dives to be 'b' (keep old dive data first) */
+		if (a->downloaded && !b->downloaded) {
+			struct dive *tmp = a;
+			a = b;
+			b = tmp;
+		}
+		if (prefer_downloaded && b->downloaded)
+			dl = b;
 	}
-	if (prefer_downloaded && b->downloaded)
-		dl = b;
-
-	/*
-	 * Did the user ask us to merge dives in the dive list?
-	 * We may want to just join the dive computers, not try to
-	 * interleave them at some offset.
-	 */
-	if (offset && likely_same_dive(a, b))
-		offset = 0;
 
 	res->when = dl ? dl->when : a->when;
 	res->selected = a->selected || b->selected;
@@ -2792,6 +2831,225 @@ struct dive *merge_dives(struct dive *a, struct dive *b, int offset, bool prefer
 	return res;
 }
 
+// copy_dive(), but retaining the new ID for the copied dive
+static struct dive *create_new_copy(struct dive *from)
+{
+	struct dive *to = alloc_dive();
+	int id;
+
+	// alloc_dive() gave us a new ID, we just need to
+	// make sure it's not overwritten.
+	id = to->id;
+	copy_dive(from, to);
+	to->id = id;
+	return to;
+}
+
+/*
+ * Split a dive that has a surface interval from samples 'a' to 'b'
+ * into two dives.
+ */
+static int split_dive_at(struct dive *dive, int a, int b)
+{
+	int i, t, nr;
+	struct dive *d1, *d2;
+	struct divecomputer *dc1, *dc2;
+	struct event *event, **evp;
+
+	/* if we can't find the dive in the dive list, don't bother */
+	if ((nr = get_divenr(dive)) < 0)
+		return 0;
+
+	/* We're not trying to be efficient here.. */
+	d1 = create_new_copy(dive);
+	d2 = create_new_copy(dive);
+
+	/* now unselect the first first segment so we don't keep all
+	 * dives selected by mistake. But do keep the second one selected
+	 * so the algorithm keeps splitting the dive further */
+	d1->selected = false;
+
+	dc1 = &d1->dc;
+	dc2 = &d2->dc;
+	/*
+	 * Cut off the samples of d1 at the beginning
+	 * of the interval.
+	 */
+	dc1->samples = a;
+
+	/* And get rid of the 'b' first samples of d2 */
+	dc2->samples -= b;
+	memmove(dc2->sample, dc2->sample+b, dc2->samples * sizeof(struct sample));
+
+	/*
+	 * This is where we cut off events from d1,
+	 * and shift everything in d2
+	 */
+	t = dc2->sample[0].time.seconds;
+	d2->when += t;
+	for (i = 0; i < dc2->samples; i++)
+		dc2->sample[i].time.seconds -= t;
+
+	/* Remove the events past 't' from d1 */
+	evp = &dc1->events;
+	while ((event = *evp) != NULL && event->time.seconds < t)
+		evp = &event->next;
+	*evp = NULL;
+	while (event) {
+		struct event *next = event->next;
+		free(event);
+		event = next;
+	}
+
+	/* Remove the events before 't' from d2, and shift the rest */
+	evp = &dc2->events;
+	while ((event = *evp) != NULL) {
+		if (event->time.seconds < t) {
+			*evp = event->next;
+			free(event);
+		} else {
+			event->time.seconds -= t;
+		}
+	}
+
+	fixup_dive(d1);
+	fixup_dive(d2);
+	if (dive->divetrip) {
+		d1->divetrip = d2->divetrip = 0;
+		add_dive_to_trip(d1, dive->divetrip);
+		add_dive_to_trip(d2, dive->divetrip);
+	}
+
+	delete_single_dive(nr);
+	add_single_dive(nr, d1);
+
+	/*
+	 * Was the dive numbered? If it was the last dive, then we'll
+	 * increment the dive number for the tail part that we split off.
+	 * Otherwise the tail is unnumbered.
+	 */
+	if (d2->number) {
+		if (dive_table.nr == nr + 1)
+			d2->number++;
+		else
+			d2->number = 0;
+	}
+	add_single_dive(nr + 1, d2);
+
+	mark_divelist_changed(true);
+
+	return 1;
+}
+
+/* in freedive mode we split for as little as 10 seconds on the surface,
+ * otherwise we use a minute */
+static bool should_split(struct divecomputer *dc, int t1, int t2)
+{
+	int threshold = dc->divemode == FREEDIVE ? 10 : 60;
+
+	return t2 - t1 >= threshold;
+}
+
+/*
+ * Try to split a dive into multiple dives at a surface interval point.
+ *
+ * NOTE! We will not split dives with multiple dive computers, and
+ * only split when there is at least one surface event that has
+ * non-surface events on both sides.
+ *
+ * In other words, this is a (simplified) reversal of the dive merging.
+ */
+int split_dive(struct dive *dive)
+{
+	int i;
+	int at_surface, surface_start;
+	struct divecomputer *dc;
+
+	if (!dive || (dc = &dive->dc)->next)
+		return 0;
+
+	surface_start = 0;
+	at_surface = 1;
+	for (i = 1; i < dc->samples; i++) {
+		struct sample *sample = dc->sample+i;
+		int surface_sample = sample->depth.mm < SURFACE_THRESHOLD;
+
+		/*
+		 * We care about the transition from and to depth 0,
+		 * not about the depth staying similar.
+		 */
+		if (at_surface == surface_sample)
+			continue;
+		at_surface = surface_sample;
+
+		// Did it become surface after having been non-surface? We found the start
+		if (at_surface) {
+			surface_start = i;
+			continue;
+		}
+
+		// Goind down again? We want at least a minute from
+		// the surface start.
+		if (!surface_start)
+			continue;
+		if (!should_split(dc, dc->sample[surface_start].time.seconds, sample[i - 1].time.seconds))
+			continue;
+
+		return split_dive_at(dive, surface_start, i-1);
+	}
+	return 0;
+}
+
+/*
+ * "dc_maxtime()" is how much total time this dive computer
+ * has for this dive. Note that it can differ from "duration"
+ * if there are surface events in the middle.
+ *
+ * Still, we do ignore all but the last surface samples from the
+ * end, because some divecomputers just generate lots of them.
+ */
+static inline int dc_totaltime(const struct divecomputer *dc)
+{
+	int time = dc->duration.seconds;
+	int nr = dc->samples;
+
+	while (nr--) {
+		struct sample *s = dc->sample + nr;
+		time = s->time.seconds;
+		if (s->depth.mm >= SURFACE_THRESHOLD)
+			break;
+	}
+	return time;
+}
+
+/*
+ * The end of a dive is actually not trivial, because "duration"
+ * is not the duration until the end, but the time we spend under
+ * water, which can be very different if there are surface events
+ * during the dive.
+ *
+ * So walk the dive computers, looking for the longest actual
+ * time in the samples (and just default to the dive duration if
+ * there are no samples).
+ */
+static inline int dive_totaltime(const struct dive *dive)
+{
+	int time =  dive->duration.seconds;
+	const struct divecomputer *dc;
+
+	for_each_dc(dive, dc) {
+		int dc_time = dc_totaltime(dc);
+		if (dc_time > time)
+			time = dc_time;
+	}
+	return time;
+}
+
+timestamp_t dive_endtime(const struct dive *dive)
+{
+	return dive->when + dive_totaltime(dive);
+}
+
 struct dive *find_dive_including(timestamp_t when)
 {
 	int i;
@@ -2801,7 +3059,7 @@ struct dive *find_dive_including(timestamp_t when)
 	 * also we always use the duration from the first divecomputer
 	 *     could this ever be a problem? */
 	for_each_dive (i, dive) {
-		if (dive->when <= when && when <= dive->when + dive->duration.seconds)
+		if (dive->when <= when && when <= dive_endtime(dive))
 			return dive;
 	}
 	return NULL;
@@ -2809,12 +3067,16 @@ struct dive *find_dive_including(timestamp_t when)
 
 bool time_during_dive_with_offset(struct dive *dive, timestamp_t when, timestamp_t offset)
 {
-	return dive->when - offset <= when && when <= dive->when + dive->duration.seconds + offset;
+	timestamp_t start = dive->when;
+	timestamp_t end = dive_endtime(dive);
+	return start - offset <= when && when <= end + offset;
 }
 
 bool dive_within_time_range(struct dive *dive, timestamp_t when, timestamp_t offset)
 {
-	return when - offset <= dive->when && dive->when + dive->duration.seconds <= when + offset;
+	timestamp_t start = dive->when;
+	timestamp_t end = dive_endtime(dive);
+	return when - offset <= start && end <= when + offset;
 }
 
 /* find the n-th dive that is part of a group of dives within the offset around 'when'.
@@ -2969,7 +3231,7 @@ bool dive_check_picture_time(struct dive *d, int shift_time, timestamp_t timesta
 	offset_t offset;
 	if (timestamp) {
 		offset.seconds = timestamp - d->when + shift_time;
-		if (offset.seconds > -D30MIN && offset.seconds < (int)d->duration.seconds + D30MIN) {
+		if (offset.seconds > -D30MIN && offset.seconds < dive_totaltime(d) + D30MIN) {
 			// this picture belongs to this dive
 			return true;
 		}
@@ -3014,6 +3276,7 @@ void dive_add_picture(struct dive *dive, struct picture *newpic)
 		pic_ptr = &(*pic_ptr)->next;
 	newpic->next = *pic_ptr;
 	*pic_ptr = newpic;
+	cache_picture(newpic);
 	return;
 }
 
