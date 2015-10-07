@@ -543,7 +543,7 @@ void LocationFilterDelegate::paint(QPainter *painter, const QStyleOptionViewItem
 			QString distance = distance_string(distanceMeters);
 			int nr = nr_of_dives_at_dive_site(ds->uuid, false);
 			bottomText += tr(" (~%1 away").arg(distance);
-			bottomText += tr(", %n dive(s) here)", 0, nr);
+			bottomText += tr(", %1 dive(s) here)").arg(nr);
 		}
 	}
 	if (bottomText.isEmpty()) {
@@ -558,7 +558,13 @@ print_part:
 
 	fontBigger.setPointSize(fontBigger.pointSize() + 1);
 	fontBigger.setBold(true);
-	QPen textPen = QPen(option.state & QStyle::State_Selected ? option.palette.brightText() : option.palette.text(), 1);
+	QPen textPen;
+#ifdef WIN32
+	if(QSysInfo::windowsVersion() > QSysInfo::WV_VISTA)
+		textPen = QPen(option.palette.text(), 1);
+	else
+#endif
+		textPen = QPen(option.state & QStyle::State_Selected ? option.palette.brightText() : option.palette.text(), 1);
 
 	initStyleOption(&opt, index);
 	opt.text = QString();

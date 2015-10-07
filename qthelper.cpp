@@ -603,30 +603,6 @@ extern "C" timestamp_t picture_get_timestamp(char *filename)
 	return exif.epoch();
 }
 
-extern "C" const char *system_default_directory(void)
-{
-	static char filename[PATH_MAX];
-
-	if (!*filename) {
-		enum QStandardPaths::StandardLocation location;
-
-		// allegedly once you're on Qt5.4 or later you should use
-		// QStandardPaths::AppDataLocation but on Mac that gives us
-		// paths starting with /Library/...
-		// #if QT_VERSION >= 0x050400
-		// location = QStandardPaths::AppDataLocation;
-		// #else
-		location = QStandardPaths::DataLocation;
-		// #endif
-		QString name = QStandardPaths::standardLocations(location).first();
-		QDir dir(name);
-		dir.mkpath(name);
-		// Why no "dir.encodeName()"? Crazy Qt
-		strncpy(filename, QFile::encodeName(name), PATH_MAX-1);
-	}
-	return filename;
-}
-
 extern "C" char *move_away(const char *old_path)
 {
 	if (verbose > 1)
@@ -1536,11 +1512,18 @@ void loadPreferences()
 	prefs.cloud_git_url = strdup(qPrintable(QString(prefs.cloud_base_url) + "/git"));
 	s.endGroup();
 
+	// Subsurface webservice id is stored outside of the groups
+	GET_TXT("subsurface_webservice_uid", userid);
+
 	// GeoManagement
 	s.beginGroup("geocoding");
+#ifdef DISABLED
 	GET_BOOL("enable_geocoding", geocoding.enable_geocoding);
-	GET_BOOL("parse_dives_without_gps", geocoding.parse_dive_without_gps);
+	GET_BOOL("parse_dive_without_gps", geocoding.parse_dive_without_gps);
 	GET_BOOL("tag_existing_dives", geocoding.tag_existing_dives);
+#else
+	prefs.geocoding.enable_geocoding = true;
+#endif
 	GET_ENUM("cat0", taxonomy_category, geocoding.category[0]);
 	GET_ENUM("cat1", taxonomy_category, geocoding.category[1]);
 	GET_ENUM("cat2", taxonomy_category, geocoding.category[2]);

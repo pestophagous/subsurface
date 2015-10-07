@@ -73,7 +73,7 @@ struct preferences default_prefs = {
 	.defaultsetpoint = 1100,
 	.cloud_background_sync = true,
 	.geocoding = {
-		.enable_geocoding = false,
+		.enable_geocoding = true,
 		.parse_dive_without_gps = false,
 		.tag_existing_dives = false,
 		.category = { 0 }
@@ -139,15 +139,20 @@ static void print_version()
 
 void print_files()
 {
-	const char *branchp, *remote;
+	const char *branch = 0;
+	const char *remote = 0;
 	const char *filename, *local_git;
 
 	filename = cloud_url();
 
-	is_git_repository(filename, &branchp, &remote, true);
-	local_git = get_local_dir(remote, branchp);
+	is_git_repository(filename, &branch, &remote, true);
 	printf("\nFile locations:\n\n");
-	printf("Local git storage: %s\n", local_git);
+	if (branch && remote) {
+		local_git = get_local_dir(remote, branch);
+		printf("Local git storage: %s\n", local_git);
+	} else {
+		printf("Unable to get local git directory\n");
+	}
 	printf("Cloud URL: %s\n", cloud_url());
 	printf("Image hashes: %s\n", hashfile_name_string());
 	printf("Local picture directory: %s\n\n", picturedir_string());
@@ -265,6 +270,28 @@ void setup_system_prefs(void)
 		return;
 
 	default_prefs.units = IMPERIAL_units;
+}
+
+/* copy a preferences block, including making copies of all included strings */
+void copy_prefs(struct preferences *src, struct preferences *dest)
+{
+	*dest = *src;
+	dest->divelist_font = copy_string(src->divelist_font);
+	dest->default_filename = copy_string(src->default_filename);
+	dest->default_cylinder = copy_string(src->default_cylinder);
+	dest->cloud_base_url = copy_string(src->cloud_base_url);
+	dest->cloud_git_url = copy_string(src->cloud_git_url);
+	dest->userid = copy_string(src->userid);
+	dest->proxy_host = copy_string(src->proxy_host);
+	dest->proxy_user = copy_string(src->proxy_user);
+	dest->proxy_pass = copy_string(src->proxy_pass);
+	dest->cloud_storage_password = copy_string(src->cloud_storage_password);
+	dest->cloud_storage_newpassword = copy_string(src->cloud_storage_newpassword);
+	dest->cloud_storage_email = copy_string(src->cloud_storage_email);
+	dest->cloud_storage_email_encoded = copy_string(src->cloud_storage_email_encoded);
+	dest->facebook.access_token = copy_string(src->facebook.access_token);
+	dest->facebook.user_id = copy_string(src->facebook.user_id);
+	dest->facebook.album_id = copy_string(src->facebook.album_id);
 }
 
 /*

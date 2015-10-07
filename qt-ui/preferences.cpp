@@ -4,6 +4,7 @@
 #include "divelocationmodel.h"
 #include "prefs-macros.h"
 #include "qthelper.h"
+#include "subsurfacestartup.h"
 
 #include <QSettings>
 #include <QFileDialog>
@@ -239,11 +240,14 @@ void PreferencesDialog::setUiFromPrefs()
 	ui.save_password_local->setChecked(prefs.save_password_local);
 	cloudPinNeeded();
 	ui.cloud_background_sync->setChecked(prefs.cloud_background_sync);
+	ui.default_uid->setText(prefs.userid);
 
 	// GeoManagement
+#ifdef DISABLED
 	ui.enable_geocoding->setChecked( prefs.geocoding.enable_geocoding );
 	ui.parse_without_gps->setChecked(prefs.geocoding.parse_dive_without_gps);
 	ui.tag_existing_dives->setChecked(prefs.geocoding.tag_existing_dives);
+#endif
 	ui.first_item->setCurrentIndex(prefs.geocoding.category[0]);
 	ui.second_item->setCurrentIndex(prefs.geocoding.category[1]);
 	ui.third_item->setCurrentIndex(prefs.geocoding.category[2]);
@@ -417,9 +421,11 @@ void PreferencesDialog::syncSettings()
 	s.endGroup();
 
 	s.beginGroup("geocoding");
+#ifdef DISABLED
 	s.setValue("enable_geocoding", ui.enable_geocoding->isChecked());
-	s.setValue("parse_dives_without_gps", ui.parse_without_gps->isChecked());
+	s.setValue("parse_dive_without_gps", ui.parse_without_gps->isChecked());
 	s.setValue("tag_existing_dives", ui.tag_existing_dives->isChecked());
+#endif
 	s.setValue("cat0", ui.first_item->currentIndex());
 	s.setValue("cat1", ui.second_item->currentIndex());
 	s.setValue("cat2", ui.third_item->currentIndex());
@@ -489,7 +495,7 @@ void PreferencesDialog::on_resetSettings_clicked()
 
 	int result = response.exec();
 	if (result == QMessageBox::Ok) {
-		prefs = default_prefs;
+		copy_prefs(&default_prefs, &prefs);
 		setUiFromPrefs();
 		Q_FOREACH (QString key, s.allKeys()) {
 			s.remove(key);

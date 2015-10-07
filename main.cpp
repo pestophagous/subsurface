@@ -34,6 +34,9 @@ int main(int argc, char **argv)
 				 (arguments.at(1) == QString("--win32console"));
 	subsurface_console_init(dedicated_console);
 
+	const char *default_directory = system_default_directory();
+	const char *default_filename = system_default_filename();
+
 	for (i = 1; i < arguments.length(); i++) {
 		QString a = arguments.at(i);
 		if (a.at(0) == '-') {
@@ -53,7 +56,7 @@ int main(int argc, char **argv)
 	git_libgit2_init();
 #endif
 	setup_system_prefs();
-	prefs = default_prefs;
+	copy_prefs(&default_prefs, &prefs);
 	fill_profile_color();
 	parse_xml_init();
 	taglist_init_global();
@@ -69,11 +72,13 @@ int main(int argc, char **argv)
 				files.push_back(cloudURL);
 		}
 	}
-
 	MainWindow *m = MainWindow::instance();
 	m->setLoadedWithFiles(!files.isEmpty() || !importedFiles.isEmpty());
 	m->loadFiles(files);
 	m->importFiles(importedFiles);
+	// in case something has gone wrong make sure we show the error message
+	m->showError();
+
 	if (verbose > 0)
 		print_files();
 	if (!quit)
@@ -81,6 +86,8 @@ int main(int argc, char **argv)
 	exit_ui();
 	taglist_free(g_tag_list);
 	parse_xml_exit();
+	free((void *)default_directory);
+	free((void *)default_filename);
 	subsurface_console_exit();
 	free_prefs();
 	return 0;
