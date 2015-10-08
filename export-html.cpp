@@ -11,6 +11,8 @@
 #include "git2.h"
 #include "subsurfacestartup.h"
 #include "divelogexportlogic.h"
+#include "windowtitleupdate.h"
+#include "statistics.h"
 
 QTranslator *qtTranslator, *ssrfTranslator;
 
@@ -40,7 +42,7 @@ int main(int argc, char **argv)
 		qDebug() << "need --source and --output";
 		exit(1);
 	}
-
+	WindowTitleUpdate *wtu = new WindowTitleUpdate();
 	int ret = parse_file(qPrintable(source));
 	if (ret) {
 		fprintf(stderr, "parse_file returned %d\n", ret);
@@ -52,6 +54,13 @@ int main(int argc, char **argv)
 
 	prefs.unit_system = informational_prefs.unit_system;
 	prefs.units = informational_prefs.units;
+
+	// populate the statistics
+	struct dive *d = get_dive(0);
+	struct dive *pd;
+	if (d) {
+		process_all_dives(d, &pd);
+	}
 
 	// now set up the export settings to create the HTML export
 	struct htmlExportSetting hes;
