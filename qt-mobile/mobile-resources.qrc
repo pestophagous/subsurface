@@ -8,5 +8,10 @@
         <file>DownloadFromDiveComputer.qml</file>
         <file>Log.qml</file>
         <file>TopBar.qml</file>
+        <file alias="subsurface-mobile-icon.png">../icons/subsurface-mobile-icon.png</file>
+    </qresource>
+    <qresource prefix="/qml/theme">
+        <file alias="Theme.qml">theme/Theme.qml</file>
+        <file alias="Units.qml" >theme/Units.qml</file>
     </qresource>
 </RCC>

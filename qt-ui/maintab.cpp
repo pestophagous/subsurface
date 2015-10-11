@@ -160,6 +160,7 @@ MainTab::MainTab(QWidget *parent) : QTabWidget(parent),
 		label->setContentsMargins(margins);
 	}
 	ui.cylinders->view()->horizontalHeader()->setContextMenuPolicy(Qt::ActionsContextMenu);
+	ui.weights->view()->horizontalHeader()->setContextMenuPolicy(Qt::ActionsContextMenu);
 
 	QSettings s;
 	s.beginGroup("cylinders_dialog");
@@ -487,29 +488,8 @@ void MainTab::updateDiveInfo(bool clear)
 		}
 
 		if (ds) {
-			// construct the location tags
-			QString locationTag;
-			if (ds->taxonomy.nr) {
-				locationTag = "<small><small>(tags: ";
-				QString connector = "";
-				for (int i = 0; i < 3; i++) {
-					if (prefs.geocoding.category[i] == TC_NONE)
-						continue;
-					for (int j = 0; j < TC_NR_CATEGORIES; j++) {
-						if (ds->taxonomy.category[j].category == prefs.geocoding.category[i]) {
-							QString tag = ds->taxonomy.category[j].value;
-							if (!tag.isEmpty()) {
-								locationTag += connector + tag;
-								connector = " / ";
-							}
-							break;
-						}
-					}
-				}
-				locationTag += ")</small></small>";
-			}
 			ui.location->setCurrentDiveSiteUuid(ds->uuid);
-			ui.locationTags->setText(locationTag);
+			ui.locationTags->setText(constructLocationTags(ds->uuid));
 		} else {
 			ui.location->clear();
 			clear_dive_site(&displayed_dive_site);
@@ -730,6 +710,10 @@ void MainTab::updateDiveInfo(bool clear)
 			ui.locationTags->hide();
 		else
 			ui.locationTags->show();
+		/* unset the special value text for date and time, just in case someone dove at midnight */
+		ui.dateEdit->setSpecialValueText(QString(""));
+		ui.timeEdit->setSpecialValueText(QString(""));
+
 	} else {
 		/* clear the fields */
 		clearInfo();
@@ -738,6 +722,13 @@ void MainTab::updateDiveInfo(bool clear)
 		ui.rating->setCurrentStars(0);
 		ui.visibility->setCurrentStars(0);
 		ui.location->clear();
+		/* set date and time to minimums which triggers showing the special value text */
+		ui.dateEdit->setSpecialValueText(QString("-"));
+		ui.dateEdit->setMinimumDate(QDate(1, 1, 1));
+		ui.dateEdit->setDate(QDate(1, 1, 1));
+		ui.timeEdit->setSpecialValueText(QString("-"));
+		ui.timeEdit->setMinimumTime(QTime(0, 0, 0, 0));
+		ui.timeEdit->setTime(QTime(0, 0, 0, 0));
 	}
 	editMode = rememberEM;
 	ui.cylinders->view()->hideColumn(CylindersModel::DEPTH);
