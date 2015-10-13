@@ -202,6 +202,11 @@ MainTab::MainTab(QWidget *parent) : QTabWidget(parent),
 	connect(ui.diveNotesMessage, &KMessageWidget::showAnimationFinished,
 					ui.location, &DiveLocationLineEdit::fixPopupPosition);
 
+	//if (true).  // to make URL clickability optional, simply branch here based on a preference.
+	{
+		new TextHyperlinkEventFilter(ui.notes);//destroyed when ui.notes is destroyed
+	}
+
 	acceptingEdit = false;
 
 	ui.diveTripLocation->hide();

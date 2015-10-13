@@ -7,6 +7,8 @@
 #include <QCalendarWidget>
 #include <QKeyEvent>
 #include <QAction>
+#include <QDesktopServices>
+#include <QToolTip>
 
 #include "file.h"
 #include "mainwindow.h"
@@ -734,4 +736,138 @@ void MultiFilter::closeFilter()
 {
 	MultiFilterSortModel::instance()->clearFilter();
 	hide();
+}
+
+TextHyperlinkEventFilter::TextHyperlinkEventFilter(QTextEdit *txtEdit) : QObject(txtEdit),
+									 textEdit(txtEdit),
+									 scrollView(textEdit->viewport())
+{
+	// lesson learned. install filter on viewport:
+	// http://stackoverflow.com/questions/31581453/qplaintextedit-double-click-event
+	textEdit->viewport()->installEventFilter(this);
+}
+
+bool TextHyperlinkEventFilter::eventFilter(QObject *target, QEvent *evt)
+{
+	if (target != scrollView)
+		return false;
+
+	if (evt->type() != QEvent::MouseButtonPress &&
+	    evt->type() != QEvent::ToolTip)
+		return false;
+
+	// --------------------
+
+	const bool isCtrlClick = evt->type() == QEvent::MouseButtonPress &&
+				 static_cast<QMouseEvent *>(evt)->modifiers() & Qt::ControlModifier &&
+				 static_cast<QMouseEvent *>(evt)->button() == Qt::LeftButton;
+
+	const bool isTooltip = evt->type() == QEvent::ToolTip;
+
+	QString urlUnderCursor;
+
+	if (isCtrlClick || isTooltip) {
+		QTextCursor cursor = isCtrlClick ?
+					     textEdit->cursorForPosition(static_cast<QMouseEvent *>(evt)->pos()) :
+					     textEdit->cursorForPosition(static_cast<QHelpEvent *>(evt)->pos());
+
+		urlUnderCursor = tryToFormulateUrl(&cursor);
+	}
+
+	if (isCtrlClick) {
+		handleUrlClick(urlUnderCursor);
+	}
+
+	if (isTooltip) {
+		handleUrlTooltip(urlUnderCursor, static_cast<QHelpEvent *>(evt)->globalPos());
+	}
+
+	return false; // (slight lie). indicate that we didn't do anything with the event.
+}
+
+void TextHyperlinkEventFilter::handleUrlClick(const QString &urlStr)
+{
+	if (!urlStr.isEmpty()) {
+		QUrl url(urlStr, QUrl::StrictMode);
+		QDesktopServices::openUrl(url);
+	}
+}
+
+void TextHyperlinkEventFilter::handleUrlTooltip(const QString &urlStr, const QPoint &pos)
+{
+	if (urlStr.isEmpty()) {
+		QToolTip::hideText();
+	} else {
+		QToolTip::showText(pos, tr("Ctrl+click to visit %1").arg(urlStr));
+	}
+}
+
+bool TextHyperlinkEventFilter::stringMeetsOurUrlRequirements(const QString &maybeUrlStr)
+{
+	QUrl url(maybeUrlStr, QUrl::StrictMode);
+	return url.isValid() && (!url.scheme().isEmpty());
+}
+
+QString TextHyperlinkEventFilter::fromCursorTilWhitespace(QTextCursor *cursor, const bool searchBackwards)
+{
+	QString result;
+	QString grownText;
+	QString noSpaces;
+	bool movedOk = false;
+
+	do {
+		result = grownText; // this is a no-op on the first visit.
+
+		if (searchBackwards) {
+			movedOk = cursor->movePosition(QTextCursor::PreviousWord, QTextCursor::KeepAnchor);
+		} else {
+			movedOk = cursor->movePosition(QTextCursor::NextWord, QTextCursor::KeepAnchor);
+		}
+
+		grownText = cursor->selectedText();
+		noSpaces = grownText.simplified().replace(" ", "");
+	} while (grownText == noSpaces && movedOk);
+
+	// while growing the selection forwards, we have an extra step to do:
+	if (!searchBackwards) {
+		/*
+	    The cursor keeps jumping to the start of the next word.
+	    (for example) in the string "mn.abcd.edu is the spot" you land at
+	    m,a,e,i (the 'i' in 'is). if we stop at e, then we only capture
+		"mn.abcd." for the url (wrong). So we have to go to 'i', to
+	    capture "mn.abcd.edu " (with trailing space), and then clean it up.
+	  */
+		QStringList list = grownText.split(QRegExp("\\s"), QString::SkipEmptyParts);
+		if (!list.isEmpty()) {
+			result = list[0];
+		}
+	}
+
+	return result;
+}
+
+QString TextHyperlinkEventFilter::tryToFormulateUrl(QTextCursor *cursor)
+{
+	// If instead of (or in addition to) QTextCursor::WordUnderCursor we could
+	// also have some Qt feature like 'unbroken-string-of-nonwhitespace-under-cursor',
+	// then the following logic would not be necessary to do.
+	// http://stackoverflow.com/questions/19262064/pyqt-qtextcursor-wordundercursor-not-working-as-expected
+
+	cursor->select(QTextCursor::WordUnderCursor);
+	QString maybeUrlStr = cursor->selectedText();
+
+	const bool soFarSoGood = !maybeUrlStr.simplified().replace(" ", "").isEmpty();
+
+	if (soFarSoGood && !stringMeetsOurUrlRequirements(maybeUrlStr)) {
+		// If we don't yet have a full url, try to expand til we get one.  Note:
+		// after requesting WordUnderCursor, empirically (all platforms, in
+		// Qt5), the 'anchor' is just past the end of the word.
+
+		QTextCursor cursor2(*cursor);
+		QString left = fromCursorTilWhitespace(cursor, true /*searchBackwards*/);
+		QString right = fromCursorTilWhitespace(&cursor2, false);
+		maybeUrlStr = left + right;
+	}
+
+	return stringMeetsOurUrlRequirements(maybeUrlStr) ? maybeUrlStr : QString::null;
 }
