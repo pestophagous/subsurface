@@ -544,7 +544,8 @@ shown on the righthand side of the download dialogue.
 
 ===== On Windows:
 image::images/DC_import_Bluetooth_Windows.png["FIGURE: Download Bluetooth on Windows",align="center"]
-On _Windows_ platforms the _Local Bluetooth device details section_ on the left is not displayed.
+
+On _Windows_ platforms the _Local Bluetooth device details section_ on the right is not displayed.
 To successfully initiate a scan (by pressing the _Scan_ button)
 check that the Bluetooth device on the _Subsurface_ computer is turned on.
 
@@ -644,32 +645,44 @@ automatically supplied by
 _Subsurface_ (following the _Preferences_, metric or imperial units will
 be used).
 
-*Location*: Here the name of the dive site can be entered, e.g. "Tihany, Lake
-Balaton, Hungary". Dive locations are managed as a separate part of the dive log.
-After entering the information for a particular dive site, and several dives are
-performed at the same location, the information is re-used without requiring
-full dive site information again. Existing dive location information
+*Location*:
+[icon="images/icons/warning2.png"]
+[WARNING]
+Dive locations are managed as a *separate* part of the dive log.
+The dive information in the *Notes* and *Equipment* tabs can therefore not be edited at the same
+time as the dive site information. Save all the other dive information (e.g.
+divemaster, buddy, protective gear, notes about the dive) by selecting _Apply changes_ on the
+*Notes* tab before editing the dive site information. Only then, supply a dive site name in the
+textbox labelled _Location_ on the *Notes* tab.
+
+Type the name of the dive site, e.g. "Tihany, Lake Balaton, Hungary".
+If several dives are
+performed at the same location, the dive site information for the first dive is re-used.
+Existing dive location information
 can be edited at any time by selecting (on the *Dive List* panel) a dive performed at that site
 and by opening the location information by clicking the globe button on the
 right of the location name (see image on the right, above). When entering a dive location name, auto location of
-dive site names makes it easy to select a dive site that already exists in the dive log
+dive site names makes it easy to select an existing dive site name
 (i.e. when typing the name of a dive site,
 a dropdown list appears showing all sites with similar names). If the dive
 site has been used before, click on the already-existing name.
-
-If the present
+The dive site names in the dropdown list contain either a globe symbol (indicating
+existing dive sites in the _Subsurface_ database)
+or a *+* symbol (indicating dive site names that appear consistent with the
+current dive site name but which have not been added to the dive site database).
+Therfore, if the present
 dive site has not been used before, a message appears as follows (image *A* below):
 
 image::images/Locations1_f22.jpg["FIGURE:Location description panel",align="center"]
 
-Click the + icon on the right hand side. A panel appears to enter the coordinates and
+Doubleclick on the new dive site name. A panel appears to enter the coordinates and
 other important information about the site (image *B*, above). The most important
 items are the coordinates of the site. There are three ways of specifying the coordinates:
 
 a. One can find the coordinates on the world map in the bottom right hand
    part
-   of the Subsurface window. The map displays an orange bar indicating "No location
-   data - Move the map and double-click to set the dive location". Upon a double-click
+   of the _Subsurface_ window. The map displays an orange bar indicating "No location
+   data - Move the map and double-click to set the dive location". Upon a doubleclick
    at the appropriate place, the orange bar disappears and the coordinates are
    stored.
 
@@ -690,12 +703,25 @@ Southern hemisphere latitudes are given with a *S*, e.g. S30°, or with a
 negative value, e.g. -30.22496. Similarly western longitudes are given with a
 *W*, e.g. W07°, or with a negative value, e.g. -7.34323. Some keyboards
 don't have the degree sign (°). It can be replaced by a *d* like this: N30d W20d.
+If both a dive site name and coordinates have been provided, Save the
+dive site information by selecting the button _Apply changes_ at the top of
+the panel.
 
 *Important*: GPS coordinates of a dive site are linked to the Location
-name - so adding coordinates to dives that do not have a location description
-will cause unexpected behaviour (Subsurface will think that all of these
+name - so *saving* a dive site with only coordinates and no dive site name
+causes unexpected behaviour (Subsurface will think that all of these
 dives have the same location and try to keep their GPS coordinates the
 same).
+
+*Dive site name lookup:* If coordinates have been typed into the appropriate
+text box, one can perform an automated name lookup based on the coordinates.
+This is achieved when _Subsurface_ uses the Internet to find the name of the dive site
+based on the coordinates that were typed. If a name has been found, it is
+automatically inserted into the text box titled _Location_. The list box
+(Titled _Dive sites on same coordinates_") at the bottom
+of the dive site panel contains the names of other dives sites used at the
+current location. For instance if the dive site is "Blue Hole" and there are several
+dive sites named "Blue Hole", all these sites are listed in this list box.
 
 Enter any other textual information about the dive site (Description and Notes),
 then select _Apply Changes_ to save the geolocation for this dive site. At a later stage
@@ -2481,7 +2507,8 @@ image::images/facebook1_f20.jpg["Figure: Facebook login",align="center"]
 
 Having established a login to _Facebook_, transfer of a dive profile to one's _Facebook_ timeline is easy.
 Ensure that the dive
-to transfer to the timeline is depicted in the _Subsurface_ *Dive Profile* panel. If one selects _Share on -> Facebook_ from the *Main Menu* a dialogue is shown, determining the amount of additional information transferred
+to transfer to the timeline is depicted in the _Subsurface_ *Dive Profile* panel. If one selects _Share on -> Facebook_
+from the *Main Menu* a dialogue is shown, determining the amount of additional information transferred
 with the dive profile (see image *B*, below). In order to transfer a dive profile to _Facebook_, the name of a
 _Facebook_ album needs to be provided. The checkboxes on the lefthand side allow one to determine how much
 additional information should be transferred with the dive profile. This information is shown in the text box
@@ -2499,7 +2526,8 @@ timeline.
 
 image::images/facebook2_f20.jpg["Figure: Facebook login",align="center"]
 
-If required, then close the _Facebook_ connection by either closing _Subsurface_ or by selecting _File ->  Preferences ->  Facebook_ from the Main Menu, and clicking the appropriate button on the Facebook Preferences panel.
+If required, then close the _Facebook_ connection by either closing _Subsurface_ or by selecting _File ->  Preferences ->  Facebook_ from
+the Main Menu, and clicking the appropriate button on the Facebook Preferences panel.
 
 [[S_Export_other]]
 === Export dive information  to other destinations or formats
@@ -2730,8 +2758,6 @@ image::images/print2_f22.jpg["FIGURE: Print one dive / page",align="center"]
 
 - _Two Dives_: Print two dives per page, also showing the dive profiles.
 - _Six Dives_: Print six dives per page, also showing the dive profiles.
-- _Custom_: This option allows customisation of the print contents and layout. This is
-     discussed at the end of this section.
 
 Users can _Preview_ the printed page by selecting the _Preview_ button on the
 dialogue (see image *A* at the start of this section). After preview, changes to
@@ -2749,7 +2775,7 @@ Below is a (rather small) example of the output for one particular page.
 
 image::images/Printpreview.jpg["FIGURE: Print preview page",align="center"]
 
-=== Write a custom printing template (advanced)
+=== Writing a custom print template (advanced)
 
 Writing a custom template is an effective way to produce highly customized printouts. Subsurface uses HTML templates
 to render printing. One can create a template, export a new template, import an existing template and delete an existing template by using the appropriate buttons under the _Template_ dropdown list in the print dialogue. See <<S_APPENDIX_E,APPENDIX E>> for information on how to write or modify a template.
@@ -2788,12 +2814,14 @@ Using the appropriate buttons on the configuration panel, the following actions 
 [[S_Preferences]]
 == Setting user _Preferences_ for _Subsurface_
 
-There are several settings within _Subsurface_ that the user can specify. These
-are found when selecting _File ->  Preferences_. The settings are performed in
-five groups: *Defaults*, *Units*, *Graph*, *Language* and *Network*. All five sections
+There are several user-defineable settings within _Subsurface_, found by selecting
+_File ->  Preferences_. The settings are performed in
+seven groups: *Defaults*, *Units*, *Graph*, *Language* and *Network*, *Facebook* and *Georeference*,
+all of which
 operate on the same principles: the user must specify the settings that are to be changed, then
 these changes are saved using the *Apply* button. After applying all the new settings users can then
-leave the settings panel by selecting *OK*.
+leave the settings panel by selecting *OK*. If *Discard* is selected, changes to the preferences
+are not saved.
 
 === Defaults
 
@@ -2815,7 +2843,7 @@ image::images/Pref1_f20.jpg["FIGURE: Preferences defaults page",align="center"]
        device that was initialised using the *Preferences* _Network_ tab (see below).
 
   ** *Display invalid*:  Dives can be marked as invalid (when a user wishes to hide
-     dives that he/she don't consider valid dives, e.g. pool dives, but still want to
+     dives that he/she doesn't consider valid dives, e.g. pool dives, but still want to
      keep them in the dive log). This controls whether those dives are displayed in
      the dive list.
 
@@ -2836,9 +2864,9 @@ image::images/Pref1_f20.jpg["FIGURE: Preferences defaults page",align="center"]
 === Units
 image::images/Pref2_f20.jpg["FIGURE: Preferences Units page",align="center"]
 
-Here user can choose between metric and imperial units of depth, pressure,
+Here users can choose between metric and imperial units of depth, pressure,
 volume, temperature and mass. By selecting the Metric or Imperial radio button
-at the top, users can specify that all units are in the chosen measurement system.
+at the top, one can specify that all units are in the chosen measurement system.
 Alternatively, if one selects the *Personalise* radio button, units can be selected
 independently, with some units in the metric system and others in imperial.
 
@@ -2858,21 +2886,21 @@ This panel allows two type of selections:
 * *Show*: Here users can specify the amount of information shown as part of
   the dive profile:
 ** Thresholds: _Subsurface_ can display the nitrogen, oxygen and the helium partial pressures during
-   the dive. enabled using the toolbar on the left hand side of the *Dive Profile*
+   the dive, enabled by using the toolbar on the left hand side of the *Dive Profile*
    panel. For each of these graphs users can specify a threshold value on the right-hand side of the
    Preferences panel. If any of the graphs go above the specified threshold level, the graph is
    highlighted in red, indicating that the particular partial presure threshold has been exceeded.
-** _Max pO~2~ whn displaying MOD_ is the value used to calculate the maximum operative depth (MOD)
+** _Max pO~2~ is used for calculating the MOD when displaying the maximum operative depth (MOD)
    for a dive. Specify an appropriate partial pressure. A value of 1.4 is commonly used.
 ** _Draw dive computer reported ceiling red_: This checkbox allows exactly what it says. By default
    the computer reported ceiling is shown in white.
    Not all dive computers report ceiling values. If the dive computer does report it, it may differ
-   from the ceilings calculated by _Subsurface_. This is because of the different algorithms and
-   gradient factors available for calculating ceilings, as well as the dynamic way that a
+   from the ceilings calculated by _Subsurface_ because of the different algorithms and
+   gradient factors, as well as the dynamic way that a
    dive computer can calculate ceilings during a dive.
-** _Show unused cylinders in Equipment Tab_: This checkbox allows display of information about unused cylinders when viewing the *Equipment Tab*. Conversely, if this box is not checked, and any cylinders entered using the *Equipment Tab* are not used (e.g. there was no gas switch to such a cylinder), then these cylinders are omitted from that list.
+** _Show unused cylinders in Equipment Tab_: This checkbox allows display of information about unused cylinders when viewing the *Equipment Tab*. Conversely, if this box is not checked, and if any cylinders entered using the *Equipment Tab* are not used (e.g. there was no gas switch to such a cylinder), then these cylinders are omitted from that list.
 **  _Show average depth_: If this box is checked, the *Dive Profile* panel contains a grey line that indicates
-    the mean depth of the dive up to any time instant during the dive. Normally this is a u-shaped line indicating the deepest average depth just before the
+    the mean depth of the dive up to any time instant during the dive. Normally this is a u-shaped line indicating the deepest mean depth just before the
    ascent.
 
 * *Misc*:
@@ -2925,8 +2953,8 @@ image::images/Pref4_f20.jpg["FIGURE: Preferences Language page",align="center"]
 
 A checkbox allows one to use the _System Default_ language which in most cases
 will be the correct setting; with this _Subsurface_ simply runs in the same
-language / country settings as the underlying OS. If this is for some reason
-undesirable users can uncheck this checkbox and pick a language / country
+language / country settings as the underlying operating system. If this is for some reason
+undesirable one can uncheck this checkbox and pick a language / country
 combination from the list of included localizations. The _Filter_ text box allows
 one to list similar languages. For instance there are several system variants of English
 or French. *This particular preference requires a restart of _Subsurface_ to take
@@ -2935,8 +2963,7 @@ effect*.
 === Network
 This panel facilitates communication between _Subsurface_ and data sources on the Internet.
 This is important, for instance, when _Subsurface_ needs to communicate with Internet
-services such as Cloud storage, the <<S_Companion,_Subsurface Companion app_>> or data export/import
-from _Divelogs.de_. These Internet requirements are determined by one's type of
+services such as Cloud storage or the <<S_Companion,_Subsurface Companion app_>>. These Internet requirements are determined by one's type of
 connection to the Internet and by the Internet Service Provider (ISP) used.
 One's ISP should provide the appropriate information.
 
@@ -2952,12 +2979,12 @@ password are required so that _Subsurface_ can automatically pass
 through the proxy server to access the Internet. This information is usually obtained
 from one's ISP.
 
-** _Subsurface cloud storage_: In order to store one's dive log in the cloud, a valid email address
+** _Subsurface cloud storage_: To store one's dive log in the cloud, a valid email address
    and password are required. This allows _Subsurface_ to email security information
    regarding cloud storage to a user, and to set up the cloud storage appropriately.
    Two additional options are given:
    - _Sync to cloud in the background_: This option allows saving of dive information to the cloud storage
-   while the user performs other tasks inside _Subsurface_.
+   while the user performs other tasks within _Subsurface_.
    - _Save password locally_: This allows local storage of the cloud storage password. Note that this
    information is saved in raw text form, not encoded in any way.
 
@@ -2976,15 +3003,21 @@ image::images/Pref6_f20.jpg["FIGURE: Facebook login panel",align="center"]
 
 If one provides a valid Facebook userID and password, a
 connection to Facebook is created. The connection to Facebook is closed when one
-closes down Subsurface. At this point the checkbox labelled "Keep connection to Subsurface",
+closes down Subsurface. Currently the checkbox labelled "Keep me logged in to Subsurface",
 on the login screen has no effect.
 See the section xref:S_facebook[Exporting dive profiles to Facebook]
 for more information.
 
 === Georeference
 
-_Subsurface_ provides a geo-lookup service (that is, an ability to look up the geographic
-coordinates of a place name).
+_Subsurface_ provides a geo-lookup service (that is, given the coordinates of a dive site (derived from
+a click on the *Dive Map panel* at the bottom right of the _Subsurface_ window, or from a GPS instrument or
+from the _Subsurface_ Companion app), a lookup on the Internet is performed to find
+the name of the closest known location. Obviously this function only works if _Subsurface_ has an
+Internet connection. The preference of the dive site name can be configured, e.g. _Country/State/City_
+or _City/State/Country_ (see image below).
+
+image::images/Pref7_f20.jpg["FIGURE: Facebook login panel",align="center"]
 
 [[S_DivePlanner]]
 == The _Subsurface_ dive planner
@@ -3069,22 +3102,19 @@ image::images/PlannerWindow1_f20.jpg["FIGURE: Dive planner startup window",align
 
 ==== Recreational dives
 
-The _Subsurface_ dive planner allows a sophisticated way of planning recreational dives, i.e. dives
-that remain within no-decompression limits.
-The dive planner automatically takes
+Recreational mode is what comes closest to planning a dive based on the non-decompression limit (NDL).
+It computes the maximal time a diver can stay at the current depth without incurring any mandatory decompression stops and without using more than the existing gas (minus a reserve). The planner automatically takes
 into account the nitrogen load incurred in previous dives. But conventional dive tables are also used in a
 way that can take into account previous dives. Why use a dive planner for recreational dives? Using
 recreational dive tables, the maximum depth of a dive is taken into acount. However, few dives are
-undertaken at a constant depth corresponding to the maximum depth (i.e. a "square" dive profile). This means that dive tables
-overestimate the nitrogen load incurred during previous dives. The _Subsurface_
+undertaken at a constant depth corresponding to the maximum depth (i.e. a "square" dive profile). This means that dive tables overestimate the nitrogen load incurred during previous dives. The _Subsurface_
 dive planner calculates nitrogen load according to the real dive profiles of all uploaded previous dives,
-in a similar way as dive computers calculate nitrogen load during a dive. This mean that the diver gets 'credit'
-in terms of nitrogen loading for not remaining at maximum depth during previous dives, enabling planning a
+in a similar way as dive computers calculate nitrogen load during a dive. This means that the diver gets 'credit'
+in terms of nitrogen loading for not remaining at maximum depth during previous dives, enabling planning of a
 longer subsequent dive. For the planner to work it is therefore crucial to upload all previous dives
 onto _Subsurface_ before performing dive planning.
 
-To plan a dive, the appropriate settings need to be
-defined.
+To plan a dive, the appropriate settings need to be defined.
 
 - Ensure that the date and time is set to that of the intended dive. This allows calculation of
 the nitrogen load incurred during previous dives.
@@ -3102,14 +3132,21 @@ the nitrogen load incurred during previous dives.
   with novice divers or difficult dives requiring SAC rates closer to 30l/min.
 
 - Define the amount of gas that the cylinder must have at the end of the bottom section of the
-  dive just before ascent. A value of 50 bar is often used.
+  dive just before ascent. A value of 50 bar is often used. The reason for this reserve gas is to provide for the possible
+  need need to bring one's buddy to the surface using gas sharing. How much gas is used in
+  sharing depends on the depth of the ascent. This can be a bit hard to estimate, so most agencies assume a
+  fixed amount of gas, or actually of pressure e.g. 40 or 50 bar or 25% or 33% (rule of thirds). But _Subsurface_ can do better
+  because it knows about the ascent and that is why we add the amount of gas during the ascent (i.e. the "deco gas“).
+  Subsurface still uses a fixed pressure „reserve“ but that is supposed to be for the additional gas used around the realisation
+  that there is a problem and one's pulse rate goes up when one starts to buddy breathe. This reserve amount is user configurable.
 
 - Define the depth of the dive by dragging the waypoints (white dots) on the dive profile or
   (even better) defining the appropriate depths using the table under _Dive planner points_ as
   desribed under the previous heading. If
   this is a multilevel dive, set the appropriate dive depths to represent the dive plan by adding
   waypoints to the dive profile or by adding appropriate dive planner points to the _Dive Planner Points_
-  table.
+  table. _Subsurface_ will automatically extend the bottom section of the dive to the maximum
+  duration within the no-decompression limits (NDL).
 
 - The ascent speed can be changed. The default ascent speeds are those considered safe for recreational
   divers.
@@ -3263,9 +3300,9 @@ accross the mouthpiece of the rebreather into account. If the
 pO~2~ drops below what is considered a save value, a warning appears in the _Dive plan
 details_. A typical pSCR configuration is with a single cylinder and one or more bail-out
 cylinders. Therefore the setup of the _Available gases_ and the _Dive planner points_ tables
-are very similar to that of a CCR dive plan, described above. However, no oxygen setpoints
+are very similar to that of a CCR dive plan, described below. However, no oxygen setpoints
 are specified for pSCR dives. Below is a dive plan for a pSCR dive. The dive is comparable
-to that of the CCR dive above, but note the longer ascent duration due to the lower oxygen
+to that of the CCR dive below, but note the longer ascent duration due to the lower oxygen
 in the loop due to the oxygen drop across the mouthpiece of the pSCR equipment.
 
 image::images/Planner_pSCR1_f20.jpg["FIGURE: Planning a pSCR dive: setup",align="center"]
@@ -3280,13 +3317,15 @@ list, circled in blue in the image below.
 diluent cylinder and for any bail-out cylinders. Do NOT enter the information for the oxygen
 cylinder since it is implied when the _CCR_ dropdown selection is made.
 
-*Entering setpoints*: Specify a default setpoint in the Preferences tab, by selecting _File ->  Preferences ->  Graph_ from the main menu. All user-entered segments in the _Dive planner points_ table
+*Entering setpoints*: Specify a default setpoint in the Preferences tab, by selecting _File ->  Preferences ->  Graph_ from
+the main menu. All user-entered segments in the _Dive planner points_ table
 use the default setpoint value. Then, different setpoints can be specified for dive segments
 in the _Dive planner points_ table. A zero setpoint
 means the diver bails out to open circuit mode for that segment. The decompression is always calculated
 using the setpoint of the last manually entered segment. So, to plan a bail out ascent for a
 CCR dive, add a one-minute dive segment to the end with a setpoint value of 0. The decompression
-algorithm does not switch deco-gases automatically while in CCR mode (i.e. when a positive setpoint is specified) but, of course, this is calculated for bail out ascents.
+algorithm does not switch deco-gases automatically while in CCR mode (i.e. when a positive setpoint is specified) but,
+of course, this is calculated for bail out ascents.
 
 The dive profile for a CCR dive may look something like the image below.
 
@@ -4115,8 +4154,8 @@ image::images/Print1_f22.jpg["FIGURE: Print dialogue",align="center"]
 The buttons under the _Template_ dropdown box allows one to _Edit_, _Delete_,
 _Import_ and to _Export_ templates (see image *A* above). New or modified templates are stored as HTML
 files in the same directory as the dive log being processed. In order to create or modify
-a template, select the _Custom_ template from the template dropdown list in the print dialogue
-(see image *B* above), then select _Edit_.
+a template, select one of the templates from the template dropdown list in the print dialogue
+(see image *B* above). Choose an existing template that resembles the final desired printout. Then select _Edit_.
 
 The Edit Panel comprises three tabs:
 
@@ -4140,7 +4179,8 @@ image::images/Template1_f22.jpg["FIGURE: template edit dialogue",align="center"]
 
 image::images/Template2_f22.jpg["FIGURE:Template tab",align="center"]
 
-One can adapt any of the existing templates and save it to the dive log directory. The standard templates (e.g. One dive, Six dives, Table) can be modified in this way.
+One can adapt any of the existing templates and save it to the dive log directory. The standard templates (e.g. One dive, Six dives, Table) can be modified in this way. After completing the edits, use the _Export_ button in the print
+dialogue to save the new template using a new template name.
 
 To write a custom template the following elements must exist so that the template will be correctly handled and rendered.
 
