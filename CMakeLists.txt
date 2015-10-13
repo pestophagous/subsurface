@@ -20,7 +20,7 @@ option(USE_LIBGIT23_API "allow building with libgit2 master" OFF)
 option(FORCE_LIBSSH "force linking with libssh to workaround libgit2 bug" ON)
 option(SUBSURFACE_MOBILE "build the QtQuick version for mobile device" OFF)
 option(FBSUPPORT "allow posting to Facebook" ON)
-option(BTSUPPORT "enable support for QtBluetooth (requires Qt5.4 or newer)" ON)
+option(BTSUPPORT "enable support for QtBluetooth (requires Qt5.4 or newer)" OFF) # off for pestophagous
 option(FTDISUPPORT "enable support for libftdi based serial" OFF)
 
 set(CMAKE_MODULE_PATH
@@ -51,6 +51,15 @@ message(STATUS "Creating build files for Subsurface ${SSRF_VERSION_STRING}")
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUXX)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 ")
 endif()
+
+# begin local warnings. pestophagous
+#  TODO TODO TODO: get more warnings
+# http://mces.blogspot.com/2008/12/year-end-cleaning-ie-on-warning-options.html
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall -Wextra -pedantic -Wconversion -Wfloat-equal -Wformat -Wformat=2 -Wformat-nonliteral -Wformat-security -Wformat-y2k -Winline -Wmissing-braces -Wmissing-field-initializers -Wmissing-format-attribute -Wmissing-noreturn -Wparentheses -Wpointer-arith -Wredundant-decls -Wreturn-type -Wshadow -Wsign-compare -Wstrict-aliasing -Wstrict-aliasing=2 -Wswitch -Wswitch-default -Wswitch-enum -Wtrigraphs -Wuninitialized -Wunknown-pragmas -Wunreachable-code -Wunused -Wunused-function -Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable -Wwrite-strings ")
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -Wall -Wextra -pedantic -Wconversion -Wfloat-equal -Wformat -Wformat=2 -Wformat-nonliteral -Wformat-security -Wformat-y2k -Winline -Wmissing-braces -Wmissing-field-initializers -Wmissing-format-attribute -Wmissing-noreturn -Wparentheses -Wpointer-arith -Wredundant-decls -Wreturn-type -Wshadow -Wsign-compare -Wstrict-aliasing -Wstrict-aliasing=2 -Wswitch -Wswitch-default -Wswitch-enum -Wtrigraphs -Wuninitialized -Wunknown-pragmas -Wunreachable-code -Wunused -Wunused-function -Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable -Wwrite-strings ")
+# end local warnings. pestophagous
 
 # pkgconfig for required libraries
 find_package(PkgConfig)
