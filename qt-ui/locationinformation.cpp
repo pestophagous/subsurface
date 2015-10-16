@@ -185,6 +185,7 @@ void LocationInformationWidget::showEvent(QShowEvent *ev)
 {
 	if (displayed_dive_site.uuid) {
 		updateLabels();
+		ui.geoCodeButton->setEnabled(dive_site_has_gps_location(&displayed_dive_site));
 		QSortFilterProxyModel *m = qobject_cast<QSortFilterProxyModel *>(ui.diveSiteListView->model());
 		emit startFilterDiveSite(displayed_dive_site.uuid);
 		if (m)
@@ -235,6 +236,9 @@ void LocationInformationWidget::on_diveSiteCoordinates_textChanged(const QString
 			displayed_dive_site.longitude.udeg = longitude * 1000000;
 			markChangedWidget(ui.diveSiteCoordinates);
 			emit coordinatesChanged();
+			ui.geoCodeButton->setEnabled(latitude != 0 && longitude != 0);
+		} else {
+			ui.geoCodeButton->setEnabled(false);
 		}
 	}
 	free((void *)coords);

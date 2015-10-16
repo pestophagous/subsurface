@@ -4,13 +4,13 @@
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.ui" line="14"/>
         <source>Remote Bluetooth device selection</source>
-        <translation type="unfinished"/>
+        <translation>בחירת מכשירי Bluetooth מרחוק</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.ui" line="32"/>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="35"/>
         <source>Discovered devices</source>
-        <translation type="unfinished"/>
+        <translation>מכשירים שהתגילו</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.ui" line="41"/>
@@ -22,79 +22,79 @@
         <location filename="../qt-ui/btdeviceselectiondialog.ui" line="54"/>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="39"/>
         <source>Quit</source>
-        <translation type="unfinished"/>
+        <translation>יציאה</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.ui" line="83"/>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="36"/>
         <source>Scan</source>
-        <translation type="unfinished"/>
+        <translation>סרוק</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.ui" line="96"/>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="37"/>
         <source>Clear</source>
-        <translation type="unfinished"/>
+        <translation>נקה</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.ui" line="119"/>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="29"/>
         <source>Local Bluetooth device details</source>
-        <translation type="unfinished"/>
+        <translation>נתוני מכשיר Bluetooth מקומי</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.ui" line="128"/>
         <source>Name: </source>
-        <translation type="unfinished"/>
+        <translation>שם:</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.ui" line="142"/>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="31"/>
         <source>Address:</source>
-        <translation type="unfinished"/>
+        <translation>כתובת:</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.ui" line="171"/>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="33"/>
         <source>Bluetooth powered on</source>
-        <translation type="unfinished"/>
+        <translation>Bluetooth דלוק</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.ui" line="193"/>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="34"/>
         <source>Turn on/off</source>
-        <translation type="unfinished"/>
+        <translation>כבה/הדליק</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.ui" line="203"/>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="30"/>
         <source>Select device:</source>
-        <translation type="unfinished"/>
+        <translation>בחור מכשיר:</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="32"/>
         <source>Name:</source>
-        <translation type="unfinished"/>
+        <translation>שם:</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="135"/>
         <source>Trying to turn on the local Bluetooth device...</source>
-        <translation type="unfinished"/>
+        <translation>מנסה להדליק מכשיר Bluetooth מקומי...</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="138"/>
         <source>Trying to turn off the local Bluetooth device...</source>
-        <translation type="unfinished"/>
+        <translation>מנסה לכבות מכשיר Bluetooth מקומי...</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="184"/>
         <source>Scanning for remote devices...</source>
-        <translation type="unfinished"/>
+        <translation>מחפש מכשירים מרוחקים...</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="193"/>
         <source>Scanning finished successfully.</source>
-        <translation type="unfinished"/>
+        <translation>סרקה סיים בהצלחה.</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="226"/>
@@ -120,12 +120,12 @@
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="237"/>
         <source>%1 (%2)   [State: %3]</source>
-        <translation type="unfinished"/>
+        <translation>%1 (%2) [מצב: %3]</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="254"/>
         <source>The device %1 can be used for connection. You can press the Save button.</source>
-        <translation type="unfinished"/>
+        <translation>ניתן להתחבר למכשיר %1. ניתן ללחוץ &quot;שמור&quot;.</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="263"/>
@@ -136,7 +136,7 @@
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="287"/>
         <source>The local device was changed.</source>
-        <translation type="unfinished"/>
+        <translation>המכשיר המקומי השתנה.</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="307"/>
@@ -151,28 +151,28 @@
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="57"/>
         <source>Could not initialize Winsock version 2.2</source>
-        <translation type="unfinished"/>
+        <translation>לא היה ניתן להתחל Winsock גרסה 2.2</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="168"/>
         <source>Remote devices list was cleared.</source>
-        <translation type="unfinished"/>
+        <translation>רשימת מחשירים מרוחקים נוקתה.</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="209"/>
         <source>The local Bluetooth device was %1.</source>
         <extracomment>%1 will be replaced with &quot;turned on&quot; or &quot;turned off&quot;</extracomment>
-        <translation type="unfinished"/>
+        <translation>מכשיר Bluetooth מקומי הייתה %1.</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="210"/>
         <source>turned on</source>
-        <translation type="unfinished"/>
+        <translation>נדלק</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="210"/>
         <source>turned off</source>
-        <translation type="unfinished"/>
+        <translation>נכבה</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="308"/>
@@ -207,7 +207,7 @@
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="391"/>
         <source>Local device error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>תקלה במכשיר מקומי: %1.</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="392"/>
@@ -217,37 +217,37 @@
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="394"/>
         <source>Unknown error</source>
-        <translation type="unfinished"/>
+        <translation>תקלה לא מוקרת</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="403"/>
         <source>The Bluetooth adaptor is powered off, power it on before doing discovery.</source>
-        <translation type="unfinished"/>
+        <translation>מתאם Bluetooth כבוי,להפעיל אותו לפני שמתחילים לסרוק.</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="406"/>
         <source>Writing to or reading from the device resulted in an error.</source>
-        <translation type="unfinished"/>
+        <translation>כתיבה או קריאה מהמכשיר הביע תקלה.</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="412"/>
         <source>An unknown error has occurred.</source>
-        <translation type="unfinished"/>
+        <translation>תקלה לא מוקרת קרתה.</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="417"/>
         <source>Device discovery error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>תקלת גילוי מכשיר: %1.</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="445"/>
         <source>Not available</source>
-        <translation type="unfinished"/>
+        <translation>לא זמין</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="452"/>
         <source>The local Bluetooth adapter cannot be accessed.</source>
-        <translation type="unfinished"/>
+        <translation>לא ניתן לגשת למתאם Bluetooth המקומי.</translation>
     </message>
     <message>
         <location filename="../qt-ui/btdeviceselectiondialog.cpp" line="502"/>
@@ -260,12 +260,12 @@
     <message>
         <location filename="../qt-ui/simplewidgets.cpp" line="613"/>
         <source>Person: </source>
-        <translation type="unfinished"/>
+        <translation>אדם:</translation>
     </message>
     <message>
         <location filename="../qt-ui/simplewidgets.cpp" line="614"/>
         <source>Searches for buddies and divemasters</source>
-        <translation type="unfinished"/>
+        <translation>חיפושים לבני זוג ודייבמסטרים</translation>
     </message>
 </context>
 <context>
@@ -273,7 +273,7 @@
     <message>
         <location filename="../qt-models/filtermodels.cpp" line="233"/>
         <source>No buddies</source>
-        <translation type="unfinished"/>
+        <translation>אין בני זוג</translation>
     </message>
 </context>
 <context>
@@ -281,7 +281,7 @@
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="37"/>
         <source>Dive #</source>
-        <translation type="unfinished"/>
+        <translation>צלילה מס&apos; </translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="37"/>
@@ -306,7 +306,7 @@
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="37"/>
         <source>GPS</source>
-        <translation type="unfinished"/>
+        <translation>GPS</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="37"/>
@@ -316,17 +316,17 @@
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="37"/>
         <source>Cyl. size</source>
-        <translation type="unfinished"/>
+        <translation>נפח מיכל</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="37"/>
         <source>Start pressure</source>
-        <translation type="unfinished"/>
+        <translation>לחץ התחלתי</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="38"/>
         <source>End pressure</source>
-        <translation type="unfinished"/>
+        <translation>לחץ סופי</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="38"/>
@@ -351,22 +351,22 @@
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="38"/>
         <source>Air temp.</source>
-        <translation type="unfinished"/>
+        <translation>טמפרטורת האוויר</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="38"/>
         <source>Water temp.</source>
-        <translation type="unfinished"/>
+        <translation>טמפרטורת המים</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="38"/>
         <source>Max. depth</source>
-        <translation type="unfinished"/>
+        <translation>עומק מירבי</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="38"/>
         <source>Avg. depth</source>
-        <translation type="unfinished"/>
+        <translation>עומק ממוצע</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="38"/>
@@ -376,47 +376,47 @@
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="39"/>
         <source>O₂</source>
-        <translation type="unfinished"/>
+        <translation>חמצן</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="39"/>
         <source>He</source>
-        <translation type="unfinished"/>
+        <translation>הליום</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="39"/>
         <source>Sample time</source>
-        <translation type="unfinished"/>
+        <translation>זמן דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="39"/>
         <source>Sample depth</source>
-        <translation type="unfinished"/>
+        <translation>עומק דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="39"/>
         <source>Sample temperature</source>
-        <translation type="unfinished"/>
+        <translation>טמפ&apos; דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="39"/>
         <source>Sample pO₂</source>
-        <translation type="unfinished"/>
+        <translation>pO₂ של דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="39"/>
         <source>Sample CNS</source>
-        <translation type="unfinished"/>
+        <translation>CNS של דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="39"/>
         <source>Sample NDL</source>
-        <translation type="unfinished"/>
+        <translation>NDL של דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="40"/>
         <source>Sample TTS</source>
-        <translation type="unfinished"/>
+        <translation>זמן לפני המים של הדגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="40"/>
@@ -426,7 +426,7 @@
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="40"/>
         <source>Sample pressure</source>
-        <translation type="unfinished"/>
+        <translation>זחץ של דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="41"/>
@@ -454,42 +454,42 @@
     <message>
         <location filename="../configuredivecomputer.cpp" line="220"/>
         <source>Could not save the backup file %1. Error Message: %2</source>
-        <translation type="unfinished"/>
+        <translation>לא ניתן לשמור קובץ גיבוי %1. התרעה: %2</translation>
     </message>
     <message>
         <location filename="../configuredivecomputer.cpp" line="236"/>
         <source>Could not open backup file: %1</source>
-        <translation type="unfinished"/>
+        <translation>לא ניתן לפתוח קובץ גיבוי: %1</translation>
     </message>
     <message>
         <location filename="../configuredivecomputer.cpp" line="584"/>
         <source>Dive computer details read successfully</source>
-        <translation type="unfinished"/>
+        <translation>פרטי מחשב צלילה נקראו בהצלחה</translation>
     </message>
     <message>
         <location filename="../configuredivecomputer.cpp" line="593"/>
         <source>Setting successfully written to device</source>
-        <translation type="unfinished"/>
+        <translation>הגדרה שמורה במכשיר בהצלחה</translation>
     </message>
     <message>
         <location filename="../configuredivecomputer.cpp" line="602"/>
         <source>Device firmware successfully updated</source>
-        <translation type="unfinished"/>
+        <translation>קושחה התעדקנה במכשיר בהצלחה</translation>
     </message>
     <message>
         <location filename="../configuredivecomputer.cpp" line="611"/>
         <source>Device settings successfully reset</source>
-        <translation type="unfinished"/>
+        <translation>הגדרות המכשיר אפסו בהצלחה</translation>
     </message>
     <message>
         <location filename="../configuredivecomputer.cpp" line="627"/>
         <source>Unable to create libdivecomputer context</source>
-        <translation type="unfinished"/>
+        <translation>לא ניתן לייצר אובייקט של libdivecomputer</translation>
     </message>
     <message>
         <location filename="../configuredivecomputer.cpp" line="658"/>
         <source>Could not a establish connection to the dive computer.</source>
-        <translation type="unfinished"/>
+        <translation>לא ניתן להתחבר למחשב צלילה.</translation>
     </message>
 </context>
 <context>
@@ -498,7 +498,7 @@
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="14"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1518"/>
         <source>Configure dive computer</source>
-        <translation type="unfinished"/>
+        <translation>הגדרות מחשב צלילה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="22"/>
@@ -517,31 +517,31 @@
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="80"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1521"/>
         <source>Retrieve available details</source>
-        <translation type="unfinished"/>
+        <translation>אחזר את הפרטים הקיימים</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="93"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1525"/>
         <source>Save changes to device</source>
-        <translation type="unfinished"/>
+        <translation>שמור שינוים למכשיר</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="119"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1529"/>
         <source>Backup</source>
-        <translation type="unfinished"/>
+        <translation>גיבוי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="129"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1530"/>
         <source>Restore backup</source>
-        <translation type="unfinished"/>
+        <translation>שחזר מגיבוי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="139"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1531"/>
         <source>Update firmware</source>
-        <translation type="unfinished"/>
+        <translation>עידקון קושחה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="177"/>
@@ -552,7 +552,7 @@
     <message>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1539"/>
         <source>OSTC 3</source>
-        <translation type="unfinished"/>
+        <translation>OSTC 3</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="253"/>
@@ -562,7 +562,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1764"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1781"/>
         <source>Basic settings</source>
-        <translation type="unfinished"/>
+        <translation>הגדרות בסיסיות</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="297"/>
@@ -572,7 +572,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1726"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1766"/>
         <source>Serial No.</source>
-        <translation type="unfinished"/>
+        <translation>מס&apos; סידורי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="320"/>
@@ -582,7 +582,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1727"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1767"/>
         <source>Firmware version</source>
-        <translation type="unfinished"/>
+        <translation>גירסת קושחה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="518"/>
@@ -592,7 +592,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1729"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1768"/>
         <source>Custom text</source>
-        <translation type="unfinished"/>
+        <translation>טקסט חופשי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="337"/>
@@ -604,43 +604,43 @@
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="260"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1552"/>
         <source>English</source>
-        <translation type="unfinished"/>
+        <translation>אנגלית</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="265"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1553"/>
         <source>German</source>
-        <translation type="unfinished"/>
+        <translation>גרמנית</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="270"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1554"/>
         <source>French</source>
-        <translation type="unfinished"/>
+        <translation>צרפתית</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="275"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1555"/>
         <source>Italian</source>
-        <translation type="unfinished"/>
+        <translation>איטלקית</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="555"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1557"/>
         <source>Dive mode</source>
-        <translation type="unfinished"/>
+        <translation>מוד צליצה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="566"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1560"/>
         <source>OC</source>
-        <translation type="unfinished"/>
+        <translation>מעגל פתוח</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="571"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1561"/>
         <source>CC</source>
-        <translation type="unfinished"/>
+        <translation>מעגל סגור</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="576"/>
@@ -648,13 +648,13 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1562"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1793"/>
         <source>Gauge</source>
-        <translation type="unfinished"/>
+        <translation>מד עומק</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="581"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1563"/>
         <source>Apnea</source>
-        <translation type="unfinished"/>
+        <translation>צלילה חופשית</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="385"/>
@@ -662,25 +662,25 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1565"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1780"/>
         <source>Date format</source>
-        <translation type="unfinished"/>
+        <translation>פורמט תאריך</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="348"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1568"/>
         <source>MMDDYY</source>
-        <translation type="unfinished"/>
+        <translation>MMDDYY</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="353"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1569"/>
         <source>DDMMYY</source>
-        <translation type="unfinished"/>
+        <translation>DDMMYY</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="358"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1570"/>
         <source>YYMMDD</source>
-        <translation type="unfinished"/>
+        <translation>YYMMDD</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="926"/>
@@ -688,7 +688,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1639"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1805"/>
         <source>Saturation</source>
-        <translation type="unfinished"/>
+        <translation>רויה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="425"/>
@@ -722,7 +722,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1806"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1807"/>
         <source>%</source>
-        <translation type="unfinished"/>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="749"/>
@@ -738,7 +738,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1636"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1800"/>
         <source>Last deco</source>
-        <translation type="unfinished"/>
+        <translation>דקו האחרון</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="788"/>
@@ -752,25 +752,25 @@
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="395"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1572"/>
         <source>Brightness</source>
-        <translation type="unfinished"/>
+        <translation>בהירות</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="367"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1575"/>
         <source>Eco</source>
-        <translation type="unfinished"/>
+        <translation>חיסכוני</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="372"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1576"/>
         <source>Medium</source>
-        <translation type="unfinished"/>
+        <translation>בינוני</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="377"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1577"/>
         <source>High</source>
-        <translation type="unfinished"/>
+        <translation>גבוע</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="589"/>
@@ -778,13 +778,13 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1599"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1779"/>
         <source>Sampling rate</source>
-        <translation type="unfinished"/>
+        <translation>קצב דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="600"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1602"/>
         <source>2s</source>
-        <translation type="unfinished"/>
+        <translation>2 שניות</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="605"/>
@@ -792,7 +792,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1603"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1739"/>
         <source>10s</source>
-        <translation type="unfinished"/>
+        <translation>10 שניות</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="405"/>
@@ -818,37 +818,37 @@
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="613"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1605"/>
         <source>Dive mode color</source>
-        <translation type="unfinished"/>
+        <translation>צבע מוד צלילה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="624"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1608"/>
         <source>Standard</source>
-        <translation type="unfinished"/>
+        <translation>סדנדרתי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="629"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1609"/>
         <source>Red</source>
-        <translation type="unfinished"/>
+        <translation>אדום</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="634"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1610"/>
         <source>Green</source>
-        <translation type="unfinished"/>
+        <translation>ירוק</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="639"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1611"/>
         <source>Blue</source>
-        <translation type="unfinished"/>
+        <translation>קחול</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="415"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1585"/>
         <source>Salinity (0-5%)</source>
-        <translation type="unfinished"/>
+        <translation>מליחות (0-5%)</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="647"/>
@@ -856,7 +856,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1613"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1770"/>
         <source>Sync dive computer time with PC</source>
-        <translation type="unfinished"/>
+        <translation>סנכרון זמן מחשב צלילת עם מחשב</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="508"/>
@@ -868,19 +868,19 @@
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="90"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1523"/>
         <source>Read settings from backup file or from device before writing to the device</source>
-        <translation type="unfinished"/>
+        <translation>קרא הגדרות מקובץ גיבוי או ממכשיר לפני הכתיבה למכשיר</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="116"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1527"/>
         <source>Read settings from backup file or from device before writing to a backup file</source>
-        <translation type="unfinished"/>
+        <translation>קרא הגדרות מקובץ גיבוי או ממכשיר לפני הכתיבה לקובץ גיבוי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="232"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1543"/>
         <source>OSTC, Mk.2/2N/2C</source>
-        <translation type="unfinished"/>
+        <translation>OSTC, Mk.2/2N/2C</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="442"/>
@@ -936,13 +936,13 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1614"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1771"/>
         <source>Show safety stop</source>
-        <translation type="unfinished"/>
+        <translation>הצג עצירת בטיחות</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="501"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1615"/>
         <source>Reset device to default settings</source>
-        <translation type="unfinished"/>
+        <translation>איפוס מכשיר להגדרות ברירת מחדל</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="682"/>
@@ -950,13 +950,13 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1617"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1782"/>
         <source>Alt GF can be selected underwater</source>
-        <translation type="unfinished"/>
+        <translation>ניתן לבחור גרדיאנט חילופי מתחת לפני למים</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="223"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1541"/>
         <source>Suunto Vyper family</source>
-        <translation type="unfinished"/>
+        <translation>משפחת Suunto Vyper</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="662"/>
@@ -964,7 +964,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1643"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1810"/>
         <source>Advanced settings</source>
-        <translation type="unfinished"/>
+        <translation>הגדרות מתקדמות</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="689"/>
@@ -972,13 +972,13 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1618"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1783"/>
         <source>Future TTS</source>
-        <translation type="unfinished"/>
+        <translation>זמן לפני המים עתידי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="696"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1619"/>
         <source>Pressure sensor offset</source>
-        <translation type="unfinished"/>
+        <translation>קיזוז חיישן לחץ</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="703"/>
@@ -1002,13 +1002,13 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1627"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1787"/>
         <source>Decotype</source>
-        <translation type="unfinished"/>
+        <translation>סוג דקו</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="827"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1629"/>
         <source> mbar</source>
-        <translation type="unfinished"/>
+        <translation>מילי בר</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="857"/>
@@ -1024,34 +1024,34 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1633"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1792"/>
         <source>ZH-L16</source>
-        <translation type="unfinished"/>
+        <translation>ZH-L16</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="47"/>
         <source>Connect via Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>חבר ב-Bluetooth</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="163"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1532"/>
         <source>Save libdivecomputer logfile</source>
-        <translation type="unfinished"/>
+        <translation>שמור קובץ log של libdivecomputer</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="668"/>
         <source>Left button sensitivity</source>
-        <translation type="unfinished"/>
+        <translation>רגישות לחצן שמאלית</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="675"/>
         <source>Always show ppO2</source>
-        <translation type="unfinished"/>
+        <translation>הצג ppO2 תמיד</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="849"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1634"/>
         <source>ZH-L16+GF</source>
-        <translation type="unfinished"/>
+        <translation>ZH-L16+GF</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="893"/>
@@ -1059,7 +1059,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1640"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1802"/>
         <source>Alt GFLow</source>
-        <translation type="unfinished"/>
+        <translation>גרדיאנט תחתון חילופי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="919"/>
@@ -1067,18 +1067,18 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1641"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1804"/>
         <source>Alt GFHigh</source>
-        <translation type="unfinished"/>
+        <translation>גרדיאנט עליון חילופי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="936"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1642"/>
         <source>Flip screen</source>
-        <translation type="unfinished"/>
+        <translation>הפוך מסך</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="943"/>
         <source>Right button sensitivity</source>
-        <translation type="unfinished"/>
+        <translation>רגישות לחצן ימינית</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="957"/>
@@ -1090,13 +1090,13 @@
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="971"/>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="2294"/>
         <source>Bottom gas consumption</source>
-        <translation type="unfinished"/>
+        <translation>צריכת גז תחתית</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="978"/>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="2301"/>
         <source>Deco gas consumption</source>
-        <translation type="unfinished"/>
+        <translation>צריכת גז בדקו</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1050"/>
@@ -1104,7 +1104,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1721"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1876"/>
         <source>Gas settings</source>
-        <translation type="unfinished"/>
+        <translation>הגדרות גזים</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1098"/>
@@ -1116,7 +1116,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1814"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1837"/>
         <source>%He</source>
-        <translation type="unfinished"/>
+        <translation>% הליום</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1103"/>
@@ -1142,7 +1142,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1818"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1841"/>
         <source>Change depth</source>
-        <translation type="unfinished"/>
+        <translation>שינוי עומק</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1113"/>
@@ -1150,7 +1150,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1656"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1823"/>
         <source>Gas 1</source>
-        <translation type="unfinished"/>
+        <translation>גז 1</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1118"/>
@@ -1158,7 +1158,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1658"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1825"/>
         <source>Gas 2</source>
-        <translation type="unfinished"/>
+        <translation>גז 2</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1123"/>
@@ -1166,7 +1166,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1660"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1827"/>
         <source>Gas 3</source>
-        <translation type="unfinished"/>
+        <translation>גז 3</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1128"/>
@@ -1174,7 +1174,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1662"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1829"/>
         <source>Gas 4</source>
-        <translation type="unfinished"/>
+        <translation>גז 4</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1133"/>
@@ -1182,7 +1182,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1664"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1831"/>
         <source>Gas 5</source>
-        <translation type="unfinished"/>
+        <translation>גז 5</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1198"/>
@@ -1326,24 +1326,24 @@
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1874"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1769"/>
         <source>kg/ℓ</source>
-        <translation type="unfinished"/>
+        <translation>קילוגרם לליטר</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="2088"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1795"/>
         <source>Apnoea</source>
-        <translation type="unfinished"/>
+        <translation>צלילה חופשי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1441"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1722"/>
         <source>Safety level</source>
-        <translation type="unfinished"/>
+        <translation>רמת בתיחות</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="54"/>
         <source>Connect</source>
-        <translation type="unfinished"/>
+        <translation>לחבר</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="64"/>
@@ -1353,17 +1353,17 @@
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="214"/>
         <source>OSTC 3,Sport,Cr,2</source>
-        <translation type="unfinished"/>
+        <translation>OSTC 3,Sport,Cr,2</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="950"/>
         <source>MOD warning</source>
-        <translation type="unfinished"/>
+        <translation>אזהרת עומק מקסימלי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="964"/>
         <source>Dynamic ascent rate</source>
-        <translation type="unfinished"/>
+        <translation>קצב עלייה דינמי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1017"/>
@@ -1371,7 +1371,7 @@
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="2262"/>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="2278"/>
         <source> ℓ/min</source>
-        <translation type="unfinished"/>
+        <translation>ליטר לדקה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1093"/>
@@ -1383,7 +1383,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1812"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1835"/>
         <source>%O₂</source>
-        <translation type="unfinished"/>
+        <translation>אחוז חמצן</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1263"/>
@@ -1395,7 +1395,7 @@
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1301"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1709"/>
         <source>O₂ in calibration gas</source>
-        <translation type="unfinished"/>
+        <translation>חמצן בגז כיול</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1393"/>
@@ -1403,7 +1403,7 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1719"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1874"/>
         <source>pO₂ max</source>
-        <translation type="unfinished"/>
+        <translation>pO₂ מרבי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1400"/>
@@ -1411,13 +1411,13 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1720"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1875"/>
         <source>pO₂ min</source>
-        <translation type="unfinished"/>
+        <translation>pO₂ מינימלי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1467"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1723"/>
         <source>Altitude range</source>
-        <translation type="unfinished"/>
+        <translation>טווח גובה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1474"/>
@@ -1431,51 +1431,51 @@
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1725"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1778"/>
         <source>Number of dives</source>
-        <translation type="unfinished"/>
+        <translation>מספר צלילות</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1554"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1728"/>
         <source>Max depth</source>
-        <translation type="unfinished"/>
+        <translation>עומק מירבי</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1601"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1732"/>
         <source>P0 (none)</source>
         <extracomment>Suunto safety level</extracomment>
-        <translation type="unfinished"/>
+        <translation>P0 (בלי)</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1619"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1736"/>
         <source>Sample rate</source>
-        <translation type="unfinished"/>
+        <translation>קצב דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1632"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1740"/>
         <source>20s</source>
-        <translation type="unfinished"/>
+        <translation>20 שניות</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1637"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1741"/>
         <source>30s</source>
-        <translation type="unfinished"/>
+        <translation>30 שניות</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1642"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1742"/>
         <source>60s</source>
-        <translation type="unfinished"/>
+        <translation>60 שניות</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="541"/>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1657"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1745"/>
         <source>Computer model</source>
-        <translation type="unfinished"/>
+        <translation>דגם מחשב</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1674"/>
@@ -1489,19 +1489,19 @@
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1688"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1749"/>
         <source>24h</source>
-        <translation type="unfinished"/>
+        <translation>24 שעות</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1693"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1750"/>
         <source>12h</source>
-        <translation type="unfinished"/>
+        <translation>12 שעות</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1701"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1752"/>
         <source>Time format</source>
-        <translation type="unfinished"/>
+        <translation>פורמט זמן</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1716"/>
@@ -1519,25 +1519,25 @@
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1732"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1759"/>
         <source>s</source>
-        <translation type="unfinished"/>
+        <translation>שניות</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1739"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1760"/>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation>אור</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1756"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1761"/>
         <source>Depth alarm</source>
-        <translation type="unfinished"/>
+        <translation>התראת עומק</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1776"/>
         <location filename="../build/ui_configuredivecomputerdialog.h" line="1763"/>
         <source>Time alarm</source>
-        <translation type="unfinished"/>
+        <translation>התראת זמן</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.ui" line="1801"/>
@@ -1591,74 +1591,76 @@
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1081"/>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1102"/>
         <source>Backup files (*.xml)</source>
-        <translation type="unfinished"/>
+        <translation>קבצי גיבוי (*.xml)</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1086"/>
         <source>An error occurred while saving the backup file.
 %1</source>
-        <translation type="unfinished"/>
+        <translation>תקלה הרחשה בזמן שמירת קובץ גיבוי.
+%1</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1089"/>
         <source>Backup succeeded</source>
-        <translation type="unfinished"/>
+        <translation>גיבוי עבר בהצלחה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1090"/>
         <source>Your settings have been saved to: %1</source>
-        <translation type="unfinished"/>
+        <translation>ההגדרות נשמרו ל: %1</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1080"/>
         <source>Backup dive computer settings</source>
-        <translation type="unfinished"/>
+        <translation>לגבות הגדרות של מחשב צלילה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1085"/>
         <source>XML backup error</source>
-        <translation type="unfinished"/>
+        <translation>תקלה בגיבוי XML</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1101"/>
         <source>Restore dive computer settings</source>
-        <translation type="unfinished"/>
+        <translation>שחזר הגדרות של מחשב צלילה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1107"/>
         <source>XML restore error</source>
-        <translation type="unfinished"/>
+        <translation>תקלה בשחזור XML</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1108"/>
         <source>An error occurred while restoring the backup file.
 %1</source>
-        <translation type="unfinished"/>
+        <translation>תקלה הרחשה בזמן שחזור קובץ גיבוי.
+%1</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1112"/>
         <source>Restore succeeded</source>
-        <translation type="unfinished"/>
+        <translation>שחזור עבר בהצלחה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1113"/>
         <source>Your settings have been restored successfully.</source>
-        <translation type="unfinished"/>
+        <translation>ההגדרות שחזרו בהצלחה.</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1123"/>
         <source>Select firmware file</source>
-        <translation type="unfinished"/>
+        <translation>בחר קובץ קושחה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1124"/>
         <source>All files (*.*)</source>
-        <translation type="unfinished"/>
+        <translation>כל קבצים (*.*)</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1180"/>
         <source>Choose file for divecomputer download logfile</source>
-        <translation type="unfinished"/>
+        <translation>בחור קובץ לקובץ log להורדה של libdivecomputer</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="1181"/>
@@ -1681,32 +1683,32 @@
     <message>
         <location filename="../qt-models/cylindermodel.cpp" line="14"/>
         <source>He%</source>
-        <translation type="unfinished"/>
+        <translation>% הליום</translation>
     </message>
     <message>
         <location filename="../qt-models/cylindermodel.cpp" line="14"/>
         <source>Work press.</source>
-        <translation type="unfinished"/>
+        <translation>לחץ מקסימלי</translation>
     </message>
     <message>
         <location filename="../qt-models/cylindermodel.cpp" line="14"/>
         <source>Start press.</source>
-        <translation type="unfinished"/>
+        <translation>לחץ התחלתי</translation>
     </message>
     <message>
         <location filename="../qt-models/cylindermodel.cpp" line="14"/>
         <source>End press.</source>
-        <translation type="unfinished"/>
+        <translation>לחץ סופי</translation>
     </message>
     <message>
         <location filename="../qt-models/cylindermodel.cpp" line="14"/>
         <source>O₂%</source>
-        <translation type="unfinished"/>
+        <translation>אחוז חמצן</translation>
     </message>
     <message>
         <location filename="../qt-models/cylindermodel.cpp" line="15"/>
         <source>Switch at</source>
-        <translation type="unfinished"/>
+        <translation>לעבור ב-</translation>
     </message>
     <message>
         <location filename="../qt-models/cylindermodel.cpp" line="15"/>
@@ -1716,17 +1718,17 @@
     <message>
         <location filename="../qt-models/cylindermodel.cpp" line="124"/>
         <source>Clicking here will remove this cylinder.</source>
-        <translation type="unfinished"/>
+        <translation>לחיצה פה יהסיר את המיכל הזה</translation>
     </message>
     <message>
         <location filename="../qt-models/cylindermodel.cpp" line="342"/>
         <source>Cylinder cannot be removed</source>
-        <translation type="unfinished"/>
+        <translation>אין יכולת להסיר את המיכל</translation>
     </message>
     <message>
         <location filename="../qt-models/cylindermodel.cpp" line="343"/>
         <source>This gas is in use. Only cylinders that are not used in the dive can be removed.</source>
-        <translation type="unfinished"/>
+        <translation>הגז בשימוש. רק ניתן להסיר מיכלים שלא בשימוש בצלילה.</translation>
     </message>
 </context>
 <context>
@@ -1735,13 +1737,13 @@
         <location filename="../qt-ui/divecomponentselection.ui" line="23"/>
         <location filename="../build/ui_divecomponentselection.h" line="139"/>
         <source>Component selection</source>
-        <translation type="unfinished"/>
+        <translation>בחירת רכיבים</translation>
     </message>
     <message>
         <location filename="../qt-ui/divecomponentselection.ui" line="52"/>
         <location filename="../build/ui_divecomponentselection.h" line="140"/>
         <source>Which components would you like to copy</source>
-        <translation type="unfinished"/>
+        <translation>אילו רכיבים היית ברצונך להעתיק</translation>
     </message>
     <message>
         <location filename="../qt-ui/divecomponentselection.ui" line="80"/>
@@ -1777,7 +1779,7 @@
         <location filename="../qt-ui/divecomponentselection.ui" line="73"/>
         <location filename="../build/ui_divecomponentselection.h" line="141"/>
         <source>Dive site</source>
-        <translation type="unfinished"/>
+        <translation>אתר צלילה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divecomponentselection.ui" line="94"/>
@@ -1809,7 +1811,7 @@
     <message>
         <location filename="../qt-ui/divecomputermanagementdialog.cpp" line="49"/>
         <source>Remove the selected dive computer?</source>
-        <translation type="unfinished"/>
+        <translation>להסיר את המחשב הנבחר?</translation>
     </message>
     <message>
         <location filename="../qt-ui/divecomputermanagementdialog.cpp" line="50"/>
@@ -1821,7 +1823,7 @@
         <location filename="../qt-ui/divecomputermanagementdialog.ui" line="17"/>
         <location filename="../build/ui_divecomputermanagementdialog.h" line="65"/>
         <source>Edit dive computer nicknames</source>
-        <translation type="unfinished"/>
+        <translation>ערוח שם מחשב</translation>
     </message>
 </context>
 <context>
@@ -1844,7 +1846,7 @@
     <message>
         <location filename="../qt-models/divecomputermodel.cpp" line="41"/>
         <source>Clicking here will remove this dive computer.</source>
-        <translation type="unfinished"/>
+        <translation>לחיצה פה יהסיר את המחשב הזה</translation>
     </message>
 </context>
 <context>
@@ -1852,7 +1854,7 @@
     <message>
         <location filename="../qt-ui/profile/diveeventitem.cpp" line="116"/>
         <source>Manual switch to OC</source>
-        <translation type="unfinished"/>
+        <translation>מעבר ידני למערכת פתוחה</translation>
     </message>
     <message>
         <location filename="../qt-ui/profile/diveeventitem.cpp" line="118"/>
@@ -1872,7 +1874,7 @@
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.cpp" line="644"/>
         <source>Date/time</source>
-        <translation type="unfinished"/>
+        <translation>תעריך/שעה</translation>
     </message>
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.cpp" line="646"/>
@@ -1887,7 +1889,7 @@
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.cpp" line="670"/>
         <source>h:</source>
-        <translation type="unfinished"/>
+        <translation>שעה:</translation>
     </message>
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.cpp" line="670"/>
@@ -1915,7 +1917,7 @@
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="201"/>
         <source>Depth(%1)</source>
-        <translation type="unfinished"/>
+        <translation>עומק (%1)</translation>
     </message>
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="201"/>
@@ -1935,12 +1937,12 @@
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="207"/>
         <source>Temp(%1%2)</source>
-        <translation type="unfinished"/>
+        <translation>טמפרטורה(%1%2)</translation>
     </message>
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="210"/>
         <source>Weight(%1)</source>
-        <translation type="unfinished"/>
+        <translation>משקל(%1)</translation>
     </message>
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="210"/>
@@ -1960,17 +1962,17 @@
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="216"/>
         <source>Cyl</source>
-        <translation type="unfinished"/>
+        <translation>מיכל</translation>
     </message>
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="219"/>
         <source>Gas</source>
-        <translation type="unfinished"/>
+        <translation>גז</translation>
     </message>
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="224"/>
         <source>SAC(%1)</source>
-        <translation type="unfinished"/>
+        <translation>צריכת גז (%1)</translation>
     </message>
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="224"/>
@@ -1985,7 +1987,7 @@
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="230"/>
         <source>Max CNS</source>
-        <translation type="unfinished"/>
+        <translation>רעילות שייורית מקסימלית</translation>
     </message>
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="233"/>
@@ -1998,67 +2000,67 @@
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="845"/>
         <source>Expand all</source>
-        <translation type="unfinished"/>
+        <translation>הצג הכל</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="847"/>
         <source>Collapse all</source>
-        <translation type="unfinished"/>
+        <translation>הסתר הכל</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="851"/>
         <source>Collapse others</source>
-        <translation type="unfinished"/>
+        <translation>הסתר אחרים</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="855"/>
         <source>Remove dive(s) from trip</source>
-        <translation type="unfinished"/>
+        <translation>הסיר צלילה/צלילות מטיול</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="856"/>
         <source>Create new trip above</source>
-        <translation type="unfinished"/>
+        <translation>צור טיול חדש למלעה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="870"/>
         <source>Add dive(s) to trip immediately above</source>
-        <translation type="unfinished"/>
+        <translation>להוסיף צלילה/צלילות לטיול למעלה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="872"/>
         <source>Add dive(s) to trip immediately below</source>
-        <translation type="unfinished"/>
+        <translation>להוסיף צלילה/צלילות לטיול למטה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="876"/>
         <source>Merge trip with trip above</source>
-        <translation type="unfinished"/>
+        <translation>לאגד את הטיל עם הטיול למלעה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="877"/>
         <source>Merge trip with trip below</source>
-        <translation type="unfinished"/>
+        <translation>לאגד את הטיל עם הטיול למטה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="881"/>
         <source>Delete dive(s)</source>
-        <translation type="unfinished"/>
+        <translation>מחיקת צלילה/צלילות</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="883"/>
         <source>Mark dive(s) invalid</source>
-        <translation type="unfinished"/>
+        <translation>לא להתחשב בצלילות</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="887"/>
         <source>Merge selected dives</source>
-        <translation type="unfinished"/>
+        <translation>לאגד צלילות הנבחרות</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="889"/>
         <source>Renumber dive(s)</source>
-        <translation type="unfinished"/>
+        <translation>מספר צלילה/צלילות מחדש</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="890"/>
@@ -2073,22 +2075,22 @@
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="892"/>
         <source>Load image(s) from file(s)</source>
-        <translation type="unfinished"/>
+        <translation>טען תמונה/תמונות מ-קובץ/קבצים</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="893"/>
         <source>Load image(s) from web</source>
-        <translation type="unfinished"/>
+        <translation>טען תמונה/תמונות מהרשת</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="916"/>
         <source>Open image files</source>
-        <translation type="unfinished"/>
+        <translation>פתך קובצי תמונה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelistview.cpp" line="916"/>
         <source>Image files (*.jpg *.jpeg *.pnm *.tif *.tiff)</source>
-        <translation type="unfinished"/>
+        <translation>קבצי תמונה (*.jpg *.jpeg *.pnm *.tif *.tiff)</translation>
     </message>
 </context>
 <context>
@@ -2096,12 +2098,12 @@
     <message>
         <location filename="../qt-ui/locationinformation.cpp" line="323"/>
         <source>Create a new dive site, copying relevant information from the current dive.</source>
-        <translation type="unfinished"/>
+        <translation>יצירת אתר צלילה חדש, העתקת מידע רלוונטי מהצלילה הנוכחית.</translation>
     </message>
     <message>
         <location filename="../qt-ui/locationinformation.cpp" line="324"/>
         <source>Create a new dive site with this name</source>
-        <translation type="unfinished"/>
+        <translation>יצירת אתר צלילה חדש בשם זה</translation>
     </message>
 </context>
 <context>
@@ -2116,13 +2118,13 @@
         <location filename="../qt-ui/divelogexportdialog.ui" line="134"/>
         <location filename="../build/ui_divelogexportdialog.h" line="353"/>
         <source>UDDF</source>
-        <translation type="unfinished"/>
+        <translation>UDDF</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="187"/>
         <location filename="../build/ui_divelogexportdialog.h" line="358"/>
         <source>Worldmap</source>
-        <translation type="unfinished"/>
+        <translation>מפת העולם</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="197"/>
@@ -2134,7 +2136,7 @@
         <location filename="../qt-ui/divelogexportdialog.ui" line="243"/>
         <location filename="../build/ui_divelogexportdialog.h" line="360"/>
         <source>Selection</source>
-        <translation type="unfinished"/>
+        <translation>בחירה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="252"/>
@@ -2142,31 +2144,31 @@
         <location filename="../build/ui_divelogexportdialog.h" line="361"/>
         <location filename="../build/ui_divelogexportdialog.h" line="372"/>
         <source>Selected dives</source>
-        <translation type="unfinished"/>
+        <translation>צלילות נבחרות</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="262"/>
         <location filename="../build/ui_divelogexportdialog.h" line="362"/>
         <source>All dives</source>
-        <translation type="unfinished"/>
+        <translation>כל הצלילות</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="306"/>
         <location filename="../build/ui_divelogexportdialog.h" line="396"/>
         <source>HTML</source>
-        <translation type="unfinished"/>
+        <translation>HTML</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="14"/>
         <location filename="../build/ui_divelogexportdialog.h" line="349"/>
         <source>Export dive log files</source>
-        <translation type="unfinished"/>
+        <translation>יצוא קבצי יומני צלילת </translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="44"/>
         <location filename="../build/ui_divelogexportdialog.h" line="369"/>
         <source>General export</source>
-        <translation type="unfinished"/>
+        <translation>יצוא כללי</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="115"/>
@@ -2190,19 +2192,19 @@
         <location filename="../qt-ui/divelogexportdialog.ui" line="167"/>
         <location filename="../build/ui_divelogexportdialog.h" line="356"/>
         <source>CSV dive profile</source>
-        <translation type="unfinished"/>
+        <translation>פרופיל צלילה בפורמט CSV</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="177"/>
         <location filename="../build/ui_divelogexportdialog.h" line="357"/>
         <source>CSV dive details</source>
-        <translation type="unfinished"/>
+        <translation>פרטי צלילה בפורמט CSV</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="275"/>
         <location filename="../build/ui_divelogexportdialog.h" line="363"/>
         <source>CSV units</source>
-        <translation type="unfinished"/>
+        <translation>יחידות לפורמט CSV</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="288"/>
@@ -2220,7 +2222,7 @@
         <location filename="../qt-ui/divelogexportdialog.ui" line="324"/>
         <location filename="../build/ui_divelogexportdialog.h" line="370"/>
         <source>General settings</source>
-        <translation type="unfinished"/>
+        <translation>הגדרות כלליות</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="330"/>
@@ -2232,7 +2234,7 @@
         <location filename="../qt-ui/divelogexportdialog.ui" line="359"/>
         <location filename="../build/ui_divelogexportdialog.h" line="373"/>
         <source>Export yearly statistics</source>
-        <translation type="unfinished"/>
+        <translation>יצוא סטטיסטיקות שנתית</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="375"/>
@@ -2244,13 +2246,13 @@
         <location filename="../qt-ui/divelogexportdialog.ui" line="385"/>
         <location filename="../build/ui_divelogexportdialog.h" line="375"/>
         <source>Export list only</source>
-        <translation type="unfinished"/>
+        <translation>יצוא רשימה בלבד</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="392"/>
         <location filename="../build/ui_divelogexportdialog.h" line="376"/>
         <source>Export photos</source>
-        <translation type="unfinished"/>
+        <translation>יצוא תמונות</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="408"/>
@@ -2274,7 +2276,7 @@
         <location filename="../qt-ui/divelogexportdialog.ui" line="444"/>
         <location filename="../build/ui_divelogexportdialog.h" line="382"/>
         <source>8</source>
-        <translation type="unfinished"/>
+        <translation>8</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="449"/>
@@ -2286,31 +2288,31 @@
         <location filename="../qt-ui/divelogexportdialog.ui" line="454"/>
         <location filename="../build/ui_divelogexportdialog.h" line="384"/>
         <source>12</source>
-        <translation type="unfinished"/>
+        <translation>12</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="459"/>
         <location filename="../build/ui_divelogexportdialog.h" line="385"/>
         <source>14</source>
-        <translation type="unfinished"/>
+        <translation>14</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="464"/>
         <location filename="../build/ui_divelogexportdialog.h" line="386"/>
         <source>16</source>
-        <translation type="unfinished"/>
+        <translation>16</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="469"/>
         <location filename="../build/ui_divelogexportdialog.h" line="387"/>
         <source>18</source>
-        <translation type="unfinished"/>
+        <translation>18</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="474"/>
         <location filename="../build/ui_divelogexportdialog.h" line="388"/>
         <source>20</source>
-        <translation type="unfinished"/>
+        <translation>20</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="482"/>
@@ -2323,13 +2325,13 @@
         <location filename="../build/ui_divelogexportdialog.h" line="393"/>
         <location filename="../qt-ui/divelogexportdialog.cpp" line="95"/>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation>אור</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.ui" line="498"/>
         <location filename="../build/ui_divelogexportdialog.h" line="394"/>
         <source>Sand</source>
-        <translation type="unfinished"/>
+        <translation>חול</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.cpp" line="149"/>
@@ -2340,12 +2342,12 @@
         <location filename="../qt-ui/divelogexportdialog.cpp" line="153"/>
         <location filename="../qt-ui/divelogexportdialog.cpp" line="157"/>
         <source>CSV files (*.csv *.CSV)</source>
-        <translation type="unfinished"/>
+        <translation>קבצי   (*.csv *.CSV)CSV</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.cpp" line="74"/>
         <source>Generic format that is used for data exchange between a variety of diving related programs.</source>
-        <translation type="unfinished"/>
+        <translation>פורמט גנרי המשמש לחילופי נתונים בין מגוון רחב של תוכניות הקשורות לצלילה .</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.cpp" line="76"/>
@@ -2412,12 +2414,12 @@
     <message>
         <location filename="../qt-ui/divelogexportdialog.cpp" line="169"/>
         <source>XML files (*.xml *.ssrf)</source>
-        <translation type="unfinished"/>
+        <translation>קבצי XML  נתמכים (*.ssrf *.xml)</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.cpp" line="177"/>
         <source>Save image depths</source>
-        <translation type="unfinished"/>
+        <translation>שמור עומק של תמונות</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogexportdialog.cpp" line="183"/>
@@ -2432,7 +2434,7 @@
     <message>
         <location filename="../qt-ui/divelogexportdialog.cpp" line="234"/>
         <source>Can&apos;t open file %s</source>
-        <translation type="unfinished"/>
+        <translation>לא ניתן לפתוח קובץ %s</translation>
     </message>
 </context>
 <context>
@@ -2441,7 +2443,7 @@
         <location filename="../qt-ui/divelogimportdialog.ui" line="14"/>
         <location filename="../build/ui_divelogimportdialog.h" line="149"/>
         <source>Import dive log file</source>
-        <translation type="unfinished"/>
+        <translation> יבוא קובץ יומן צלילה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="589"/>
@@ -2483,13 +2485,13 @@
         <location filename="../qt-ui/divelogimportdialog.ui" line="155"/>
         <location filename="../build/ui_divelogimportdialog.h" line="167"/>
         <source>Drag the tags above to each corresponding column below</source>
-        <translation type="unfinished"/>
+        <translation>גרור את התגים מעל כל עמודה מקבילה למטה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="587"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="776"/>
         <source>Dive #</source>
-        <translation type="unfinished"/>
+        <translation>צלילה מס&apos; </translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="588"/>
@@ -2507,19 +2509,19 @@
         <location filename="../qt-ui/divelogimportdialog.cpp" line="601"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="786"/>
         <source>GPS</source>
-        <translation type="unfinished"/>
+        <translation>GPS</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="591"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="788"/>
         <source>Max. depth</source>
-        <translation type="unfinished"/>
+        <translation>עומק מירבי</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="592"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="790"/>
         <source>Avg. depth</source>
-        <translation type="unfinished"/>
+        <translation>עומק ממוצע</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="604"/>
@@ -2537,13 +2539,13 @@
         <location filename="../qt-ui/divelogimportdialog.cpp" line="598"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="818"/>
         <source>O₂</source>
-        <translation type="unfinished"/>
+        <translation>חמצן</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="599"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="820"/>
         <source>He</source>
-        <translation type="unfinished"/>
+        <translation>הליום</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.ui" line="108"/>
@@ -2561,7 +2563,7 @@
         <location filename="../qt-ui/divelogimportdialog.ui" line="118"/>
         <location filename="../build/ui_divelogimportdialog.h" line="160"/>
         <source>Minutes:seconds</source>
-        <translation type="unfinished"/>
+        <translation>דקות:שניות</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="600"/>
@@ -2587,21 +2589,21 @@
         <location filename="../qt-ui/divelogimportdialog.cpp" line="713"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="772"/>
         <source>Sample time</source>
-        <translation type="unfinished"/>
+        <translation>זמן דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="561"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="664"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="715"/>
         <source>Sample depth</source>
-        <translation type="unfinished"/>
+        <translation>עומק דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="563"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="666"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="717"/>
         <source>Sample temperature</source>
-        <translation type="unfinished"/>
+        <translation>טמפ&apos; דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="567"/>
@@ -2642,35 +2644,35 @@
         <location filename="../qt-ui/divelogimportdialog.cpp" line="668"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="719"/>
         <source>Sample pO₂</source>
-        <translation type="unfinished"/>
+        <translation>pO₂ של דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="573"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="676"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="727"/>
         <source>Sample CNS</source>
-        <translation type="unfinished"/>
+        <translation>CNS של דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="575"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="678"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="729"/>
         <source>Sample NDL</source>
-        <translation type="unfinished"/>
+        <translation>NDL של דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="577"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="680"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="731"/>
         <source>Sample TTS</source>
-        <translation type="unfinished"/>
+        <translation>זמן לפני המים של הדגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="581"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="684"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="735"/>
         <source>Sample pressure</source>
-        <translation type="unfinished"/>
+        <translation>זחץ של דגימה</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="602"/>
@@ -2710,31 +2712,31 @@
         <location filename="../qt-ui/divelogimportdialog.cpp" line="595"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="812"/>
         <source>Cyl. size</source>
-        <translation type="unfinished"/>
+        <translation>נפח מיכל</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="596"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="814"/>
         <source>Start pressure</source>
-        <translation type="unfinished"/>
+        <translation>לחץ התחלתי</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="597"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="816"/>
         <source>End pressure</source>
-        <translation type="unfinished"/>
+        <translation>לחץ סופי</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="593"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="822"/>
         <source>Air temp.</source>
-        <translation type="unfinished"/>
+        <translation>טמפרטורת האוויר</translation>
     </message>
     <message>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="594"/>
         <location filename="../qt-ui/divelogimportdialog.cpp" line="824"/>
         <source>Water temp.</source>
-        <translation type="unfinished"/>
+        <translation>טמפרטורת המים</translation>
     </message>
 </context>
 <context>
@@ -2743,7 +2745,7 @@
         <location filename="../qt-ui/diveplanner.ui" line="152"/>
         <location filename="../build/ui_diveplanner.h" line="190"/>
         <source>Altitude</source>
-        <translation type="unfinished"/>
+        <translation>גובה</translation>
     </message>
     <message>
         <location filename="../qt-ui/diveplanner.ui" line="109"/>
@@ -2755,7 +2757,7 @@
         <location filename="../qt-ui/diveplanner.ui" line="159"/>
         <location filename="../build/ui_diveplanner.h" line="191"/>
         <source>ATM pressure</source>
-        <translation type="unfinished"/>
+        <translation>לחץ (אטמ)</translation>
     </message>
     <message>
         <location filename="../qt-ui/diveplanner.ui" line="166"/>
@@ -2767,7 +2769,7 @@
         <location filename="../qt-ui/diveplanner.ui" line="179"/>
         <location filename="../build/ui_diveplanner.h" line="193"/>
         <source>mbar</source>
-        <translation type="unfinished"/>
+        <translation>מילי בר</translation>
     </message>
     <message>
         <location filename="../qt-ui/diveplanner.ui" line="198"/>
@@ -2779,38 +2781,38 @@
         <location filename="../qt-ui/diveplanner.ui" line="220"/>
         <location filename="../build/ui_diveplanner.h" line="195"/>
         <source> kg/ℓ</source>
-        <translation type="unfinished"/>
+        <translation>קילוגרם לליטר</translation>
     </message>
 </context>
 <context>
     <name>DivePlannerPointsModel</name>
     <message>
-        <location filename="../qt-models/diveplannermodel.cpp" line="124"/>
+        <location filename="../qt-models/diveplannermodel.cpp" line="129"/>
         <source>unknown</source>
         <translation>לא ידוע</translation>
     </message>
     <message>
-        <location filename="../qt-models/diveplannermodel.cpp" line="301"/>
+        <location filename="../qt-models/diveplannermodel.cpp" line="306"/>
         <source>Final depth</source>
-        <translation type="unfinished"/>
+        <translation>עומק מירבי</translation>
     </message>
     <message>
-        <location filename="../qt-models/diveplannermodel.cpp" line="303"/>
+        <location filename="../qt-models/diveplannermodel.cpp" line="308"/>
         <source>Run time</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-models/diveplannermodel.cpp" line="305"/>
+        <location filename="../qt-models/diveplannermodel.cpp" line="310"/>
         <source>Duration</source>
         <translation>משך הצלילה</translation>
     </message>
     <message>
-        <location filename="../qt-models/diveplannermodel.cpp" line="307"/>
+        <location filename="../qt-models/diveplannermodel.cpp" line="312"/>
         <source>Used gas</source>
-        <translation type="unfinished"/>
+        <translation>אוויר שנוצל</translation>
     </message>
     <message>
-        <location filename="../qt-models/diveplannermodel.cpp" line="309"/>
+        <location filename="../qt-models/diveplannermodel.cpp" line="314"/>
         <source>CC setpoint</source>
         <translation type="unfinished"/>
     </message>
@@ -2825,7 +2827,7 @@
     <message>
         <location filename="../qt-ui/diveplanner.cpp" line="112"/>
         <source>Available gases</source>
-        <translation type="unfinished"/>
+        <translation>גזים קיימים</translation>
     </message>
     <message>
         <location filename="../qt-ui/diveplanner.cpp" line="137"/>
@@ -2835,7 +2837,7 @@
     <message>
         <location filename="../qt-ui/diveplanner.cpp" line="146"/>
         <source>Save new</source>
-        <translation type="unfinished"/>
+        <translation>שמור חדש</translation>
     </message>
 </context>
 <context>
@@ -2863,12 +2865,12 @@
     <message>
         <location filename="../qt-models/diveplotdatamodel.cpp" line="120"/>
         <source>Color</source>
-        <translation type="unfinished"/>
+        <translation>צבע</translation>
     </message>
     <message>
         <location filename="../qt-models/diveplotdatamodel.cpp" line="126"/>
         <source>Pressure S</source>
-        <translation type="unfinished"/>
+        <translation>לחץ S</translation>
     </message>
     <message>
         <location filename="../qt-models/diveplotdatamodel.cpp" line="134"/>
@@ -2893,22 +2895,22 @@
     <message>
         <location filename="../qt-models/diveplotdatamodel.cpp" line="142"/>
         <source>Sensor 1</source>
-        <translation type="unfinished"/>
+        <translation>חיישן 1</translation>
     </message>
     <message>
         <location filename="../qt-models/diveplotdatamodel.cpp" line="144"/>
         <source>Sensor 2</source>
-        <translation type="unfinished"/>
+        <translation>חיישן 2</translation>
     </message>
     <message>
         <location filename="../qt-models/diveplotdatamodel.cpp" line="146"/>
         <source>Sensor 3</source>
-        <translation type="unfinished"/>
+        <translation>חיישן 3</translation>
     </message>
     <message>
         <location filename="../qt-models/diveplotdatamodel.cpp" line="150"/>
         <source>Heart rate</source>
-        <translation type="unfinished"/>
+        <translation>קצב לב</translation>
     </message>
     <message>
         <location filename="../qt-models/diveplotdatamodel.cpp" line="154"/>
@@ -2918,17 +2920,17 @@
     <message>
         <location filename="../qt-models/diveplotdatamodel.cpp" line="148"/>
         <source>Ambient pressure</source>
-        <translation type="unfinished"/>
+        <translation>לחץ סביבתי</translation>
     </message>
     <message>
         <location filename="../qt-models/diveplotdatamodel.cpp" line="152"/>
         <source>Gradient factor</source>
-        <translation type="unfinished"/>
+        <translation>גרדיאנט</translation>
     </message>
     <message>
         <location filename="../qt-models/diveplotdatamodel.cpp" line="128"/>
         <source>Pressure I</source>
-        <translation type="unfinished"/>
+        <translation>לחץ I</translation>
     </message>
     <message>
         <location filename="../qt-models/diveplotdatamodel.cpp" line="122"/>
@@ -2943,7 +2945,7 @@
     <message>
         <location filename="../qt-models/diveplotdatamodel.cpp" line="130"/>
         <source>Ceiling</source>
-        <translation type="unfinished"/>
+        <translation>תקרה</translation>
     </message>
     <message>
         <location filename="../qt-models/diveplotdatamodel.cpp" line="132"/>
@@ -3065,7 +3067,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="457"/>
         <source>Weight(%1)</source>
-        <translation type="unfinished"/>
+        <translation>משקל(%1)</translation>
     </message>
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="414"/>
@@ -3077,18 +3079,18 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-models/divetripmodel.cpp" line="417"/>
         <location filename="../qt-models/divetripmodel.cpp" line="463"/>
         <source>Cyl</source>
-        <translation type="unfinished"/>
+        <translation>מיכל</translation>
     </message>
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="420"/>
         <location filename="../qt-models/divetripmodel.cpp" line="466"/>
         <source>Gas</source>
-        <translation type="unfinished"/>
+        <translation>גז</translation>
     </message>
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="471"/>
         <source>SAC(%1)</source>
-        <translation type="unfinished"/>
+        <translation>צריכת גז (%1)</translation>
     </message>
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="471"/>
@@ -3099,7 +3101,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-models/divetripmodel.cpp" line="429"/>
         <location filename="../qt-models/divetripmodel.cpp" line="477"/>
         <source>Max CNS</source>
-        <translation type="unfinished"/>
+        <translation>רעילות שייורית מקסימלית</translation>
     </message>
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="432"/>
@@ -3115,7 +3117,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="448"/>
         <source>Depth(%1)</source>
-        <translation type="unfinished"/>
+        <translation>עומק (%1)</translation>
     </message>
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="405"/>
@@ -3126,7 +3128,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="454"/>
         <source>Temp(%1%2)</source>
-        <translation type="unfinished"/>
+        <translation>טמפרטורה(%1%2)</translation>
     </message>
     <message>
         <location filename="../qt-models/divetripmodel.cpp" line="457"/>
@@ -3150,7 +3152,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-ui/subsurfacewebservices.cpp" line="182"/>
         <source>failed to create zip file for upload: %s</source>
-        <translation type="unfinished"/>
+        <translation>נכשל ביצירת קובץ zip להעלאה: 1%</translation>
     </message>
     <message>
         <location filename="../qt-ui/subsurfacewebservices.cpp" line="235"/>
@@ -3186,13 +3188,14 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-ui/subsurfacewebservices.cpp" line="876"/>
         <source>Problem with download</source>
-        <translation type="unfinished"/>
+        <translation>תקלה בהורדה</translation>
     </message>
     <message>
         <location filename="../qt-ui/subsurfacewebservices.cpp" line="877"/>
         <source>The archive could not be opened:
 </source>
-        <translation type="unfinished"/>
+        <translation>לא היה אפשרות לפתוח את הארכיון
+</translation>
     </message>
     <message>
         <location filename="../qt-ui/subsurfacewebservices.cpp" line="886"/>
@@ -3252,7 +3255,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.cpp" line="280"/>
         <source>Find Uemis dive computer</source>
-        <translation type="unfinished"/>
+        <translation>חפש מחשב צלילה Uemis</translation>
     </message>
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.cpp" line="101"/>
@@ -3262,12 +3265,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.cpp" line="104"/>
         <source>Choose Bluetooth download mode</source>
-        <translation type="unfinished"/>
+        <translation>בחר מוד הורדה ל-Bluetooth</translation>
     </message>
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.cpp" line="382"/>
         <source>Choose file for divecomputer download logfile</source>
-        <translation type="unfinished"/>
+        <translation>בחור קובץ לקובץ log להורדה של libdivecomputer</translation>
     </message>
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.cpp" line="383"/>
@@ -3318,13 +3321,13 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.ui" line="122"/>
         <source>Choose Bluetooth download mode</source>
-        <translation type="unfinished"/>
+        <translation>בחר מוד הורדה ל-Bluetooth</translation>
     </message>
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.ui" line="149"/>
         <location filename="../build/ui_downloadfromdivecomputer.h" line="276"/>
         <source>Dive computer</source>
-        <translation type="unfinished"/>
+        <translation>מחשב צלילה</translation>
     </message>
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.ui" line="66"/>
@@ -3382,19 +3385,19 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-ui/downloadfromdivecomputer.ui" line="236"/>
         <location filename="../build/ui_downloadfromdivecomputer.h" line="279"/>
         <source>Select all</source>
-        <translation type="unfinished"/>
+        <translation>בחר הכל</translation>
     </message>
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.ui" line="243"/>
         <location filename="../build/ui_downloadfromdivecomputer.h" line="280"/>
         <source>Unselect all</source>
-        <translation type="unfinished"/>
+        <translation>בטל בחירת הכל</translation>
     </message>
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.ui" line="94"/>
         <location filename="../build/ui_downloadfromdivecomputer.h" line="271"/>
         <source>Save libdivecomputer logfile</source>
-        <translation type="unfinished"/>
+        <translation>שמור קובץ log של libdivecomputer</translation>
     </message>
     <message>
         <location filename="../qt-ui/downloadfromdivecomputer.ui" line="108"/>
@@ -3414,12 +3417,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-models/divecomputerextradatamodel.cpp" line="10"/>
         <source>Key</source>
-        <translation type="unfinished"/>
+        <translation>מפתח</translation>
     </message>
     <message>
         <location filename="../qt-models/divecomputerextradatamodel.cpp" line="10"/>
         <source>Value</source>
-        <translation type="unfinished"/>
+        <translation>ערך</translation>
     </message>
 </context>
 <context>
@@ -3427,24 +3430,26 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-ui/socialnetworks.cpp" line="259"/>
         <source>Photo upload sucessfull</source>
-        <translation type="unfinished"/>
+        <translation>תמונה העלאת בהצלחה</translation>
     </message>
     <message>
         <location filename="../qt-ui/socialnetworks.cpp" line="260"/>
         <source>Your dive profile was updated to Facebook.</source>
-        <translation type="unfinished"/>
+        <translation>פרופיל צלילה העלתה ל-Facebook.</translation>
     </message>
     <message>
         <location filename="../qt-ui/socialnetworks.cpp" line="264"/>
         <source>Photo upload failed</source>
-        <translation type="unfinished"/>
+        <translation>ההעלאת תמונה נכשלה</translation>
     </message>
     <message>
         <location filename="../qt-ui/socialnetworks.cpp" line="265"/>
         <source>Your dive profile was not updated to Facebook, 
  please send the following to the developer. 
 </source>
-        <translation type="unfinished"/>
+        <translation>פרופיל צלילה לא העלתה ל-Facebook,
+בבקשה לשלוח למפתחים את המידע הבה.
+</translation>
     </message>
 </context>
 <context>
@@ -3465,7 +3470,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-ui/listfilter.ui" line="50"/>
         <location filename="../build/ui_listfilter.h" line="76"/>
         <source>Filter this list</source>
-        <translation type="unfinished"/>
+        <translation>סנן את רשימה זו</translation>
     </message>
 </context>
 <context>
@@ -3474,19 +3479,19 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-ui/filterwidget.ui" line="73"/>
         <location filename="../build/ui_filterwidget.h" line="118"/>
         <source>Reset filters</source>
-        <translation type="unfinished"/>
+        <translation>אפס סינון</translation>
     </message>
     <message>
         <location filename="../qt-ui/filterwidget.ui" line="87"/>
         <location filename="../build/ui_filterwidget.h" line="121"/>
         <source>Show/hide filters</source>
-        <translation type="unfinished"/>
+        <translation>הצג/הסתר סינונים</translation>
     </message>
     <message>
         <location filename="../qt-ui/filterwidget.ui" line="101"/>
         <location filename="../build/ui_filterwidget.h" line="124"/>
         <source>Close and reset filters</source>
-        <translation type="unfinished"/>
+        <translation>סגור ואפס סינונים</translation>
     </message>
 </context>
 <context>
@@ -3494,12 +3499,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../configuredivecomputerthreads.cpp" line="1733"/>
         <source>This feature is not yet available for the selected dive computer.</source>
-        <translation type="unfinished"/>
+        <translation>אפשרות זו לא קיים למחשב צלילה הנבחר</translation>
     </message>
     <message>
         <location filename="../configuredivecomputerthreads.cpp" line="1738"/>
         <source>Firmware update failed!</source>
-        <translation type="unfinished"/>
+        <translation>עידקון קושחה נחשלה!</translation>
     </message>
 </context>
 <context>
@@ -3507,7 +3512,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-ui/globe.cpp" line="124"/>
         <source>Edit selected dive locations</source>
-        <translation type="unfinished"/>
+        <translation>ערוך אתרי צלילת נבחרות</translation>
     </message>
 </context>
 <context>
@@ -3520,7 +3525,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-ui/kmessagewidget.cpp" line="91"/>
         <source>Close message</source>
-        <translation type="unfinished"/>
+        <translation>סגור הערה</translation>
     </message>
 </context>
 <context>
@@ -3528,7 +3533,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-ui/simplewidgets.cpp" line="640"/>
         <source>Location: </source>
-        <translation type="unfinished"/>
+        <translation>מיקום:</translation>
     </message>
 </context>
 <context>
@@ -3561,7 +3566,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-ui/modeldelegates.cpp" line="555"/>
         <source>Pick site: </source>
-        <translation type="unfinished"/>
+        <translation>בחר אתר:</translation>
     </message>
 </context>
 <context>
@@ -3569,7 +3574,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-models/filtermodels.cpp" line="286"/>
         <source>No location set</source>
-        <translation type="unfinished"/>
+        <translation>מיקום לא מוגדר</translation>
     </message>
 </context>
 <context>
@@ -3584,7 +3589,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-ui/locationInformation.ui" line="29"/>
         <location filename="../build/ui_locationInformation.h" line="113"/>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>שם</translation>
     </message>
     <message>
         <location filename="../qt-ui/locationInformation.ui" line="36"/>
@@ -3617,7 +3622,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-ui/locationInformation.ui" line="93"/>
         <source>Dive sites on same coordinates</source>
-        <translation type="unfinished"/>
+        <translation>אתרי צלילה באותה נ&quot;צ</translation>
     </message>
     <message>
         <location filename="../qt-ui/locationInformation.ui" line="131"/>
@@ -3627,7 +3632,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../build/ui_locationInformation.h" line="112"/>
         <source>Dive Site</source>
-        <translation type="unfinished"/>
+        <translation>אתר צלילה</translation>
     </message>
 </context>
 <context>
@@ -3635,7 +3640,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-models/divelocationmodel.cpp" line="67"/>
         <source>Create dive site with this name</source>
-        <translation type="unfinished"/>
+        <translation>יצירת אתר צלילה חדש בשם זה</translation>
     </message>
 </context>
 <context>
@@ -3643,12 +3648,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-ui/locationinformation.cpp" line="25"/>
         <source>Apply changes</source>
-        <translation type="unfinished"/>
+        <translation>שמור שינוים</translation>
     </message>
     <message>
         <location filename="../qt-ui/locationinformation.cpp" line="28"/>
         <source>Discard changes</source>
-        <translation type="unfinished"/>
+        <translation>למחוק שינוים</translation>
     </message>
     <message>
         <location filename="../qt-ui/locationinformation.cpp" line="31"/>
@@ -3683,7 +3688,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-ui/maintab.ui" line="184"/>
         <location filename="../build/ui_maintab.h" line="951"/>
-        <location filename="../qt-ui/maintab.cpp" line="567"/>
+        <location filename="../qt-ui/maintab.cpp" line="568"/>
         <source>Location</source>
         <translation>מיקום</translation>
     </message>
@@ -3727,33 +3732,33 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-ui/maintab.ui" line="397"/>
         <location filename="../build/ui_maintab.h" line="960"/>
         <source>Dive mode</source>
-        <translation type="unfinished"/>
+        <translation>מוד צליצה</translation>
     </message>
     <message>
         <location filename="../qt-ui/maintab.ui" line="112"/>
         <location filename="../qt-ui/maintab.ui" line="836"/>
         <location filename="../build/ui_maintab.h" line="949"/>
         <location filename="../build/ui_maintab.h" line="987"/>
-        <location filename="../qt-ui/maintab.cpp" line="309"/>
+        <location filename="../qt-ui/maintab.cpp" line="310"/>
         <source>Air temp.</source>
-        <translation type="unfinished"/>
+        <translation>טמפרטורת האוויר</translation>
     </message>
     <message>
         <location filename="../qt-ui/maintab.ui" line="122"/>
         <location filename="../qt-ui/maintab.ui" line="855"/>
         <location filename="../build/ui_maintab.h" line="950"/>
         <location filename="../build/ui_maintab.h" line="989"/>
-        <location filename="../qt-ui/maintab.cpp" line="310"/>
+        <location filename="../qt-ui/maintab.cpp" line="311"/>
         <source>Water temp.</source>
-        <translation type="unfinished"/>
+        <translation>טמפרטורת המים</translation>
     </message>
     <message>
         <location filename="../qt-ui/maintab.ui" line="18"/>
         <location filename="../qt-ui/maintab.ui" line="439"/>
         <location filename="../build/ui_maintab.h" line="961"/>
         <location filename="../build/ui_maintab.h" line="963"/>
-        <location filename="../qt-ui/maintab.cpp" line="539"/>
-        <location filename="../qt-ui/maintab.cpp" line="568"/>
+        <location filename="../qt-ui/maintab.cpp" line="540"/>
+        <location filename="../qt-ui/maintab.cpp" line="569"/>
         <source>Notes</source>
         <translation>הערות</translation>
     </message>
@@ -3796,7 +3801,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-ui/maintab.ui" line="589"/>
         <location filename="../build/ui_maintab.h" line="995"/>
         <source>Dive information</source>
-        <translation type="unfinished"/>
+        <translation>פרטי צלילה</translation>
     </message>
     <message>
         <location filename="../qt-ui/maintab.ui" line="684"/>
@@ -3814,13 +3819,13 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-ui/maintab.ui" line="741"/>
         <location filename="../build/ui_maintab.h" line="977"/>
         <source>CNS</source>
-        <translation type="unfinished"/>
+        <translation>CNS</translation>
     </message>
     <message>
         <location filename="../qt-ui/maintab.ui" line="779"/>
         <location filename="../build/ui_maintab.h" line="981"/>
         <source>Max. depth</source>
-        <translation type="unfinished"/>
+        <translation>עומק מירבי</translation>
     </message>
     <message>
         <location filename="../qt-ui/maintab.ui" line="817"/>
@@ -3844,7 +3849,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-ui/maintab.ui" line="1039"/>
         <location filename="../build/ui_maintab.h" line="999"/>
         <source>Total time</source>
-        <translation type="unfinished"/>
+        <translation>סה&quot;כ זמן</translation>
     </message>
     <message>
         <location filename="../qt-ui/maintab.ui" line="1106"/>
@@ -3902,7 +3907,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-ui/maintab.ui" line="798"/>
         <location filename="../build/ui_maintab.h" line="983"/>
         <source>Avg. depth</source>
-        <translation type="unfinished"/>
+        <translation>עומק ממוצע</translation>
     </message>
     <message>
         <location filename="../qt-ui/maintab.ui" line="760"/>
@@ -3965,12 +3970,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qt-ui/maintab.cpp" line="64"/>
         <source>Apply changes</source>
-        <translation type="unfinished"/>
+        <translation>שמור שינוים</translation>
     </message>
     <message>
         <location filename="../qt-ui/maintab.cpp" line="68"/>
         <source>Discard changes</source>
-        <translation type="unfinished"/>
+        <translation>למחוק שינוים</translation>
     </message>
     <message>
         <location filename="../qt-ui/maintab.cpp" line="90"/>
@@ -3983,128 +3988,128 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="306"/>
+        <location filename="../qt-ui/maintab.cpp" line="307"/>
         <source>Air temp. [%1]</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="307"/>
+        <location filename="../qt-ui/maintab.cpp" line="308"/>
         <source>Water temp. [%1]</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="346"/>
+        <location filename="../qt-ui/maintab.cpp" line="347"/>
         <source>This trip is being edited.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="353"/>
+        <location filename="../qt-ui/maintab.cpp" line="354"/>
         <source>Multiple dives are being edited.</source>
         <translation>צלילות מרובות בעריכה.</translation>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="355"/>
+        <location filename="../qt-ui/maintab.cpp" line="356"/>
         <source>This dive is being edited.</source>
         <translation>צלילה זו בעריכה.</translation>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="504"/>
-        <location filename="../qt-ui/maintab.cpp" line="534"/>
+        <location filename="../qt-ui/maintab.cpp" line="505"/>
+        <location filename="../qt-ui/maintab.cpp" line="535"/>
         <source>Trip notes</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="529"/>
+        <location filename="../qt-ui/maintab.cpp" line="530"/>
         <source>Trip location</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="605"/>
-        <location filename="../qt-ui/maintab.cpp" line="637"/>
-        <location filename="../qt-ui/maintab.cpp" line="641"/>
-        <location filename="../qt-ui/maintab.cpp" line="645"/>
+        <location filename="../qt-ui/maintab.cpp" line="606"/>
+        <location filename="../qt-ui/maintab.cpp" line="638"/>
+        <location filename="../qt-ui/maintab.cpp" line="642"/>
+        <location filename="../qt-ui/maintab.cpp" line="646"/>
         <source>/min</source>
         <translation>לדקה</translation>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="634"/>
+        <location filename="../qt-ui/maintab.cpp" line="635"/>
         <source>Deepest dive</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="635"/>
+        <location filename="../qt-ui/maintab.cpp" line="636"/>
         <source>Shallowest dive</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="648"/>
-        <source>Highest total SAC of a dive</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../qt-ui/maintab.cpp" line="649"/>
-        <source>Lowest total SAC of a dive</source>
-        <translation type="unfinished"/>
+        <source>Highest total SAC of a dive</source>
+        <translation>צריכת גז מירבי בצלילה</translation>
     </message>
     <message>
         <location filename="../qt-ui/maintab.cpp" line="650"/>
-        <source>Average total SAC of all selected dives</source>
-        <translation type="unfinished"/>
+        <source>Lowest total SAC of a dive</source>
+        <translation>צריכת גז מינימלי בצלילה</translation>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="661"/>
+        <location filename="../qt-ui/maintab.cpp" line="651"/>
+        <source>Average total SAC of all selected dives</source>
+        <translation>צריכת גז ממוצע בצלילות הנבחרות</translation>
+    </message>
+    <message>
+        <location filename="../qt-ui/maintab.cpp" line="662"/>
         <source>Highest temperature</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="662"/>
+        <location filename="../qt-ui/maintab.cpp" line="663"/>
         <source>Lowest temperature</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="663"/>
+        <location filename="../qt-ui/maintab.cpp" line="664"/>
         <source>Average temperature of all selected dives</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="673"/>
+        <location filename="../qt-ui/maintab.cpp" line="674"/>
         <source>Longest dive</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="674"/>
+        <location filename="../qt-ui/maintab.cpp" line="675"/>
         <source>Shortest dive</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="675"/>
+        <location filename="../qt-ui/maintab.cpp" line="676"/>
         <source>Average length of all selected dives</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="699"/>
+        <location filename="../qt-ui/maintab.cpp" line="700"/>
         <source>These gases could be
 mixed from Air and using:
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="703"/>
+        <location filename="../qt-ui/maintab.cpp" line="704"/>
         <source> and </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="833"/>
+        <location filename="../qt-ui/maintab.cpp" line="834"/>
         <source>New dive site</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="1127"/>
+        <location filename="../qt-ui/maintab.cpp" line="1128"/>
         <source>Discard the changes?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/maintab.cpp" line="1128"/>
+        <location filename="../qt-ui/maintab.cpp" line="1129"/>
         <source>You are about to discard your changes.</source>
         <translation type="unfinished"/>
     </message>
@@ -4765,7 +4770,7 @@ mixed from Air and using:
     <message>
         <location filename="../qt-ui/mainwindow.cpp" line="363"/>
         <location filename="../qt-ui/mainwindow.cpp" line="468"/>
-        <location filename="../qt-ui/mainwindow.cpp" line="1851"/>
+        <location filename="../qt-ui/mainwindow.cpp" line="1853"/>
         <source>Cancel</source>
         <translation>בטל</translation>
     </message>
@@ -4777,7 +4782,7 @@ mixed from Air and using:
     <message>
         <location filename="../qt-ui/mainwindow.cpp" line="467"/>
         <source>Scan</source>
-        <translation type="unfinished"/>
+        <translation>סרוק</translation>
     </message>
     <message>
         <location filename="../qt-ui/mainwindow.cpp" line="475"/>
@@ -4817,41 +4822,41 @@ mixed from Air and using:
     <message>
         <location filename="../qt-ui/mainwindow.cpp" line="1068"/>
         <source>Save changes?</source>
-        <translation type="unfinished"/>
+        <translation>שמור שינוים?</translation>
     </message>
     <message>
-        <location filename="../qt-ui/mainwindow.cpp" line="1433"/>
+        <location filename="../qt-ui/mainwindow.cpp" line="1435"/>
         <source>Save file as</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/mainwindow.cpp" line="1528"/>
+        <location filename="../qt-ui/mainwindow.cpp" line="1530"/>
         <source>[cloud storage for] %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/mainwindow.cpp" line="1628"/>
+        <location filename="../qt-ui/mainwindow.cpp" line="1630"/>
         <source>Opening datafile from older version</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/mainwindow.cpp" line="1629"/>
+        <location filename="../qt-ui/mainwindow.cpp" line="1631"/>
         <source>You opened a data file from an older version of Subsurface. We recommend you read the manual to learn about the changes in the new version, especially about dive site management which has changed significantly.
 Subsurface has already tried to pre-populate the data but it might be worth while taking a look at the new dive site management system and to make sure that everything looks correct.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/mainwindow.cpp" line="1640"/>
+        <location filename="../qt-ui/mainwindow.cpp" line="1642"/>
         <source>Open dive log file</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/mainwindow.cpp" line="1641"/>
+        <location filename="../qt-ui/mainwindow.cpp" line="1643"/>
         <source>Dive log files (*.ssrf *.can *.csv *.db *.sql *.dld *.jlb *.lvd *.sde *.udcf *.uddf *.xml *.txt *.dlf *.apd*.SSRF *.CAN *.CSV *.DB *.SQL *.DLD *.JLB *.LVD *.SDE *.UDCF *.UDDF *.xml *.TXT *.DLF *.APD);;Cochran files (*.can *.CAN);;CSV files (*.csv *.CSV);;DiveLog.de files (*.dld *.DLD);;JDiveLog files (*.jlb *.JLB);;Liquivision files (*.lvd *.LVD);;MkVI files (*.txt *.TXT);;Suunto files (*.sde *.db *.SDE *.DB);;Divesoft files (*.dlf *.DLF);;UDDF/UDCF files (*.uddf *.udcf *.UDDF *.UDCF);;XML files (*.xml *.XML);;APD log viewer (*.apd *.APD);;Datatrak/WLog Files (*.log *.LOG);;OSTCtools Files (*.dive *.DIVE);;All files (*)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/mainwindow.cpp" line="1851"/>
+        <location filename="../qt-ui/mainwindow.cpp" line="1853"/>
         <source>Contacting cloud service...</source>
         <translation type="unfinished"/>
     </message>
@@ -4866,14 +4871,14 @@ Subsurface has already tried to pre-populate the data but it might be worth whil
         <location filename="../qt-ui/mainwindow.cpp" line="725"/>
         <location filename="../qt-ui/mainwindow.cpp" line="796"/>
         <location filename="../qt-ui/mainwindow.cpp" line="802"/>
-        <location filename="../qt-ui/mainwindow.cpp" line="1686"/>
+        <location filename="../qt-ui/mainwindow.cpp" line="1688"/>
         <source>Warning</source>
         <translation>אזהרה</translation>
     </message>
     <message>
         <location filename="../qt-ui/mainwindow.cpp" line="353"/>
         <location filename="../qt-ui/mainwindow.cpp" line="398"/>
-        <location filename="../qt-ui/mainwindow.cpp" line="1406"/>
+        <location filename="../qt-ui/mainwindow.cpp" line="1408"/>
         <source>Please save or cancel the current dive edit before opening a new file.</source>
         <translation>נא לשמור או לבטל את עריכת הצלילה הנוכחית לפני פתיחת קובץ חדש.</translation>
     </message>
@@ -4885,16 +4890,16 @@ Subsurface has already tried to pre-populate the data but it might be worth whil
     <message>
         <location filename="../qt-ui/mainwindow.cpp" line="849"/>
         <source>Yearly statistics</source>
-        <translation type="unfinished"/>
+        <translation>סטטיסטיקה שנתית</translation>
     </message>
     <message>
-        <location filename="../qt-ui/mainwindow.cpp" line="1434"/>
+        <location filename="../qt-ui/mainwindow.cpp" line="1436"/>
         <source>Subsurface XML files (*.ssrf *.xml *.XML)</source>
         <translation>קבצי XML  נתמכים (*.ssrf *.xml *.XML)</translation>
     </message>
     <message>
         <location filename="../qt-ui/mainwindow.cpp" line="796"/>
-        <location filename="../qt-ui/mainwindow.cpp" line="1686"/>
+        <location filename="../qt-ui/mainwindow.cpp" line="1688"/>
         <source>Please, first finish the current edition before trying to do another.</source>
         <translation type="unfinished"/>
     </message>
@@ -4939,7 +4944,7 @@ Please start Bluetooth on your OSTC Sport and do the same preparations as for a 
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="267"/>
         <source>Update firmware</source>
-        <translation type="unfinished"/>
+        <translation>עידקון קושחה</translation>
     </message>
     <message>
         <location filename="../qt-ui/configuredivecomputerdialog.cpp" line="269"/>
@@ -4977,7 +4982,7 @@ Please start Bluetooth on your OSTC Sport and do the same preparations as for a 
     <message>
         <location filename="../qt-ui/diveplanner.cpp" line="422"/>
         <source>ft/min</source>
-        <translation type="unfinished"/>
+        <translation>רגל לדקה</translation>
     </message>
     <message>
         <location filename="../qt-ui/diveplanner.cpp" line="423"/>
@@ -4997,22 +5002,22 @@ Please start Bluetooth on your OSTC Sport and do the same preparations as for a 
     <message>
         <location filename="../qt-ui/diveplanner.cpp" line="427"/>
         <source>m/min</source>
-        <translation type="unfinished"/>
+        <translation>מטרים לדקה</translation>
     </message>
     <message>
         <location filename="../qt-ui/diveplanner.cpp" line="428"/>
         <source>Last stop at 6m</source>
-        <translation type="unfinished"/>
+        <translation>עצירה אחרונה ב6 מ&apos;</translation>
     </message>
     <message>
         <location filename="../qt-ui/diveplanner.cpp" line="429"/>
         <source>50% avg. depth to 6m</source>
-        <translation type="unfinished"/>
+        <translation>50% עומק ממוצע ל-6 מטר</translation>
     </message>
     <message>
         <location filename="../qt-ui/diveplanner.cpp" line="430"/>
         <source>6m to surface</source>
-        <translation type="unfinished"/>
+        <translation>6 מטר לפני המים</translation>
     </message>
     <message>
         <location filename="../qt-ui/diveplanner.cpp" line="433"/>
@@ -5024,7 +5029,7 @@ Please start Bluetooth on your OSTC Sport and do the same preparations as for a 
         <location filename="../qt-ui/diveplanner.cpp" line="442"/>
         <location filename="../qt-ui/diveplanner.cpp" line="443"/>
         <source>ℓ/min</source>
-        <translation type="unfinished"/>
+        <translation>ליטר לדקה</translation>
     </message>
 </context>
 <context>
@@ -5301,7 +5306,7 @@ Please start Bluetooth on your OSTC Sport and do the same preparations as for a 
         <location filename="../qt-ui/preferences.ui" line="981"/>
         <location filename="../build/ui_preferences.h" line="1369"/>
         <source>ℓ/min</source>
-        <translation type="unfinished"/>
+        <translation>ליטר לדקה</translation>
     </message>
     <message>
         <location filename="../qt-ui/preferences.ui" line="994"/>
@@ -5518,7 +5523,7 @@ Please start Bluetooth on your OSTC Sport and do the same preparations as for a 
         <location filename="../qt-ui/preferences.ui" line="923"/>
         <location filename="../build/ui_preferences.h" line="1362"/>
         <source>GFLow at max depth</source>
-        <translation type="unfinished"/>
+        <translation>גרדיאנט תחתון בעומק מירבי</translation>
     </message>
     <message>
         <location filename="../qt-ui/preferences.ui" line="883"/>
@@ -5914,113 +5919,113 @@ Please start Bluetooth on your OSTC Sport and do the same preparations as for a 
 <context>
     <name>ProfileWidget2</name>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="661"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="666"/>
         <source> (#%1 of %2)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="663"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="668"/>
         <source>Unknown dive computer</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="680"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="685"/>
         <source>Show NDL / TTS was disabled because of excessive processing time</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1227"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1232"/>
         <source>Make first divecomputer</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1229"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1234"/>
         <source>Delete this divecomputer</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1243"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1248"/>
         <source>Add gas change</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1246"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1251"/>
         <source> (Tank %1)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1254"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1259"/>
         <source>Add set-point change</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1256"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1261"/>
         <source>Add bookmark</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1260"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1265"/>
         <source>Edit the profile</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1264"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1269"/>
         <source>Remove event</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1269"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1274"/>
         <source>Hide similar events</source>
         <translation>הסתר אירועים דומים</translation>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1276"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1281"/>
         <source>Edit name</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1305"/>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1312"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1310"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1317"/>
         <source>Adjust pressure of tank %1 (currently interpolated as %2)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1327"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1332"/>
         <source>Unhide all events</source>
         <translation>חשוף את כל האירועים</translation>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1361"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1366"/>
         <source>Hide events</source>
         <translation>הסתר אירועים</translation>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1361"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1366"/>
         <source>Hide all %1 events?</source>
         <translation>הסתר את כל %1 האירועים</translation>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1396"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1401"/>
         <source>Remove the selected event?</source>
         <translation>הסר את האירוע שנבחרו?</translation>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1397"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1402"/>
         <source>%1 @ %2:%3</source>
         <translation>%1 @ %2:%3</translation>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1501"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1517"/>
         <source>Edit name of bookmark</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1502"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1518"/>
         <source>Custom name:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1507"/>
+        <location filename="../qt-ui/profile/profilewidget2.cpp" line="1523"/>
         <source>Name is too long!</source>
         <translation type="unfinished"/>
     </message>
@@ -6065,7 +6070,7 @@ Please start Bluetooth on your OSTC Sport and do the same preparations as for a 
     <message>
         <location filename="../qthelper.cpp" line="194"/>
         <source>h:</source>
-        <translation type="unfinished"/>
+        <translation>שעה:</translation>
     </message>
     <message>
         <location filename="../qthelper.cpp" line="194"/>
@@ -6139,7 +6144,7 @@ Please start Bluetooth on your OSTC Sport and do the same preparations as for a 
         <location filename="../configuredivecomputerthreads.cpp" line="1634"/>
         <location filename="../configuredivecomputerthreads.cpp" line="1659"/>
         <source>This feature is not yet available for the selected dive computer.</source>
-        <translation type="unfinished"/>
+        <translation>אפשרות זו לא קיים למחשב צלילה הנבחר</translation>
     </message>
 </context>
 <context>
@@ -6278,7 +6283,7 @@ Not all images have timestamps in the range between
     <message>
         <location filename="../qt-ui/simplewidgets.cpp" line="291"/>
         <source>Image files (*.jpg *.jpeg *.pnm *.tif *.tiff)</source>
-        <translation type="unfinished"/>
+        <translation>קבצי תמונה (*.jpg *.jpeg *.pnm *.tif *.tiff)</translation>
     </message>
 </context>
 <context>
@@ -6344,7 +6349,7 @@ Not all images have timestamps in the range between
     <message>
         <location filename="../build/ui_simpledivesiteedit.h" line="100"/>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>שם</translation>
     </message>
     <message>
         <location filename="../build/ui_simpledivesiteedit.h" line="101"/>
@@ -6385,7 +6390,7 @@ Not all images have timestamps in the range between
         <location filename="../qt-ui/socialnetworks.cpp" line="302"/>
         <source>h:</source>
         <comment>abbreviation for hours plus separator</comment>
-        <translation type="unfinished"/>
+        <translation>שעה:</translation>
     </message>
     <message>
         <location filename="../qt-ui/socialnetworks.cpp" line="303"/>
@@ -6813,22 +6818,22 @@ Not all images have timestamps in the range between
     <message>
         <location filename="../tests/testparse.cpp" line="296"/>
         <source>Sample time</source>
-        <translation type="unfinished"/>
+        <translation>זמן דגימה</translation>
     </message>
     <message>
         <location filename="../tests/testparse.cpp" line="298"/>
         <source>Sample depth</source>
-        <translation type="unfinished"/>
+        <translation>עומק דגימה</translation>
     </message>
     <message>
         <location filename="../tests/testparse.cpp" line="300"/>
         <source>Sample temperature</source>
-        <translation type="unfinished"/>
+        <translation>טמפ&apos; דגימה</translation>
     </message>
     <message>
         <location filename="../tests/testparse.cpp" line="302"/>
         <source>Sample pO₂</source>
-        <translation type="unfinished"/>
+        <translation>pO₂ של דגימה</translation>
     </message>
     <message>
         <location filename="../tests/testparse.cpp" line="304"/>
@@ -6848,17 +6853,17 @@ Not all images have timestamps in the range between
     <message>
         <location filename="../tests/testparse.cpp" line="310"/>
         <source>Sample CNS</source>
-        <translation type="unfinished"/>
+        <translation>CNS של דגימה</translation>
     </message>
     <message>
         <location filename="../tests/testparse.cpp" line="312"/>
         <source>Sample NDL</source>
-        <translation type="unfinished"/>
+        <translation>NDL של דגימה</translation>
     </message>
     <message>
         <location filename="../tests/testparse.cpp" line="314"/>
         <source>Sample TTS</source>
-        <translation type="unfinished"/>
+        <translation>זמן לפני המים של הדגימה</translation>
     </message>
     <message>
         <location filename="../tests/testparse.cpp" line="316"/>
@@ -6868,7 +6873,7 @@ Not all images have timestamps in the range between
     <message>
         <location filename="../tests/testparse.cpp" line="318"/>
         <source>Sample pressure</source>
-        <translation type="unfinished"/>
+        <translation>זחץ של דגימה</translation>
     </message>
 </context>
 <context>
@@ -6884,7 +6889,7 @@ Not all images have timestamps in the range between
     <message>
         <location filename="../qt-mobile/TopBar.qml" line="59"/>
         <source>Subsurface mobile</source>
-        <translation type="unfinished"/>
+        <translation>Subsurface mobile</translation>
     </message>
 </context>
 <context>
@@ -6975,7 +6980,7 @@ Not all images have timestamps in the range between
     <message>
         <location filename="../qt-ui/updatemanager.cpp" line="141"/>
         <source>Accept</source>
-        <translation type="unfinished"/>
+        <translation>אישור</translation>
     </message>
     <message>
         <location filename="../qt-ui/updatemanager.cpp" line="143"/>
@@ -7277,7 +7282,7 @@ Language: %1</source>
         <location filename="../configuredivecomputerthreads.cpp" line="1683"/>
         <location filename="../configuredivecomputerthreads.cpp" line="1704"/>
         <source>This feature is not yet available for the selected dive computer.</source>
-        <translation type="unfinished"/>
+        <translation>אפשרות זו לא קיים למחשב צלילה הנבחר</translation>
     </message>
 </context>
 <context>
@@ -7450,22 +7455,22 @@ Maximum</source>
     <message>
         <location filename="../dive.c" line="310"/>
         <source>m/min</source>
-        <translation type="unfinished"/>
+        <translation>מטרים לדקה</translation>
     </message>
     <message>
         <location filename="../dive.c" line="312"/>
         <source>m/s</source>
-        <translation type="unfinished"/>
+        <translation>מטרים לשניה</translation>
     </message>
     <message>
         <location filename="../dive.c" line="317"/>
         <source>ft/min</source>
-        <translation type="unfinished"/>
+        <translation>רגל לדקה</translation>
     </message>
     <message>
         <location filename="../dive.c" line="319"/>
         <source>ft/s</source>
-        <translation type="unfinished"/>
+        <translation>רגל לשניה</translation>
     </message>
     <message>
         <location filename="../dive.c" line="338"/>
@@ -7489,8 +7494,8 @@ Maximum</source>
     <message>
         <location filename="../divelist.c" line="482"/>
         <location filename="../equipment.c" line="81"/>
-        <location filename="../planner.c" line="1397"/>
         <location filename="../planner.c" line="1400"/>
+        <location filename="../planner.c" line="1403"/>
         <source>air</source>
         <translation>אוויר</translation>
     </message>
@@ -7537,7 +7542,7 @@ Maximum</source>
     <message>
         <location filename="../file.c" line="458"/>
         <source>Empty file &apos;%s&apos;</source>
-        <translation type="unfinished"/>
+        <translation>קובץ ריק &apos;%s&apos;</translation>
     </message>
     <message>
         <location filename="../file.c" line="638"/>
@@ -7567,7 +7572,7 @@ Maximum</source>
     <message>
         <location filename="../file.c" line="693"/>
         <source>Power off</source>
-        <translation type="unfinished"/>
+        <translation>כיבוי</translation>
     </message>
     <message>
         <location filename="../file.c" line="753"/>
@@ -7602,7 +7607,7 @@ Maximum</source>
         <location filename="../cochran.c" line="339"/>
         <location filename="../file.c" line="699"/>
         <source>battery</source>
-        <translation type="unfinished"/>
+        <translation>סוללה</translation>
     </message>
     <message>
         <location filename="../cochran.c" line="367"/>
@@ -7690,7 +7695,7 @@ Maximum</source>
     <message>
         <location filename="../libdivecomputer.c" line="168"/>
         <source>divetime</source>
-        <translation>זמןצלילה</translation>
+        <translation>זמן צלילה</translation>
     </message>
     <message>
         <location filename="../libdivecomputer.c" line="168"/>
@@ -7765,7 +7770,7 @@ Maximum</source>
     <message>
         <location filename="../libdivecomputer.c" line="480"/>
         <source>Dive %d: %s</source>
-        <translation type="unfinished"/>
+        <translation>צלילה %d: %s</translation>
     </message>
     <message>
         <location filename="../libdivecomputer.c" line="486"/>
@@ -7780,7 +7785,7 @@ Maximum</source>
     <message>
         <location filename="../libdivecomputer.c" line="515"/>
         <source>Error parsing temperature</source>
-        <translation type="unfinished"/>
+        <translation>שגיאה בקריאת טמפרטורה</translation>
     </message>
     <message>
         <location filename="../libdivecomputer.c" line="535"/>
@@ -7800,7 +7805,7 @@ Maximum</source>
     <message>
         <location filename="../libdivecomputer.c" line="581"/>
         <source>Error obtaining divemode</source>
-        <translation type="unfinished"/>
+        <translation>שגיאה בקבלת מוד צלילה</translation>
     </message>
     <message>
         <location filename="../libdivecomputer.c" line="601"/>
@@ -7840,7 +7845,7 @@ Maximum</source>
     <message>
         <location filename="../libdivecomputer.c" line="925"/>
         <source>Unable to create libdivecomputer context</source>
-        <translation type="unfinished"/>
+        <translation>לא ניתן לייצר אובייקט של libdivecomputer</translation>
     </message>
     <message>
         <location filename="../libdivecomputer.c" line="932"/>
@@ -7882,7 +7887,7 @@ Maximum</source>
     </message>
     <message>
         <location filename="../planner.c" line="1021"/>
-        <location filename="../planner.c" line="1170"/>
+        <location filename="../planner.c" line="1173"/>
         <source>Can&apos;t find gas %s</source>
         <translation type="unfinished"/>
     </message>
@@ -7924,7 +7929,7 @@ Maximum</source>
     <message>
         <location filename="../planner.c" line="608"/>
         <source>gas</source>
-        <translation type="unfinished"/>
+        <translation>גז</translation>
     </message>
     <message>
         <location filename="../planner.c" line="651"/>
@@ -7976,7 +7981,7 @@ Maximum</source>
     <message>
         <location filename="../planner.c" line="783"/>
         <source>CNS</source>
-        <translation type="unfinished"/>
+        <translation>CNS</translation>
     </message>
     <message>
         <location filename="../planner.c" line="785"/>
@@ -8000,12 +8005,12 @@ Maximum</source>
         <location filename="../planner.c" line="841"/>
         <location filename="../planner.c" line="851"/>
         <source>Warning:</source>
-        <translation type="unfinished"/>
+        <translation>אזהרה:</translation>
     </message>
     <message>
         <location filename="../planner.c" line="583"/>
         <source>based on Bühlmann ZHL-16B with GFlow = %d and GFhigh = %d</source>
-        <translation type="unfinished"/>
+        <translation>מבוסס על Bühlmann ZHL-16B עם גרדיאנט תחתון=%d וגרדיאנט עליון =%d</translation>
     </message>
     <message>
         <location filename="../planner.c" line="587"/>
@@ -8020,7 +8025,7 @@ Maximum</source>
     <message>
         <location filename="../planner.c" line="591"/>
         <source>recreational mode based on Bühlmann ZHL-16B with GFlow = %d and GFhigh = %d</source>
-        <translation type="unfinished"/>
+        <translation>מוד ספורטיבי מבוסס על Bühlmann ZHL-16B עם גרדיאנט תחתון=%d וגרדיאנט עליון =%d</translation>
     </message>
     <message>
         <location filename="../planner.c" line="812"/>
@@ -8053,220 +8058,234 @@ Maximum</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../planner.c" line="1405"/>
+        <location filename="../planner.c" line="1408"/>
         <source>ean</source>
         <translation>ean</translation>
     </message>
     <message>
-        <location filename="../profile.c" line="1122"/>
+        <location filename="../profile.c" line="1126"/>
         <source>@: %d:%02d
 D: %.1f%s
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1125"/>
+        <location filename="../profile.c" line="1129"/>
         <source>P: %d%s
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1129"/>
+        <location filename="../profile.c" line="1133"/>
         <source>T: %.1f%s
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1135"/>
+        <location filename="../profile.c" line="1139"/>
         <source>V: %.1f%s
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1138"/>
+        <location filename="../profile.c" line="1142"/>
         <source>SAC: %.*f%s/min
 </source>
-        <translation type="unfinished"/>
+        <translation>צריכת גז: %.*f%s/min
+</translation>
     </message>
     <message>
-        <location filename="../profile.c" line="1140"/>
+        <location filename="../profile.c" line="1144"/>
         <source>CNS: %u%%
 </source>
         <translation>רעילות שייורית מקסימלית %u%%
 </translation>
     </message>
     <message>
-        <location filename="../profile.c" line="1142"/>
+        <location filename="../profile.c" line="1146"/>
         <source>pO%s: %.2fbar
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1144"/>
+        <location filename="../profile.c" line="1148"/>
         <source>pN%s: %.2fbar
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1146"/>
+        <location filename="../profile.c" line="1150"/>
         <source>pHe: %.2fbar
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1149"/>
+        <location filename="../profile.c" line="1153"/>
         <source>MOD: %d%s
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1156"/>
+        <location filename="../profile.c" line="1160"/>
         <source>EAD: %d%s
 EADD: %d%s
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1160"/>
+        <location filename="../profile.c" line="1164"/>
         <source>END: %d%s
 EADD: %d%s
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1172"/>
+        <location filename="../profile.c" line="1176"/>
         <source>Safetystop: %umin @ %.0f%s
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1175"/>
+        <location filename="../profile.c" line="1179"/>
         <source>Safetystop: unkn time @ %.0f%s
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1180"/>
+        <location filename="../profile.c" line="1184"/>
         <source>Deco: %umin @ %.0f%s
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1183"/>
+        <location filename="../profile.c" line="1187"/>
         <source>Deco: unkn time @ %.0f%s
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1187"/>
+        <location filename="../profile.c" line="1191"/>
         <source>In deco
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1189"/>
+        <location filename="../profile.c" line="1193"/>
         <source>NDL: %umin
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1192"/>
+        <location filename="../profile.c" line="1196"/>
         <source>TTS: %umin
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1195"/>
+        <location filename="../profile.c" line="1199"/>
         <source>Deco: %umin @ %.0f%s (calc)
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1203"/>
+        <location filename="../profile.c" line="1207"/>
         <source>In deco (calc)
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1205"/>
+        <location filename="../profile.c" line="1210"/>
         <source>NDL: %umin (calc)
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1208"/>
+        <location filename="../profile.c" line="1212"/>
+        <source>NDL: &gt;2h (calc)
+</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../profile.c" line="1216"/>
         <source>TTS: %umin (calc)
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1210"/>
+        <location filename="../profile.c" line="1218"/>
+        <source>TTS: &gt;2h (calc)
+</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../profile.c" line="1221"/>
         <source>RBT: %umin
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1213"/>
+        <location filename="../profile.c" line="1224"/>
         <source>Calculated ceiling %.0f%s
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1219"/>
+        <location filename="../profile.c" line="1230"/>
         <source>Tissue %.0fmin: %.1f%s
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1225"/>
+        <location filename="../profile.c" line="1236"/>
         <source>heartbeat: %d
 </source>
         <translation>פעימות לב %d</translation>
     </message>
     <message>
-        <location filename="../profile.c" line="1227"/>
+        <location filename="../profile.c" line="1238"/>
         <source>bearing: %d
 </source>
-        <translation type="unfinished"/>
+        <translation>כיוון: %d
+</translation>
     </message>
     <message>
-        <location filename="../profile.c" line="1230"/>
+        <location filename="../profile.c" line="1241"/>
         <source>mean depth to here %.1f%s
 </source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1325"/>
+        <location filename="../profile.c" line="1336"/>
         <source>%sT: %d:%02d min</source>
         <translation>%sT: %d:%02d min</translation>
     </message>
     <message>
-        <location filename="../profile.c" line="1329"/>
-        <location filename="../profile.c" line="1333"/>
-        <location filename="../profile.c" line="1337"/>
+        <location filename="../profile.c" line="1340"/>
+        <location filename="../profile.c" line="1344"/>
+        <location filename="../profile.c" line="1348"/>
         <source>%s %sD:%.1f%s</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../profile.c" line="1341"/>
+        <location filename="../profile.c" line="1352"/>
         <source>%s %sD:%.1f%s
 </source>
         <translation>%s %sD:%.1f%s
 </translation>
     </message>
     <message>
-        <location filename="../profile.c" line="1345"/>
+        <location filename="../profile.c" line="1356"/>
         <source>%s%sV:%.2f%s</source>
         <translation>%s%sV:%.2f%s</translation>
     </message>
     <message>
-        <location filename="../profile.c" line="1349"/>
-        <location filename="../profile.c" line="1353"/>
+        <location filename="../profile.c" line="1360"/>
+        <location filename="../profile.c" line="1364"/>
         <source>%s %sV:%.2f%s</source>
         <translation>%s %sV:%.2f%s</translation>
     </message>
     <message>
-        <location filename="../profile.c" line="1360"/>
+        <location filename="../profile.c" line="1371"/>
         <source>%s %sP:%d %s</source>
         <translation>%s %sP:%d %s</translation>
     </message>
@@ -8345,13 +8364,13 @@ EADD: %d%s
     <message>
         <location filename="../datatrak.c" line="442"/>
         <source>search</source>
-        <translation type="unfinished"/>
+        <translation>חיפוש</translation>
     </message>
     <message>
         <location filename="../datatrak.c" line="452"/>
         <location filename="../dive.c" line="25"/>
         <source>wreck</source>
-        <translation type="unfinished"/>
+        <translation>ספינה טרופה</translation>
     </message>
     <message>
         <location filename="../datatrak.c" line="438"/>
@@ -8568,15 +8587,15 @@ EADD: %d%s
     <message>
         <location filename="../dive.c" line="33"/>
         <location filename="../equipment.c" line="85"/>
-        <location filename="../planner.c" line="1401"/>
         <location filename="../planner.c" line="1404"/>
+        <location filename="../planner.c" line="1407"/>
         <source>oxygen</source>
-        <translation type="unfinished"/>
+        <translation>חמצן</translation>
     </message>
     <message>
         <location filename="../dive.c" line="240"/>
         <source>ℓ</source>
-        <translation type="unfinished"/>
+        <translation>ליטר</translation>
     </message>
     <message>
         <location filename="../statistics.c" line="214"/>
@@ -8935,7 +8954,7 @@ Is the Uemis Zurich plugged in correctly?</source>
         <location filename="../save-html.c" line="527"/>
         <location filename="../worldmap-save.c" line="108"/>
         <source>Can&apos;t open file %s</source>
-        <translation type="unfinished"/>
+        <translation>לא ניתן לפתוח קובץ %s</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="462"/>
@@ -8960,17 +8979,17 @@ Is the Uemis Zurich plugged in correctly?</source>
     <message>
         <location filename="../save-html.c" line="466"/>
         <source>Air temp.</source>
-        <translation type="unfinished"/>
+        <translation>טמפרטורת האוויר</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="467"/>
         <source>Water temp.</source>
-        <translation type="unfinished"/>
+        <translation>טמפרטורת המים</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="472"/>
         <source>Statistics</source>
-        <translation type="unfinished"/>
+        <translation>סטטיסטיקות</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="476"/>
@@ -8995,22 +9014,22 @@ Is the Uemis Zurich plugged in correctly?</source>
     <message>
         <location filename="../save-html.c" line="469"/>
         <source>Expand all</source>
-        <translation type="unfinished"/>
+        <translation>הצג הכל</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="470"/>
         <source>Collapse all</source>
-        <translation type="unfinished"/>
+        <translation>הסתר הכל</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="471"/>
         <source>Trips</source>
-        <translation type="unfinished"/>
+        <translation>טיולים</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="473"/>
         <source>Advanced search</source>
-        <translation type="unfinished"/>
+        <translation>חיפוש מתקדם</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="479"/>
@@ -9040,77 +9059,77 @@ Is the Uemis Zurich plugged in correctly?</source>
     <message>
         <location filename="../save-html.c" line="484"/>
         <source>Show more details</source>
-        <translation type="unfinished"/>
+        <translation>הצג יותר נתונים</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="487"/>
         <source>Yearly statistics</source>
-        <translation type="unfinished"/>
+        <translation>סטטיסטיקה שנתית</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="488"/>
         <source>Year</source>
-        <translation type="unfinished"/>
+        <translation>שנה</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="489"/>
         <source>Total time</source>
-        <translation type="unfinished"/>
+        <translation>סה&quot;כ זמן</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="490"/>
         <source>Average time</source>
-        <translation type="unfinished"/>
+        <translation>זמן ממוצע</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="491"/>
         <source>Shortest time</source>
-        <translation type="unfinished"/>
+        <translation>זמן מינימלי</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="492"/>
         <source>Longest time</source>
-        <translation type="unfinished"/>
+        <translation>זמן מקסימלי</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="493"/>
         <source>Average depth</source>
-        <translation type="unfinished"/>
+        <translation>עומק ממוצע</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="494"/>
         <source>Min. depth</source>
-        <translation type="unfinished"/>
+        <translation>עומק מינימלי</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="495"/>
         <source>Max. depth</source>
-        <translation type="unfinished"/>
+        <translation>עומק מירבי</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="497"/>
         <source>Min. SAC</source>
-        <translation type="unfinished"/>
+        <translation>צריכת גז מינימלי</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="498"/>
         <source>Max. SAC</source>
-        <translation type="unfinished"/>
+        <translation>צריכת גז מירבי</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="499"/>
         <source>Average temp.</source>
-        <translation type="unfinished"/>
+        <translation>טמפרטורה ממוצע</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="500"/>
         <source>Min. temp.</source>
-        <translation type="unfinished"/>
+        <translation>טמפ&apos; מינימלי</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="501"/>
         <source>Max. temp.</source>
-        <translation type="unfinished"/>
+        <translation>טמפ&apos; מקסימלי</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="502"/>
@@ -9125,17 +9144,17 @@ Is the Uemis Zurich plugged in correctly?</source>
     <message>
         <location filename="../save-html.c" line="511"/>
         <source>Work pressure</source>
-        <translation type="unfinished"/>
+        <translation>לחץ מקסימלי</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="512"/>
         <source>Start pressure</source>
-        <translation type="unfinished"/>
+        <translation>לחץ התחלתי</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="513"/>
         <source>End pressure</source>
-        <translation type="unfinished"/>
+        <translation>לחץ סופי</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="521"/>
@@ -9145,22 +9164,22 @@ Is the Uemis Zurich plugged in correctly?</source>
     <message>
         <location filename="../save-html.c" line="496"/>
         <source>Average SAC</source>
-        <translation type="unfinished"/>
+        <translation>צריכת גז ממוצע</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="505"/>
         <source>Dive No.</source>
-        <translation type="unfinished"/>
+        <translation>צלילה מס&apos; </translation>
     </message>
     <message>
         <location filename="../save-html.c" line="506"/>
         <source>Dive profile</source>
-        <translation type="unfinished"/>
+        <translation>פרופיל צלילה</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="507"/>
         <source>Dive information</source>
-        <translation type="unfinished"/>
+        <translation>פרטי צלילה</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="509"/>
@@ -9176,7 +9195,7 @@ Is the Uemis Zurich plugged in correctly?</source>
     <message>
         <location filename="../save-html.c" line="514"/>
         <source>Gas</source>
-        <translation type="unfinished"/>
+        <translation>גז</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="515"/>
@@ -9186,17 +9205,17 @@ Is the Uemis Zurich plugged in correctly?</source>
     <message>
         <location filename="../save-html.c" line="517"/>
         <source>Events</source>
-        <translation type="unfinished"/>
+        <translation>אירועים</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="518"/>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>שם</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="519"/>
         <source>Value</source>
-        <translation type="unfinished"/>
+        <translation>ערך</translation>
     </message>
     <message>
         <location filename="../save-html.c" line="520"/>
@@ -9211,12 +9230,12 @@ Is the Uemis Zurich plugged in correctly?</source>
     <message>
         <location filename="../worldmap-save.c" line="38"/>
         <source>Time:</source>
-        <translation type="unfinished"/>
+        <translation>זמן:</translation>
     </message>
     <message>
         <location filename="../worldmap-save.c" line="40"/>
         <source>Duration:</source>
-        <translation type="unfinished"/>
+        <translation>משך הצלילה:</translation>
     </message>
     <message>
         <location filename="../worldmap-save.c" line="41"/>
@@ -9226,22 +9245,22 @@ Is the Uemis Zurich plugged in correctly?</source>
     <message>
         <location filename="../worldmap-save.c" line="43"/>
         <source>Max. depth:</source>
-        <translation type="unfinished"/>
+        <translation>עומק מירבי:</translation>
     </message>
     <message>
         <location filename="../worldmap-save.c" line="47"/>
         <source>Air temp.:</source>
-        <translation type="unfinished"/>
+        <translation>טמפ&apos; האוויר:</translation>
     </message>
     <message>
         <location filename="../worldmap-save.c" line="50"/>
         <source>Water temp.:</source>
-        <translation type="unfinished"/>
+        <translation>טמפ&apos; מים:</translation>
     </message>
     <message>
         <location filename="../worldmap-save.c" line="52"/>
         <source>Location:</source>
-        <translation type="unfinished"/>
+        <translation>מיקום:</translation>
     </message>
     <message>
         <location filename="../worldmap-save.c" line="56"/>
@@ -9355,10 +9374,10 @@ Is the Uemis Zurich plugged in correctly?</source>
 <context>
     <name>main</name>
     <message>
-        <location filename="../qt-mobile/main.qml" line="11"/>
-        <location filename="../qt-mobile/main.qml" line="96"/>
+        <location filename="../qt-mobile/main.qml" line="13"/>
+        <location filename="../qt-mobile/main.qml" line="110"/>
         <source>Subsurface mobile</source>
-        <translation type="unfinished"/>
+        <translation>Subsurface mobile</translation>
     </message>
 </context>
 <context>
@@ -9373,7 +9392,7 @@ Is the Uemis Zurich plugged in correctly?</source>
         <location filename="../qt-ui/plannerDetails.ui" line="43"/>
         <location filename="../build/ui_plannerDetails.h" line="91"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Dive plan details&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;נתוני תכנון צלילה&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerDetails.ui" line="59"/>
@@ -9410,13 +9429,13 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-ui/plannerSettings.ui" line="95"/>
         <location filename="../build/ui_plannerSettings.h" line="422"/>
         <source>Ascent</source>
-        <translation type="unfinished"/>
+        <translation>עליה</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="104"/>
         <location filename="../build/ui_plannerSettings.h" line="423"/>
         <source>below 75% avg. depth</source>
-        <translation type="unfinished"/>
+        <translation>מתחת 75% עומק ממוצע</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="111"/>
@@ -9430,25 +9449,25 @@ p, li { white-space: pre-wrap; }
         <location filename="../build/ui_plannerSettings.h" line="430"/>
         <location filename="../build/ui_plannerSettings.h" line="432"/>
         <source>m/min</source>
-        <translation type="unfinished"/>
+        <translation>מטרים לדקה</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="175"/>
         <location filename="../build/ui_plannerSettings.h" line="431"/>
         <source>Descent</source>
-        <translation type="unfinished"/>
+        <translation>ירידה</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="187"/>
         <location filename="../build/ui_plannerSettings.h" line="433"/>
         <source>surface to the bottom</source>
-        <translation type="unfinished"/>
+        <translation>פני המים לקרקעית</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="240"/>
         <location filename="../build/ui_plannerSettings.h" line="434"/>
         <source>Planning</source>
-        <translation type="unfinished"/>
+        <translation>תכנון</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="261"/>
@@ -9459,7 +9478,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-ui/plannerSettings.ui" line="278"/>
         <location filename="../build/ui_plannerSettings.h" line="445"/>
         <source>Reserve gas</source>
-        <translation type="unfinished"/>
+        <translation>גז רזרבי</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="320"/>
@@ -9477,106 +9496,106 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-ui/plannerSettings.ui" line="343"/>
         <location filename="../build/ui_plannerSettings.h" line="442"/>
         <source>GF low</source>
-        <translation type="unfinished"/>
+        <translation>גרדיאנט תחתון</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="307"/>
-        <location filename="../qt-ui/plannerSettings.ui" line="413"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="416"/>
         <location filename="../build/ui_plannerSettings.h" line="437"/>
         <location filename="../build/ui_plannerSettings.h" line="440"/>
         <source>%</source>
-        <translation type="unfinished"/>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="360"/>
         <location filename="../build/ui_plannerSettings.h" line="435"/>
         <source>GF high</source>
-        <translation type="unfinished"/>
+        <translation>גרדיאנט עליון</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="426"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="429"/>
         <location filename="../build/ui_plannerSettings.h" line="441"/>
         <source>Drop to first depth</source>
-        <translation type="unfinished"/>
+        <translation>ירידה מהירה לעומק התחלתי</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="389"/>
         <location filename="../build/ui_plannerSettings.h" line="438"/>
         <source>Last stop at 6m</source>
-        <translation type="unfinished"/>
+        <translation>עצירה אחרונה ב6 מ&apos;</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="353"/>
         <location filename="../build/ui_plannerSettings.h" line="436"/>
         <source>Plan backgas breaks</source>
-        <translation type="unfinished"/>
+        <translation>תכנן הפסקות גזים</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="512"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="515"/>
         <location filename="../build/ui_plannerSettings.h" line="455"/>
         <source>Gas options</source>
-        <translation type="unfinished"/>
+        <translation>הגדרות גזים</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="591"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="594"/>
         <location filename="../build/ui_plannerSettings.h" line="456"/>
         <source>Bottom SAC</source>
         <translation>צריכת גז בעומק מירבי</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="689"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="692"/>
         <location filename="../build/ui_plannerSettings.h" line="457"/>
         <source>Deco SAC</source>
-        <translation type="unfinished"/>
+        <translation>צריכת גז בדקו</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="598"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="601"/>
         <location filename="../build/ui_plannerSettings.h" line="458"/>
         <source>Bottom pO₂</source>
-        <translation type="unfinished"/>
+        <translation>pO₂ה תחתית</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="682"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="685"/>
         <location filename="../build/ui_plannerSettings.h" line="460"/>
         <source>Deco pO₂</source>
-        <translation type="unfinished"/>
+        <translation>pO₂ בדקו</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="562"/>
-        <location filename="../qt-ui/plannerSettings.ui" line="669"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="565"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="672"/>
         <location filename="../build/ui_plannerSettings.h" line="462"/>
         <location filename="../build/ui_plannerSettings.h" line="463"/>
         <source>ℓ/min</source>
-        <translation type="unfinished"/>
+        <translation>ליטר לדקה</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="629"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="632"/>
         <location filename="../build/ui_plannerSettings.h" line="468"/>
         <source>Display runtime</source>
-        <translation type="unfinished"/>
+        <translation>הצג זמן צלילה</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="642"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="645"/>
         <location filename="../build/ui_plannerSettings.h" line="472"/>
         <source>Display segment duration</source>
-        <translation type="unfinished"/>
+        <translation>הצג משך הקטע</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="652"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="655"/>
         <location filename="../build/ui_plannerSettings.h" line="476"/>
         <source>Display transitions in deco</source>
-        <translation type="unfinished"/>
+        <translation>הצג מעברים בדקו</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="659"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="662"/>
         <location filename="../build/ui_plannerSettings.h" line="477"/>
         <source>Verbatim dive plan</source>
-        <translation type="unfinished"/>
+        <translation>תכנון צלילה מפורתת</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="288"/>
-        <location filename="../qt-ui/plannerSettings.ui" line="546"/>
-        <location filename="../qt-ui/plannerSettings.ui" line="575"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="549"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="578"/>
         <location filename="../build/ui_plannerSettings.h" line="446"/>
         <location filename="../build/ui_plannerSettings.h" line="459"/>
         <location filename="../build/ui_plannerSettings.h" line="461"/>
@@ -9587,24 +9606,24 @@ p, li { white-space: pre-wrap; }
         <location filename="../qt-ui/plannerSettings.ui" line="121"/>
         <location filename="../build/ui_plannerSettings.h" line="425"/>
         <source>75% to 50% avg. depth</source>
-        <translation type="unfinished"/>
+        <translation>בין 75% ל-50% עומק ממוצע</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="138"/>
         <location filename="../build/ui_plannerSettings.h" line="427"/>
         <source>50% avg. depth to 6m</source>
-        <translation type="unfinished"/>
+        <translation>50% עומק ממוצע ל-6 מטר</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="155"/>
         <location filename="../build/ui_plannerSettings.h" line="429"/>
         <source>6m to surface</source>
-        <translation type="unfinished"/>
+        <translation>6 מטר לפני המים</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="268"/>
         <source>Bühlmann deco</source>
-        <translation type="unfinished"/>
+        <translation>דקו ע&quot;י אלגוריטם של Bühlmann</translation>
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="370"/>
@@ -9614,47 +9633,52 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../qt-ui/plannerSettings.ui" line="396"/>
-        <location filename="../build/ui_plannerSettings.h" line="443"/>
-        <source>Recreational mode</source>
-        <translation type="unfinished"/>
+        <source>Maximize bottom time allowed by gas and no decompression limits</source>
+        <translation>למקסם את הזמן תחתי מותר על ידי גז וללא מגבלות דקו</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="433"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="399"/>
+        <location filename="../build/ui_plannerSettings.h" line="443"/>
+        <source>Recreational mode</source>
+        <translation>מוד ספורטיבי</translation>
+    </message>
+    <message>
+        <location filename="../qt-ui/plannerSettings.ui" line="436"/>
         <location filename="../build/ui_plannerSettings.h" line="452"/>
         <source>Min. switch duration</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="456"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="459"/>
         <location filename="../build/ui_plannerSettings.h" line="444"/>
         <source>Safety stop</source>
-        <translation type="unfinished"/>
+        <translation>עצירת בטיחות</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="492"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="495"/>
         <source>Conservatism level</source>
-        <translation type="unfinished"/>
+        <translation>רמת שומרנות</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="605"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="608"/>
         <location filename="../build/ui_plannerSettings.h" line="464"/>
         <source>Notes</source>
         <translation>הערות</translation>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="626"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="629"/>
         <location filename="../build/ui_plannerSettings.h" line="466"/>
         <source>In dive plan, show runtime (absolute time) of stops</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="639"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="642"/>
         <location filename="../build/ui_plannerSettings.h" line="470"/>
         <source>In dive plan, show duration (relative time) of stops</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../qt-ui/plannerSettings.ui" line="649"/>
+        <location filename="../qt-ui/plannerSettings.ui" line="652"/>
         <location filename="../build/ui_plannerSettings.h" line="474"/>
         <source>In diveplan, list transitions or treat them as implicit</source>
         <translation type="unfinished"/>
