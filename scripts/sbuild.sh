@@ -22,6 +22,15 @@
 # create a log file of the build
 exec 1> >(tee build.log) 2>&1
 
+
+check_return_val()
+{
+    if [ "$1" -ne 0 ]
+    then
+        exit $1
+    fi
+}
+
 SRC=$(pwd)
 PLATFORM=$(uname)
 
@@ -31,8 +40,13 @@ if [[ ! -d "subsurface" ]] ; then
 fi
 
 
+
 mkdir -p install-root
 INSTALL_ROOT=$SRC/install-root
+
+rm subsurface/build/*a
+rm subsurface/build/subsurface
+rm install-root/bin/subsurface
 
 # make sure we find our own packages first (e.g., libgit2 only uses pkg_config to find libssh2)
 export PKG_CONFIG_PATH=$INSTALL_ROOT/lib/pkgconfig:$PKG_CONFIG_PATH
@@ -72,12 +86,19 @@ cmake   -DCMAKE_VERBOSE_MAKEFILE=ON \
 	-DUSE_LIBGIT23_API=1
 
 
+check_return_val $?
+
 if [ $PLATFORM = Darwin ] ; then
 	rm -rf Subsurface.app
 fi
 
 LIBRARY_PATH=$INSTALL_ROOT/lib make -j4
+
+check_return_val $?
+
 LIBRARY_PATH=$INSTALL_ROOT/lib make install
+
+check_return_val $?
 
 
 # the '-B' is probably a bad idea. :) it forces every build command to run, regardless of 'no changes since last build'
