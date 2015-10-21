@@ -5,6 +5,8 @@
 #include "planner.h"
 #include "models.h"
 
+#include "util-assert.h"
+
 /* TODO: Port this to CleanerTableModel to remove a bit of boilerplate and
  * use the signal warningMessage() to communicate errors to the MainWindow.
  */
@@ -835,6 +837,7 @@ void DivePlannerPointsModel::createTemporaryPlan()
 	for (int i = 0; i < rowCount(); i++) {
 		divedatapoint p = at(i);
 		int deltaT = lastIndex != -1 ? p.time - at(lastIndex).time : p.time;
+		FASSERT( deltaT > 0, "times should be strictly increasing" );
 		lastIndex = i;
 		if (i == 0 && prefs.drop_stone_mode) {
 			/* Okay, we add a fist segment where we go down to depth */

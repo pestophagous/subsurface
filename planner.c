@@ -14,6 +14,8 @@
 #include "gettext.h"
 #include "libdivecomputer/parser.h"
 
+#include "util-assert.h"
+
 #define TIMESTEP 2 /* second */
 #define DECOTIMESTEP 60 /* seconds. Unit of deco stop times */
 
@@ -213,17 +215,23 @@ void fill_default_cylinder(cylinder_t *cyl)
  * list of cylinders */
 static int verify_gas_exists(struct gasmix mix_in)
 {
+	FASSERT( displayed_dive.id != 0,
+		"it seems we are verifying against a zeroed-out (blank) dive struct" );
 	int i;
 	cylinder_t *cyl;
+	bool any_data = false;
 
 	for (i = 0; i < MAX_CYLINDERS; i++) {
 		cyl = displayed_dive.cylinder + i;
 		if (cylinder_nodata(cyl))
 			continue;
+
+		any_data = true;
 		if (gasmix_distance(&cyl->gasmix, &mix_in) < 100)
 			return i;
 	}
 	fprintf(stderr, "this gas %s should have been on the cylinder list\nThings will fail now\n", gasname(&mix_in));
+	FASSERT( any_data, "totally null cylinder list. displayed_dive seems problematic." );
 	return -1;
 }
 
@@ -418,6 +426,9 @@ void add_to_end_of_diveplan(struct diveplan *diveplan, struct divedatapoint *dp)
 
 struct divedatapoint *plan_add_segment(struct diveplan *diveplan, int duration, int depth, struct gasmix gasmix, int po2, bool entered)
 {
+	FASSERT( duration != 0,
+		"datapoint with time 0 has a special meaning. "
+		"You should not be creating a time 0 datapoint for a segment" );
 	struct divedatapoint *dp = create_dp(duration, depth, gasmix, po2);
 	dp->entered = entered;
 	add_to_end_of_diveplan(diveplan, dp);
