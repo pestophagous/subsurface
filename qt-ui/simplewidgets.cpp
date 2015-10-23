@@ -313,7 +313,7 @@ void ShiftImageTimesDialog::dcDateTimeChanged(const QDateTime &newDateTime)
 	if (!dcImageEpoch)
 		return;
 	newtime.setTimeSpec(Qt::UTC);
-	setOffset(newtime.toTime_t() + gettimezoneoffset(displayed_dive.when) - dcImageEpoch);
+	setOffset(newtime.toTime_t() - dcImageEpoch);
 }
 
 void ShiftImageTimesDialog::matchAllImagesToggled(bool state)
@@ -372,7 +372,6 @@ void ShiftImageTimesDialog::updateInvalid()
 
 		// We've found invalid image
 		timestamp = picture_get_timestamp(fileName.toUtf8().data());
-		dcImageEpoch = timestamp;
 		time.setTime_t(timestamp + m_amount - gettimezoneoffset(displayed_dive.when));
 		ui.invalidLabel->setText(ui.invalidLabel->text() + fileName + " " + time.toString() + "\n");
 		allValid = false;
