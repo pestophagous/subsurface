@@ -562,6 +562,11 @@ static inline struct divecomputer *get_dive_dc(struct dive *dive, int nr)
 	return dc;
 }
 
+static inline bool dive_has_meaningful_state(struct dive *dive)
+{
+	return dive && (dive->id > 0);
+}
+
 extern timestamp_t dive_endtime(const struct dive *dive);
 
 extern void make_first_dc(void);
