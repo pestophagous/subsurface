@@ -44,7 +44,7 @@ fi
 mkdir -p install-root
 INSTALL_ROOT=$SRC/install-root
 
-rm subsurface/build/*a
+rm subsurface/build/libsubsurface*a
 rm subsurface/build/subsurface
 rm install-root/bin/subsurface
 
