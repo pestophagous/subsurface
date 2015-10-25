@@ -489,22 +489,17 @@ void ProfileWidget2::resetZoom()
 // Currently just one dive, but the plan is to enable All of the selected dives.
 void ProfileWidget2::plotDive(struct dive *d, bool force)
 {
-	if (!d) {
-		if (selected_dive == -1)
-			return;
-		d = current_dive; // display the current dive
-	}
-
-	// check for 'meaningful' dive. saves spurious repaint(s) while carrying out
-	// updates due to clicking 'Apply changes' (or similar actions)
-	if (!dive_has_meaningful_state(d))
-		return;
-
 	static bool firstCall = true;
 	QTime measureDuration; // let's measure how long this takes us (maybe we'll turn of TTL calculation later
 	measureDuration.start();
 
 	if (currentState != ADD && currentState != PLAN) {
+		if (!d) {
+			if (selected_dive == -1)
+				return;
+			d = current_dive; // display the current dive
+		}
+
 		// No need to do this again if we are already showing the same dive
 		// computer of the same dive, so we check the unique id of the dive
 		// and the selected dive computer number against the ones we are
