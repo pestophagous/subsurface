@@ -170,6 +170,7 @@ bool DivelogsDeWebServices::prepare_dives_for_divelogs(const QString &tempfile, 
 	xslt = get_stylesheet("divelogs-export.xslt");
 	if (!xslt) {
 		qDebug() << errPrefix << "missing stylesheet";
+		report_error(tr("stylesheet to export to divelogs.de is not found").toUtf8());
 		return false;
 	}
 
@@ -238,6 +239,11 @@ bool DivelogsDeWebServices::prepare_dives_for_divelogs(const QString &tempfile, 
 		free((void *)membuf);
 
 		transformed = xsltApplyStylesheet(xslt, doc, NULL);
+		if (!transformed) {
+			qWarning() << errPrefix << "XSLT transform failed for dive: " << i;
+			report_error(tr("Conversion of dive %1 to divelogs.de format failed").arg(i).toUtf8());
+			continue;
+		}
 		xmlDocDumpMemory(transformed, (xmlChar **)&membuf, &streamsize);
 		xmlFreeDoc(doc);
 		xmlFreeDoc(transformed);
@@ -253,8 +259,16 @@ bool DivelogsDeWebServices::prepare_dives_for_divelogs(const QString &tempfile, 
 				qDebug() << errPrefix << "failed to include dive:" << i;
 		}
 	}
-	zip_close(zip);
 	xsltFreeStylesheet(xslt);
+	if (zip_close(zip)) {
+		int ze, se;
+		zip_error_t *error = zip_get_error(zip);
+		ze = zip_error_code_zip(error);
+		se = zip_error_code_system(error);
+		report_error(qPrintable(tr("error writing zip file: %s zip error %d system error %d - %s")),
+			     qPrintable(QDir::toNativeSeparators(tempfile)), ze, se, zip_strerror(zip));
+		return false;
+	}
 	return true;
 
 error_close_zip:
@@ -695,6 +709,8 @@ void DivelogsDeWebServices::prepareDivesForUpload(bool selected)
 			f.close();
 			f.remove();
 			return;
+		} else {
+			report_error("Failed to open upload file %s\n", qPrintable(filename));
 		}
 	} else {
 		report_error("Failed to create upload file %s\n", qPrintable(filename));
