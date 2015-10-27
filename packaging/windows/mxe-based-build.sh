@@ -224,10 +224,9 @@ if [[ ! -d libzip || -f build.libzip ]] ; then
 	rm -f build.libzip
 	mkdir -p libzip
 	cd libzip
-#	cmake -DCMAKE_TOOLCHAIN_FILE="$BASEDIR"/mxe/usr/i686-w64-mingw32.shared/share/cmake/mxe-conf.cmake \
-#		-DCMAKE_BUILD_TYPE=Release \
-#		"$BASEDIR"/libzip
-	"$BASEDIR"/libzip/configure --host=i686-w64-mingw32.shared --prefix="$BASEDIR"/mxe/usr/i686-w64-mingw32.shared
+	cmake -DCMAKE_TOOLCHAIN_FILE=$BASEDIR/mxe/usr/i686-w64-mingw32.shared/share/cmake/mxe-conf.cmake \
+	        -DCMAKE_BUILD_TYPE=Release \
+		        $BASEDIR/libzip
 	make $JOBS
 	make install
 fi
@@ -266,7 +265,7 @@ if [[ ! -d libdivecomputer || -f build.libdivecomputer ]] ; then
 	cd libdivecomputer
 
 	"$BASEDIR"/libdivecomputer/configure --host=i686-w64-mingw32.shared \
-		--enable-static --disable-shared \
+		--enable-shared \
 		--prefix="$BASEDIR"/mxe/usr/i686-w64-mingw32.shared
 	make $JOBS
 	make install
@@ -349,7 +348,7 @@ else
 		-DMAKENSIS=i686-w64-mingw32.shared-makensis \
 		-DUSE_LIBGIT23_API=1 \
 		-DLIBDIVECOMPUTER_INCLUDE_DIR="$BASEDIR"/mxe/usr/i686-w64-mingw32.shared/include \
-		-DLIBDIVECOMPUTER_LIBRARIES="$BASEDIR"/mxe/usr/i686-w64-mingw32.shared/lib/libdivecomputer.a \
+		-DLIBDIVECOMPUTER_LIBRARIES="$BASEDIR"/mxe/usr/i686-w64-mingw32.shared/lib/libdivecomputer.dll.a \
 		-DMARBLE_INCLUDE_DIR="$BASEDIR"/mxe/usr/i686-w64-mingw32.shared/include \
 		-DMARBLE_LIBRARIES="$BASEDIR"/mxe/usr/i686-w64-mingw32.shared/lib/libssrfmarblewidget.dll \
 		"$BASEDIR"/subsurface
