@@ -194,7 +194,7 @@ private:
 	bool printMode;
 
 	//specifics for ADD and PLAN
-	QList<DiveHandler *> handles;
+	QList<DiveHandler *> handles; // used by friend DiveHandler in qt-ui/diveplanner.cpp
 	QList<QGraphicsSimpleTextItem *> gases;
 	QList<DivePictureItem *> pictures;
 	void repositionDiveHandlers();

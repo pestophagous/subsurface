@@ -902,7 +902,7 @@ void MainTab::acceptChanges()
 		// dive - we'll have to undo/redo this later after we resort the dive_table
 		// but we need the dive selected for the middle part of this function - this
 		// way we can reuse the code used for editing dives
-		MainWindow::instance()->dive_list()->unselectDives();
+		MainWindow::instance()->dive_list()->unselectDives();// triggers replot
 		selected_dive = get_divenr(added_dive);
 		amount_selected = 1;
 	} else if (MainWindow::instance() && MainWindow::instance()->dive_list()->selectedTrips().count() == 1) {
@@ -1071,7 +1071,7 @@ void MainTab::acceptChanges()
 		// since a newly added dive could be in the middle of the dive_table we need
 		// to resort the dive list and make sure the newly added dive gets selected again
 		sort_table(&dive_table);
-		MainWindow::instance()->dive_list()->reload(DiveTripModel::CURRENT, true);
+		MainWindow::instance()->dive_list()->reload(DiveTripModel::CURRENT, true);//triggers plot
 		int newDiveNr = get_divenr(get_dive_by_uniq_id(addedId));
 		MainWindow::instance()->dive_list()->unselectDives();
 		MainWindow::instance()->dive_list()->selectDive(newDiveNr, true);
