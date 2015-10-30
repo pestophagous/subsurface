@@ -1283,7 +1283,7 @@ void MainTab::on_dateEdit_dateChanged(const QDate &date)
 	QDateTime dateTime = QDateTime::fromTime_t(displayed_dive.when - gettimezoneoffset(displayed_dive.when));
 	dateTime.setTimeSpec(Qt::UTC);
 	dateTime.setDate(date);
-	DivePlannerPointsModel::instance()->getDiveplan().when = displayed_dive.when = dateTime.toTime_t();
+	DivePlannerPointsModel::instance()->getDiveplan().when = displayed_dive.when = dateTime.toTime_t();// leaky data. (lack of data hiding) getDiveplan
 	emit dateTimeChanged();
 }
 
@@ -1295,7 +1295,7 @@ void MainTab::on_timeEdit_timeChanged(const QTime &time)
 	QDateTime dateTime = QDateTime::fromTime_t(displayed_dive.when - gettimezoneoffset(displayed_dive.when));
 	dateTime.setTimeSpec(Qt::UTC);
 	dateTime.setTime(time);
-	DivePlannerPointsModel::instance()->getDiveplan().when = displayed_dive.when = dateTime.toTime_t();
+	DivePlannerPointsModel::instance()->getDiveplan().when = displayed_dive.when = dateTime.toTime_t();// leaky data. (lack of data hiding) getDiveplan
 	emit dateTimeChanged();
 }
 

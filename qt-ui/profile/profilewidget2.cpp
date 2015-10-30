@@ -513,7 +513,7 @@ void ProfileWidget2::plotDive(struct dive *d, bool force)
 	} else {
 		DivePlannerPointsModel *plannerModel = DivePlannerPointsModel::instance();
 		plannerModel->createTemporaryPlan();
-		struct diveplan &diveplan = plannerModel->getDiveplan();
+		struct diveplan &diveplan = plannerModel->getDiveplan();// leaky private data. (bad data hiding) getDiveplan
 		if (!diveplan.dp) {
 			plannerModel->deleteTemporaryPlan();
 			return;

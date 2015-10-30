@@ -295,7 +295,7 @@ PlannerSettingsWidget::PlannerSettingsWidget(QWidget *parent, Qt::WindowFlags f)
 	prefs.bottomsac = s.value("bottomsac", prefs.bottomsac).toInt();
 	prefs.decosac = s.value("decosac", prefs.decosac).toInt();
 	prefs.conservatism_level = s.value("conservatism", prefs.conservatism_level).toInt();
-	plannerModel->getDiveplan().bottomsac = prefs.bottomsac;
+	plannerModel->getDiveplan().bottomsac = prefs.bottomsac; // "leaky private member" (lack data hiding) getDiveplan
 	plannerModel->getDiveplan().decosac = prefs.decosac;
 	s.endGroup();
 
