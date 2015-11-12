@@ -68,6 +68,8 @@ fi
 
 cd $SRC
 
+if [ $PLATFORM = SKipThISHerePortiON ] ; then
+
 if [ ! -d libgit2 ] ; then
 	if [[ $1 = local ]] ; then
 		git clone $SRC/../libgit2 libgit2
@@ -98,9 +100,12 @@ if [ $PLATFORM = Darwin ] ; then
 	fi
 fi
 
+fi
+
 cd $SRC
 
 # build libdivecomputer
+if [ $PLATFORM = SKipThISHerePortiON ] ; then
 
 if [ ! -d libdivecomputer ] ; then
 	if [[ $1 = local ]] ; then
@@ -122,9 +127,12 @@ fi
 make -j4
 make install
 
+fi
+
 cd $SRC
 
 # build libssrfmarblewidget
+if [ $PLATFORM = SKipThISHerePortiON ] ; then
 
 if [ ! -d marble-source ] ; then
 	if [[ $1 = local ]] ; then
@@ -164,10 +172,12 @@ if [ $PLATFORM = Darwin ] ; then
 	fi
 fi
 
+fi
+
 # build grantlee
 
 cd $SRC
-
+if [ $PLATFORM = SKipThISHerePortiON ] ; then
 if [ ! -d grantlee ] ; then
 	if [[ $1 = local ]] ; then
 		git clone $SRC/../grantlee grantlee
@@ -188,7 +198,7 @@ cmake -DCMAKE_BUILD_TYPE=Release \
 	$SRC/grantlee
 make -j4
 make install
-
+fi
 # finally, build Subsurface
 
 if [ $PLATFORM = Darwin ] ; then
