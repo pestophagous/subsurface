@@ -2,22 +2,25 @@
 #include "dive.h"
 #include "metrics.h"
 #include "divelist.h"
+#include "imagedownloader.h"
 
 #include <QtConcurrent>
 
+extern QHash <QString, QImage > thumbnailCache;
+
+
 SPixmap scaleImages(picturepointer picture)
 {
-	static QHash <QString, QImage > cache;
 	SPixmap ret;
 	ret.first = picture;
-	if (cache.contains(picture->filename) && !cache.value(picture->filename).isNull()) {
-		ret.second = cache.value(picture->filename);
+	if (thumbnailCache.contains(picture->filename) && !thumbnailCache.value(picture->filename).isNull()) {
+		ret.second = thumbnailCache.value(picture->filename);
 	} else {
 		int dim = defaultIconMetrics().sz_pic;
 		QImage p = SHashedImage(picture);
 		if(!p.isNull()) {
 			p = p.scaled(dim, dim, Qt::KeepAspectRatio);
-			cache.insert(picture->filename, p);
+			thumbnailCache.insert(picture->filename, p);
 		}
 		ret.second = p;
 	}
@@ -111,12 +114,14 @@ QVariant DivePictureModel::data(const QModelIndex &index, int role) const
 	return ret;
 }
 
-void DivePictureModel::removePicture(const QString &fileUrl)
+void DivePictureModel::removePicture(const QString &fileUrl, bool last)
 {
 	dive_remove_picture(fileUrl.toUtf8().data());
-	copy_dive(current_dive, &displayed_dive);
-	updateDivePictures();
-	mark_divelist_changed(true);
+	if (last) {
+		copy_dive(current_dive, &displayed_dive);
+		updateDivePictures();
+		mark_divelist_changed(true);
+	}
 }
 
 int DivePictureModel::rowCount(const QModelIndex &parent) const

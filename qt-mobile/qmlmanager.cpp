@@ -9,15 +9,19 @@
 #include "qthelper.h"
 #include "qt-gui.h"
 
-static void showMessage(const char *errorString)
+void qmlUiShowMessage(const char *errorString)
 {
 	if (qqWindowObject && !qqWindowObject->setProperty("messageText", QVariant(errorString)))
 		qDebug() << "couldn't set property messageText to" << errorString;
 }
 
-QMLManager::QMLManager()
+QMLManager::QMLManager() :
+	m_locationServiceEnabled(false)
 {
-	//Initialize cloud credentials.
+	// create location manager service
+	locationProvider = new GpsLocation(this);
+
+	// Initialize cloud credentials.
 	setCloudUserName(prefs.cloud_storage_email);
 	setCloudPassword(prefs.cloud_storage_password);
 	setSaveCloudPassword(prefs.save_password_local);
@@ -55,11 +59,11 @@ void QMLManager::savePreferences()
 
 void QMLManager::loadDives()
 {
-	showMessage("Loading dives...");
+	qmlUiShowMessage("Loading dives...");
 	appendTextToLog("Loading dives...");
 	QString url;
 	if (getCloudURL(url)) {
-		showMessage(get_error_string());
+		qmlUiShowMessage(get_error_string());
 		appendTextToLog(get_error_string());
 		return;
 	}
@@ -69,12 +73,12 @@ void QMLManager::loadDives()
 	int error = parse_file(fileNamePrt.data());
 	if (!error) {
 		report_error("filename is now %s", fileNamePrt.data());
-		showMessage(get_error_string());
+		qmlUiShowMessage(get_error_string());
 		appendTextToLog(get_error_string());
 		set_filename(fileNamePrt.data(), true);
 		appendTextToLog(fileNamePrt.data());
 	} else {
-		showMessage(get_error_string());
+		qmlUiShowMessage(get_error_string());
 		appendTextToLog(get_error_string());
 	}
 	process_dives(false, false);
@@ -116,21 +120,21 @@ void QMLManager::commitChanges(QString diveId, QString suit, QString buddy, QStr
 
 void QMLManager::saveChanges()
 {
-	showMessage("Saving dives.");
+	qmlUiShowMessage("Saving dives.");
 	QString fileName;
 	if (getCloudURL(fileName)) {
-		showMessage(get_error_string());
+		qmlUiShowMessage(get_error_string());
 		appendTextToLog(get_error_string());
 		return;
 	}
 
 	if (save_dives(fileName.toUtf8().data())) {
-		showMessage(get_error_string());
+		qmlUiShowMessage(get_error_string());
 		appendTextToLog(get_error_string());
 		return;
 	}
 
-	showMessage("Dives saved.");
+	qmlUiShowMessage("Dives saved.");
 	appendTextToLog("Dive saved.");
 	set_filename(fileName.toUtf8().data(), true);
 	mark_divelist_changed(false);
@@ -138,7 +142,7 @@ void QMLManager::saveChanges()
 
 void QMLManager::addDive()
 {
-	showMessage("Adding new dive.");
+	qmlUiShowMessage("Adding new dive.");
 	appendTextToLog("Adding new dive.");
 	DiveListModel::instance()->startAddDive();
 }
@@ -171,6 +175,16 @@ void QMLManager::setSaveCloudPassword(bool saveCloudPassword)
 	m_saveCloudPassword = saveCloudPassword;
 }
 
+bool QMLManager::locationServiceEnabled() const
+{
+	return m_locationServiceEnabled;
+}
+
+void QMLManager::setLocationServiceEnabled(bool locationServiceEnabled)
+{
+	m_locationServiceEnabled = locationServiceEnabled;
+	locationProvider->serviceEnable(m_locationServiceEnabled);
+}
 
 QString QMLManager::cloudPassword() const
 {

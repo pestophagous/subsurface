@@ -9,7 +9,6 @@ popd
 # Configure where we can find things here
 export ANDROID_NDK_ROOT=$SUBSURFACE_SOURCE/../android-ndk-r10e
 export QT5_ANDROID=$SUBSURFACE_SOURCE/../Qt/5.5
-export ANDROID_SDK_ROOT=$SUBSURFACE_SOURCE/../android-sdk-linux
 if [ $PLATFORM = Darwin ] ; then
        export ANDROID_SDK_ROOT=$SUBSURFACE_SOURCE/../android-sdk-macosx
        export ANDROID_NDK_HOST=darwin-x86_64
@@ -235,7 +234,7 @@ fi
 if [ ! -e libftdi1-${LIBFTDI_VERSION} ] ; then
 	tar -jxf libftdi1-${LIBFTDI_VERSION}.tar.bz2
 fi
-if [ ! -e $PKG_CONFIG_LIBDIR/libftdi1.pc ] ; then
+if [ ! -e $PKG_CONFIG_LIBDIR/libftdi1.pc ] && [ $PLATFORM != Darwin ] ; then
 	mkdir -p libftdi1-build-$ARCH
 	pushd libftdi1-build-$ARCH
 	cmake ../libftdi1-${LIBFTDI_VERSION} -DCMAKE_C_COMPILER=${CC} -DCMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_PREFIX_PATH=${PREFIX} -DSTATICLIBS=ON -DPYTHON_BINDINGS=OFF -DDOCUMENTATION=OFF -DFTDIPP=OFF -DBUILD_TESTS=OFF -DEXAMPLES=OFF
@@ -261,7 +260,7 @@ if [ ! -e qt-android-cmake ] ; then
 	git clone git://github.com/LaurentGomila/qt-android-cmake.git
 else
 	pushd qt-android-cmake
-	git pull -u
+	git pull
 	popd
 fi
 
@@ -279,12 +278,15 @@ fi
 # somehting in the qt-android-cmake-thingies mangles your path, so thats why we need to hard-code ant and pkg-config here.
 if [ $PLATFORM = Darwin ] ; then
 	ANT=/usr/local/bin/ant
+	FTDI=OFF
 else
 	ANT=/usr/bin/ant
+	FTDI=ON
 fi
+PKGCONF=$(which pkg-config)
 cmake $MOBILE_CMAKE \
 	-DQT_ANDROID_ANT=${ANT} \
-	-DPKG_CONFIG_EXECUTABLE=/usr/bin/pkg-config \
+	-DPKG_CONFIG_EXECUTABLE=${PKGCONF} \
 	-DQT_ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT \
 	-DQT_ANDROID_NDK_ROOT=$ANDROID_NDK_ROOT \
 	-DCMAKE_TOOLCHAIN_FILE=$BUILDROOT/qt-android-cmake/toolchain/android.toolchain.cmake \
@@ -298,7 +300,7 @@ cmake $MOBILE_CMAKE \
 	-DNO_USERMANUAL=ON \
 	-DCMAKE_PREFIX_PATH:UNINITIALIZED=${QT5_ANDROID}/android_${QT_ARCH}/lib/cmake \
 	-DCMAKE_BUILD_TYPE=Debug \
-	-DFTDISUPPORT=ON \
+	-DFTDISUPPORT=${FTDI} \
 	$SUBSURFACE_SOURCE
 make
 #make install INSTALL_ROOT=android_build

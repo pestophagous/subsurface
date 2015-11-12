@@ -5,13 +5,6 @@
 #include <QImage>
 #include <QFuture>
 
-typedef QPair<QString, QByteArray> SHashedFilename;
-
-class SHashedImage : public QImage {
-public:
-	SHashedImage(struct picture *picture);
-};
-
 struct PhotoHelper {
 	QImage image;
 	int offsetSeconds;
@@ -33,7 +26,7 @@ public:
 	virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
 	virtual void updateDivePictures();
 	void updateDivePicturesWhenDone(QList<QFuture<void> >);
-	void removePicture(const QString& fileUrl);
+	void removePicture(const QString& fileUrl, bool last);
 
 protected:
 	DivePictureModel();
