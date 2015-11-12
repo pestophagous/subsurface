@@ -44,7 +44,15 @@ fi
 mkdir -p install-root
 INSTALL_ROOT=$SRC/install-root
 
-rm subsurface/build/libsubsurface*a
+rm subsurface/build/desktop-widgets/libsubsurface_generated_ui.a
+rm subsurface/build/desktop-widgets/libsubsurface_interface.a
+rm subsurface/build/desktop-widgets/libsubsurface_statistics.a
+rm subsurface/build/desktop-widgets/plugins/facebook/libfacebook_integration.a
+rm subsurface/build/desktop-widgets/preferences/libsubsurface_desktop_preferences.a
+rm subsurface/build/profile-widget/libsubsurface_profile.a
+rm subsurface/build/qt-models/libsubsurface_models.a
+rm subsurface/build/subsurface-core/libsubsurface_corelib.a
+
 rm subsurface/build/subsurface
 rm install-root/bin/subsurface
 

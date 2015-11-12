@@ -81,7 +81,7 @@ include(cmake/Modules/pkgconfig_helper.cmake)
 pkg_config_library(LIBXML libxml-2.0 REQUIRED)
 pkg_config_library(LIBSQLITE3 sqlite3 REQUIRED)
 pkg_config_library(LIBXSLT libxslt REQUIRED)
-pkg_config_library(LIBZIP libzip REQUIRED)
+#pkg_config_library(LIBZIP libzip REQUIRED) # pesto branch change. i built my own libzip
 pkg_config_library(LIBUSB libusb-1.0 QUIET)
 
 # more libraries with special handling in case we build them ourselves
@@ -348,7 +348,8 @@ endif()
 # this is only needed on Ubuntu (why do these idiots break everything?)
 # but shouldn't hurt on other Linux versions
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux" AND NOT ANDROID)
-	set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES} -lpthread)
+	#set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES} -lpthread)       # pesto branch change. i built my own libzip
+	set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES} -lpthread -lzip)  # pesto branch change. i built my own libzip
 endif()
 
 # create the executables
