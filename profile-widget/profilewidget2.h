@@ -207,11 +207,6 @@ private:
 	bool isGrayscale;
 	bool printMode;
 
-<<<<<<< HEAD:qt-ui/profile/profilewidget2.h
-	//specifics for ADD and PLAN
-	QList<DiveHandler *> handles; // used by friend DiveHandler in qt-ui/diveplanner.cpp
-=======
->>>>>>> sddotorg:profile-widget/profilewidget2.h
 	QList<QGraphicsSimpleTextItem *> gases;
 	QList<DivePictureItem *> pictures;
 
