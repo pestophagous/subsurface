@@ -195,9 +195,6 @@ MainTab::MainTab(QWidget *parent) : QTabWidget(parent),
 	connect(ui.diveNotesMessage, &KMessageWidget::showAnimationFinished,
 					ui.location, &DiveLocationLineEdit::fixPopupPosition);
 
-	// enable URL clickability in notes:
-	new TextHyperlinkEventFilter(ui.notes);//destroyed when ui.notes is destroyed
-
 	acceptingEdit = false;
 
 	ui.diveTripLocation->hide();
