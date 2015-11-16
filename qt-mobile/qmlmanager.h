@@ -16,6 +16,9 @@ class QMLManager : public QObject
 	Q_PROPERTY(bool saveCloudPassword READ saveCloudPassword WRITE setSaveCloudPassword NOTIFY saveCloudPasswordChanged)
 	Q_PROPERTY(QString logText READ logText WRITE setLogText NOTIFY logTextChanged)
 	Q_PROPERTY(bool locationServiceEnabled READ locationServiceEnabled WRITE setLocationServiceEnabled NOTIFY locationServiceEnabledChanged)
+	Q_PROPERTY(QString ssrfGpsWebUserid READ ssrfGpsWebUserid WRITE setSsrfGpsWebUserid NOTIFY ssrfGpsWebUseridChanged)
+	Q_PROPERTY(int distanceThreshold READ distanceThreshold WRITE setDistanceThreshold NOTIFY distanceThresholdChanged)
+	Q_PROPERTY(int timeThreshold READ timeThreshold WRITE setTimeThreshold NOTIFY timeThresholdChanged)
 public:
 	QMLManager();
 	~QMLManager();
@@ -29,8 +32,17 @@ public:
 	bool saveCloudPassword() const;
 	void setSaveCloudPassword(bool saveCloudPassword);
 
+	QString ssrfGpsWebUserid() const;
+	void setSsrfGpsWebUserid(const QString &userid);
+
 	bool locationServiceEnabled() const;
 	void setLocationServiceEnabled(bool locationServiceEnable);
+
+	int distanceThreshold() const;
+	void setDistanceThreshold(int distance);
+
+	int timeThreshold() const;
+	void setTimeThreshold(int time);
 
 	QString logText() const;
 	void setLogText(const QString &logText);
@@ -42,21 +54,30 @@ public slots:
 	void commitChanges(QString diveId, QString suit, QString buddy, QString diveMaster, QString notes);
 	void saveChanges();
 	void addDive();
+	void applyGpsData();
+	void sendGpsData();
+	void clearGpsData();
 
 private:
 	QString m_cloudUserName;
 	QString m_cloudPassword;
+	QString m_ssrfGpsWebUserid;
 	bool m_saveCloudPassword;
 	QString m_logText;
 	bool m_locationServiceEnabled;
+	int m_distanceThreshold;
+	int m_timeThreshold;
 	GpsLocation *locationProvider;
 
 signals:
 	void cloudUserNameChanged();
 	void cloudPasswordChanged();
+	void ssrfGpsWebUseridChanged();
 	void saveCloudPasswordChanged();
 	void locationServiceEnabledChanged();
 	void logTextChanged();
+	void timeThresholdChanged();
+	void distanceThresholdChanged();
 };
 
 #endif

@@ -72,6 +72,46 @@ Item {
 			id: savePassword
 		}
 
+		Label {
+			text: "Subsurface GPS data webservice"
+			Layout.bottomMargin: units.largeSpacing
+			font.pointSize: units.titlePointSize
+			Layout.columnSpan: 2
+		}
+
+		Label {
+			text: "ID"
+			Layout.alignment: Qt.AlignRight
+		}
+
+		TextField {
+			id: userid
+			text: manager.ssrfGpsWebUserid
+			Layout.fillWidth: true
+		}
+
+		Label {
+			text: "Distance threshold (meters)"
+			Layout.alignment: Qt.AlignRight
+		}
+
+		TextField {
+			id: distanceThreshold
+			text: manager.distanceThreshold
+			Layout.fillWidth: true
+		}
+
+		Label {
+			text: "Time threshold (minutes)"
+			Layout.alignment: Qt.AlignRight
+		}
+
+		TextField {
+			id: timeThreshold
+			text: manager.timeThreshold
+			Layout.fillWidth: true
+		}
+
 		Item { width: units.gridUnit; height: width }
 		Item {
 			height: saveButton.height
@@ -84,6 +124,9 @@ Item {
 					manager.cloudUserName = login.text
 					manager.cloudPassword = password.text
 					manager.saveCloudPassword = savePassword.checked
+					manager.ssrfGpsWebUserid = userid.text
+					manager.distanceThreshold = distanceThreshold.text
+					manager.timeThreshold = timeThreshold.text
 					manager.savePreferences()
 					stackView.pop()
 				}

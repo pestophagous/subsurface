@@ -79,7 +79,9 @@ struct preferences default_prefs = {
 		.category = { 0 }
 	},
 	.deco_mode = BUEHLMANN,
-	.conservatism_level = 3
+	.conservatism_level = 3,
+	.distance_threshold = 1000,
+	.time_threshold = 600
 };
 
 int run_survey;
@@ -311,11 +313,5 @@ void copy_prefs(struct preferences *src, struct preferences *dest)
  */
 void free_prefs(void)
 {
-	free((void*)prefs.default_cylinder);
-	free((void*)prefs.divelist_font);
-	free((void*)prefs.cloud_storage_password);
-	free(prefs.proxy_host);
-	free(prefs.proxy_user);
-	free(prefs.proxy_pass);
-	free(prefs.userid);
+	// nop
 }

@@ -1601,6 +1601,13 @@ void loadPreferences()
 	// Subsurface webservice id is stored outside of the groups
 	GET_TXT("subsurface_webservice_uid", userid);
 
+	// but the related time / distance threshold (only used in the mobile app)
+	// are in their own group
+	s.beginGroup("locationService");
+	GET_INT("distance_threshold", distance_threshold);
+	GET_INT("time_threshold", time_threshold);
+	s.endGroup();
+
 	// GeoManagement
 	s.beginGroup("geocoding");
 #ifdef DISABLED
@@ -1670,4 +1677,17 @@ void setCurrentAppState(QByteArray state)
 extern "C" bool in_planner()
 {
 	return (currentApplicationState == "PlanDive" || currentApplicationState == "EditPlannedDive");
+}
+
+void init_proxy()
+{
+	QNetworkProxy proxy;
+	proxy.setType(QNetworkProxy::ProxyType(prefs.proxy_type));
+	proxy.setHostName(prefs.proxy_host);
+	proxy.setPort(prefs.proxy_port);
+	if (prefs.proxy_auth) {
+		proxy.setUser(prefs.proxy_user);
+		proxy.setPassword(prefs.proxy_pass);
+	}
+	QNetworkProxy::setApplicationProxy(proxy);
 }

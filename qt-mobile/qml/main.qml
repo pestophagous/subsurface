@@ -80,6 +80,27 @@ ApplicationWindow {
 		}
 
 		MenuItem {
+			text: "Apply GPS data to dives"
+			onTriggered: {
+				manager.applyGpsData();
+			}
+		}
+
+		MenuItem {
+			text: "Send GPS data to server"
+			onTriggered: {
+				manager.sendGpsData();
+			}
+		}
+
+		MenuItem {
+			text: "Clear stored GPS data"
+			onTriggered: {
+				manager.clearGpsData();
+			}
+		}
+
+		MenuItem {
 			text: "View Log"
 			onTriggered: {
 				stackView.push(logWindow)
