@@ -38,6 +38,8 @@ static QLocale loc;
 #define translate(_context, arg) trGettext(arg)
 static const QString DEGREE_SIGNS("dD" UTF8_DEGREE);
 
+#define EMPTY_DIVE_STRING "--"
+
 Dive::Dive() :
 	m_number(-1),
 	dive(NULL)
@@ -128,9 +130,23 @@ QString Dive::sac() const
 	return m_sac;
 }
 
-QString Dive::weight() const
+QString Dive::weights() const
 {
-	return m_weight;
+	QString str = "";
+	for (int i = 0; i < MAX_WEIGHTSYSTEMS; i++) {
+		QString entry = m_weights.at(i);
+		if (entry == EMPTY_DIVE_STRING)
+			continue;
+		str += QObject::tr("Weight %1: ").arg(i + 1) + entry + "; ";
+	}
+	return str;
+}
+
+QString Dive::weight(int idx) const
+{
+	if (idx < 0 || idx > m_weights.size() - 1)
+		return QString(EMPTY_DIVE_STRING);
+	return m_weights.at(idx);
 }
 
 QString Dive::suit() const
@@ -138,14 +154,38 @@ QString Dive::suit() const
 	return m_suit;
 }
 
-QString Dive::cylinder() const
+QString Dive::cylinders() const
 {
-	return m_cylinder;
+	QString str = "";
+	for (int i = 0; i < MAX_CYLINDERS; i++) {
+		QString entry = m_cylinders.at(i);
+		if (entry == EMPTY_DIVE_STRING)
+			continue;
+		str += QObject::tr("Cylinder %1: ").arg(i + 1) + entry + "; ";
+	}
+	return str;
+}
+
+QString Dive::cylinder(int idx) const
+{
+	if (idx < 0 || idx > m_cylinders.size() - 1)
+		return QString(EMPTY_DIVE_STRING);
+	return m_cylinders.at(idx);
 }
 
 QString Dive::trip() const
 {
 	return m_trip;
+}
+
+QString Dive::maxcns() const
+{
+	return m_maxcns;
+}
+
+QString Dive::otu() const
+{
+	return m_otu;
 }
 
 int Dive::rating() const
@@ -156,7 +196,7 @@ int Dive::rating() const
 void Dive::put_divemaster()
 {
 	if (!dive->divemaster)
-		m_divemaster = "--";
+		m_divemaster = EMPTY_DIVE_STRING;
 	else
 		m_divemaster = dive->divemaster;
 }
@@ -178,7 +218,7 @@ void Dive::put_location()
 {
 	m_location = QString::fromUtf8(get_dive_location(dive));
 	if (m_location.isEmpty()) {
-		m_location = "--";
+		m_location = EMPTY_DIVE_STRING;
 	}
 }
 
@@ -195,7 +235,7 @@ void Dive::put_duration()
 void Dive::put_buddy()
 {
 	if (!dive->buddy)
-		m_buddy = "--";
+		m_buddy = EMPTY_DIVE_STRING;
 	else
 		m_buddy = dive->buddy;
 }
@@ -205,24 +245,34 @@ void Dive::put_temp()
 	m_airTemp = get_temperature_string(dive->airtemp, true);
 	m_waterTemp = get_temperature_string(dive->watertemp, true);
 	if (m_airTemp.isEmpty()) {
-		m_airTemp = "--";
+		m_airTemp = EMPTY_DIVE_STRING;
 	}
 	if (m_waterTemp.isEmpty()) {
-		m_waterTemp = "--";
+		m_waterTemp = EMPTY_DIVE_STRING;
 	}
 }
 
 void Dive::put_notes()
 {
+	m_notes = QString::fromUtf8(dive->notes);
+	if (m_notes.isEmpty()) {
+		m_notes = EMPTY_DIVE_STRING;
+		return;
+	}
 	if (same_string(dive->dc.model, "planned dive")) {
 		QTextDocument notes;
-		notes.setHtml(QString::fromUtf8(dive->notes));
+		QString notesFormatted = m_notes;
+#define _NOTES_BR "&#92n"
+		notesFormatted = notesFormatted.replace("<thead>", "<thead>"_NOTES_BR);
+		notesFormatted = notesFormatted.replace("<br>", "<br>"_NOTES_BR);
+		notesFormatted = notesFormatted.replace("<tr>", "<tr>"_NOTES_BR);
+		notesFormatted = notesFormatted.replace("</tr>", "</tr>"_NOTES_BR);
+		notes.setHtml(notesFormatted);
 		m_notes = notes.toPlainText();
+		m_notes.replace(_NOTES_BR, "<br>");
+#undef _NOTES_BR
 	} else {
-		m_notes = QString::fromUtf8(dive->notes);
-	}
-	if (m_notes.isEmpty()) {
-		m_notes = "--";
+		m_notes.replace("\n", "<br>");
 	}
 }
 
@@ -263,10 +313,20 @@ void Dive::put_sac()
 	}
 }
 
+static QString getFormattedWeight(struct dive *dive, unsigned int idx)
+{
+	weightsystem_t *weight = &dive->weightsystem[idx];
+	if (!weight->description)
+		return QString(EMPTY_DIVE_STRING);
+	QString fmt = QString(weight->description);
+	fmt += ", " + get_weight_string(weight->weight, true);
+	return fmt;
+}
+
 void Dive::put_weight()
 {
-	weight_t tw = { total_weight(dive) };
-	m_weight = weight_string(tw.grams);
+	for (int i = 0; i < MAX_WEIGHTSYSTEMS; i++)
+		m_weights << getFormattedWeight(dive, i);
 }
 
 void Dive::put_suit()
@@ -274,9 +334,24 @@ void Dive::put_suit()
 	m_suit = QString(dive->suit);
 }
 
+static QString getFormattedCylinder(struct dive *dive, unsigned int idx)
+{
+	cylinder_t *cyl = &dive->cylinder[idx];
+	const char *desc = cyl->type.description;
+	if (!desc && idx > 0)
+		return QString(EMPTY_DIVE_STRING);
+	QString fmt = desc ? QString(desc) : QObject::tr("unknown");
+	fmt += ", " + get_volume_string(cyl->type.size, true, 0);
+	fmt += ", " + get_pressure_string(cyl->type.workingpressure, true);
+	fmt += ", " + get_pressure_string(cyl->start, false) + " - " + get_pressure_string(cyl->end, true);
+	fmt += ", " + get_gas_string(cyl->gasmix);
+	return fmt;
+}
+
 void Dive::put_cylinder()
 {
-	m_cylinder = QString(dive->cylinder[0].type.description);
+	for (int i = 0; i < MAX_CYLINDERS; i++)
+		m_cylinders << getFormattedCylinder(dive, i);
 }
 
 void Dive::put_trip()
@@ -285,6 +360,16 @@ void Dive::put_trip()
 	if (trip) {
 		m_trip = QString(trip->location);
 	}
+}
+
+void Dive::put_maxcns()
+{
+	m_maxcns = QString::number(dive->maxcns);
+}
+
+void Dive::put_otu()
+{
+	m_otu = QString::number(dive->otu);
 }
 
 QString weight_string(int weight_in_grams)

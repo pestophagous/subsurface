@@ -28,10 +28,12 @@ private:
 	QString m_tags;
 	QString m_gas;
 	QString m_sac;
-	QString m_weight;
+	QStringList m_weights;
 	QString m_suit;
-	QString m_cylinder;
+	QStringList m_cylinders;
 	QString m_trip;
+	QString m_maxcns;
+	QString m_otu;
 	struct dive *dive;
 	void put_date_time();
 	void put_timestamp();
@@ -49,6 +51,8 @@ private:
 	void put_suit();
 	void put_cylinder();
 	void put_trip();
+	void put_maxcns();
+	void put_otu();
 
 public:
 	Dive(struct dive *dive)
@@ -73,6 +77,8 @@ public:
 		put_suit();
 		put_cylinder();
 		put_trip();
+		put_maxcns();
+		put_otu();
 	}
 	Dive();
 	~Dive();
@@ -93,10 +99,14 @@ public:
 	QString tags() const;
 	QString gas() const;
 	QString sac() const;
-	QString weight() const;
+	QString weights() const;
+	QString weight(int idx) const;
 	QString suit() const;
-	QString cylinder() const;
+	QString cylinders() const;
+	QString cylinder(int idx) const;
 	QString trip() const;
+	QString maxcns() const;
+	QString otu() const;
 };
 
 // global pointers for our translation
