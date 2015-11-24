@@ -367,9 +367,10 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux" AND NOT ANDROID)
 	set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES} -lpthread -lzip)  # pesto branch change. i built my own libzip
 endif()
 
+set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES}  /usr/lib/x86_64-linux-gnu/libQt5Positioning.so.5.3.2) #pestophagous
+
 # create the executables
 if(SUBSURFACE_MOBILE)
-        set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES}  /usr/lib/x86_64-linux-gnu/libQt5Positioning.so.5.3.2) #pestophagous
         set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES}  ~/Documents/SHARED/subsurface_container/install-root/lib/libdivecomputer.a)#pestophagous
 	set(SUBSURFACE_TARGET subsurface-mobile)
 	set(MOBILE_SRC
