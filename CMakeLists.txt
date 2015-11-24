@@ -218,6 +218,8 @@ if(SUBSURFACE_MOBILE)
 	set(QT_QUICK_PKG Quick)
 	set(QT_QUICK_LIB Qt5::Quick)
 	add_definitions(-DSUBSURFACE_MOBILE)
+	#set(QT_LOCATION_PKG Location)           # not working on jessie right now. pestophagous
+	#set(QT_LOCATION_LIB Qt5::Positioning)   # not working on jessie right now. pestophagous
 endif()
 if(ANDROID)
 	set(ANDROID_PKG AndroidExtras)
@@ -227,8 +229,12 @@ if(BTSUPPORT)
 	set(BLUETOOTH_PKG Bluetooth)
 	set(BLUETOOTH_LIB Qt5::Bluetooth)
 endif()
-find_package(Qt5 REQUIRED COMPONENTS Core Concurrent Widgets Network ${WEBKIT_PKG} ${PRINTING_PKG} Svg Test LinguistTools ${QT_QUICK_PKG} ${ANDROID_PKG} Bluetooth Location)
-set(QT_LIBRARIES Qt5::Core Qt5::Concurrent Qt5::Widgets Qt5::Network ${WEBKIT_LIB} ${PRINTING_LIB} Qt5::Svg ${QT_QUICK_LIB} ${ANDROID_LIB} Qt5::Bluetooth Qt5::Positioning)
+#find_package(Qt5 REQUIRED COMPONENTS Core Concurrent Widgets Network ${WEBKIT_PKG} ${PRINTING_PKG} Svg Test LinguistTools ${QT_QUICK_PKG} ${ANDROID_PKG} Bluetooth Location)
+#set(QT_LIBRARIES Qt5::Core Qt5::Concurrent Qt5::Widgets Qt5::Network ${WEBKIT_LIB} ${PRINTING_LIB} Qt5::Svg ${QT_QUICK_LIB} ${ANDROID_LIB} Qt5::Bluetooth Qt5::Positioning)
+#set(QT_TEST_LIBRARIES ${QT_LIBRARIES} Qt5::Test)
+
+find_package(Qt5 REQUIRED COMPONENTS Core Concurrent Widgets Network ${WEBKIT_PKG} ${PRINTING_PKG} Svg Test LinguistTools ${QT_QUICK_PKG} ${ANDROID_PKG} Bluetooth )
+set(QT_LIBRARIES Qt5::Core Qt5::Concurrent Qt5::Widgets Qt5::Network ${WEBKIT_LIB} ${PRINTING_LIB} Qt5::Svg ${QT_QUICK_LIB} ${ANDROID_LIB} Qt5::Bluetooth )
 set(QT_TEST_LIBRARIES ${QT_LIBRARIES} Qt5::Test)
 
 if (BTSUPPORT AND "${Qt5Core_VERSION_STRING}" STRLESS "5.4.0")
@@ -363,6 +369,8 @@ endif()
 
 # create the executables
 if(SUBSURFACE_MOBILE)
+        set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES}  /usr/lib/x86_64-linux-gnu/libQt5Positioning.so.5.3.2) #pestophagous
+        set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES}  ~/Documents/SHARED/subsurface_container/install-root/lib/libdivecomputer.a)#pestophagous
 	set(SUBSURFACE_TARGET subsurface-mobile)
 	set(MOBILE_SRC
 		qt-mobile/qmlmanager.cpp
