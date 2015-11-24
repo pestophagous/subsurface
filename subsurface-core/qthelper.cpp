@@ -790,7 +790,11 @@ QString getUserAgent()
 	QString arch;
 	// fill in the system data - use ':' as separator
 	// replace all other ':' with ' ' so that this is easy to parse
+#ifdef SUBSURFACE_MOBILE
+	QString userAgent = QString("Subsurface-mobile:%1:").arg(subsurface_version());
+#else
 	QString userAgent = QString("Subsurface:%1:").arg(subsurface_version());
+#endif
 	userAgent.append(SubsurfaceSysInfo::prettyOsName().replace(':', ' ') + ":");
 	arch = SubsurfaceSysInfo::buildCpuArchitecture().replace(':', ' ');
 	userAgent.append(arch);
@@ -1775,4 +1779,20 @@ void init_proxy()
 		proxy.setPassword(prefs.proxy_pass);
 	}
 	QNetworkProxy::setApplicationProxy(proxy);
+}
+
+QString getUUID()
+{
+	QString uuidString;
+	QSettings settings;
+	settings.beginGroup("UpdateManager");
+	if (settings.contains("UUID")) {
+		uuidString = settings.value("UUID").toString();
+	} else {
+		QUuid uuid = QUuid::createUuid();
+		uuidString = uuid.toString();
+		settings.setValue("UUID", uuidString);
+	}
+	uuidString.replace("{", "").replace("}", "");
+	return uuidString;
 }

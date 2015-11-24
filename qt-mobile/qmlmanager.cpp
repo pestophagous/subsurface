@@ -19,13 +19,18 @@ QMLManager::QMLManager() :
 	m_locationServiceEnabled(false)
 {
 	// create location manager service
-	locationProvider = new GpsLocation(this);
+	locationProvider = new GpsLocation(&qmlUiShowMessage, this);
 
 	// Initialize cloud credentials.
 	setCloudUserName(prefs.cloud_storage_email);
 	setCloudPassword(prefs.cloud_storage_password);
 	setSaveCloudPassword(prefs.save_password_local);
-	setSsrfGpsWebUserid(prefs.userid);
+	// if the cloud credentials are valid, we should get the GPS Webservice ID as well
+	if (!same_string(prefs.cloud_storage_email, "") &&
+	    !same_string(prefs.cloud_storage_password, "") &&
+	    same_string(prefs.userid, ""))
+		locationProvider->getUserid(prefs.cloud_storage_email, prefs.cloud_storage_password);
+
 	setDistanceThreshold(prefs.distance_threshold);
 	setTimeThreshold(prefs.time_threshold / 60);
 	if (!same_string(prefs.cloud_storage_email, "") && !same_string(prefs.cloud_storage_password, ""))
@@ -39,7 +44,7 @@ QMLManager::~QMLManager()
 void QMLManager::savePreferences()
 {
 	QSettings s;
-	s.setValue("subsurface_webservice_uid", ssrfGpsWebUserid());
+	bool cloudCredentialsChanged = false;
 	s.beginGroup("LocationService");
 	s.setValue("time_threshold", timeThreshold() * 60);
 	prefs.time_threshold = timeThreshold() * 60;
@@ -55,19 +60,31 @@ void QMLManager::savePreferences()
 	if (!same_string(prefs.cloud_storage_email, qPrintable(cloudUserName()))) {
 		free(prefs.cloud_storage_email);
 		prefs.cloud_storage_email = strdup(qPrintable(cloudUserName()));
+		cloudCredentialsChanged = true;
 	}
-	if (saveCloudPassword() != prefs.save_password_local) {
+	if (saveCloudPassword() != prefs.save_password_local)
 		prefs.save_password_local = saveCloudPassword();
-	}
+
+	cloudCredentialsChanged |= !same_string(prefs.cloud_storage_password, qPrintable(cloudPassword()));
+
 	if (saveCloudPassword()) {
 		if (!same_string(prefs.cloud_storage_password, qPrintable(cloudPassword()))) {
 			free(prefs.cloud_storage_password);
 			prefs.cloud_storage_password = strdup(qPrintable(cloudPassword()));
 		}
 	}
-	if (!same_string(prefs.userid, qPrintable(ssrfGpsWebUserid()))) {
-		free(prefs.userid);
-		prefs.userid = strdup(qPrintable(ssrfGpsWebUserid()));
+	// if the cloud credentials are valid, we should get the GPS Webservice ID as well
+	if (!same_string(prefs.cloud_storage_email, "") &&
+	    !same_string(prefs.cloud_storage_password, "")) {
+		if (same_string(prefs.userid, "") || cloudCredentialsChanged) {
+			QString userid = locationProvider->getUserid(prefs.cloud_storage_email, prefs.cloud_storage_password);
+			if (!userid.isEmpty()) {
+				// overwrite the existing userid
+				free(prefs.userid);
+				prefs.userid = strdup(qPrintable(userid));
+				s.setValue("subsurface_webservice_uid", prefs.userid);
+			}
+		}
 	}
 }
 
@@ -130,6 +147,8 @@ void QMLManager::commitChanges(QString diveId, QString suit, QString buddy, QStr
 		free(d->notes);
 		d->notes = strdup(notes.toUtf8().data());
 	}
+	if (diveChanged)
+		mark_divelist_changed(true);
 }
 
 void QMLManager::saveChanges()
@@ -236,17 +255,6 @@ void QMLManager::setCloudUserName(const QString &cloudUserName)
 {
 	m_cloudUserName = cloudUserName;
 	emit cloudUserNameChanged();
-}
-
-QString QMLManager::ssrfGpsWebUserid() const
-{
-	return m_ssrfGpsWebUserid;
-}
-
-void QMLManager::setSsrfGpsWebUserid(const QString &userid)
-{
-	m_ssrfGpsWebUserid = userid;
-	emit ssrfGpsWebUseridChanged();
 }
 
 int QMLManager::distanceThreshold() const

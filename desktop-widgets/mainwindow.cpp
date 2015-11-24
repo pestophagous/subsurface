@@ -205,6 +205,10 @@ MainWindow::MainWindow() : QMainWindow(),
 	enableDisableCloudActions();
 #endif
 
+	GpsLocation *locationProvider = new GpsLocation(&report_message, this);
+	if (!locationProvider->hasLocationsSource()) {
+		ui.menuFile->removeAction(ui.add_GPS_location_here);
+	}
 	ui.mainErrorMessage->hide();
 	graphics()->setEmptyState();
 	initialUiSetup();

@@ -217,8 +217,7 @@ endif()
 if(SUBSURFACE_MOBILE)
 	set(QT_QUICK_PKG Quick)
 	set(QT_QUICK_LIB Qt5::Quick)
-	set(QT_LOCATION_PKG Location)
-	set(QT_LOCATION_LIB Qt5::Positioning)
+	add_definitions(-DSUBSURFACE_MOBILE)
 endif()
 if(ANDROID)
 	set(ANDROID_PKG AndroidExtras)
@@ -228,8 +227,8 @@ if(BTSUPPORT)
 	set(BLUETOOTH_PKG Bluetooth)
 	set(BLUETOOTH_LIB Qt5::Bluetooth)
 endif()
-find_package(Qt5 REQUIRED COMPONENTS Core Concurrent Widgets Network ${WEBKIT_PKG} ${PRINTING_PKG} Svg Test LinguistTools ${QT_QUICK_PKG} ${ANDROID_PKG} Bluetooth ${QT_LOCATION_PKG})
-set(QT_LIBRARIES Qt5::Core Qt5::Concurrent Qt5::Widgets Qt5::Network ${WEBKIT_LIB} ${PRINTING_LIB} Qt5::Svg ${QT_QUICK_LIB} ${ANDROID_LIB} Qt5::Bluetooth ${QT_LOCATION_LIB})
+find_package(Qt5 REQUIRED COMPONENTS Core Concurrent Widgets Network ${WEBKIT_PKG} ${PRINTING_PKG} Svg Test LinguistTools ${QT_QUICK_PKG} ${ANDROID_PKG} Bluetooth Location)
+set(QT_LIBRARIES Qt5::Core Qt5::Concurrent Qt5::Widgets Qt5::Network ${WEBKIT_LIB} ${PRINTING_LIB} Qt5::Svg ${QT_QUICK_LIB} ${ANDROID_LIB} Qt5::Bluetooth Qt5::Positioning)
 set(QT_TEST_LIBRARIES ${QT_LIBRARIES} Qt5::Test)
 
 if (BTSUPPORT AND "${Qt5Core_VERSION_STRING}" STRLESS "5.4.0")
@@ -368,12 +367,10 @@ if(SUBSURFACE_MOBILE)
 	set(MOBILE_SRC
 		qt-mobile/qmlmanager.cpp
 		qt-mobile/qmlprofile.cpp
-		qt-mobile/gpslocation.cpp
 		qt-models/divelistmodel.cpp
 		subsurface-mobile-main.cpp
 		subsurface-mobile-helper.cpp
 	)
-	add_definitions(-DSUBSURFACE_MOBILE)
 	qt5_add_resources(MOBILE_RESOURCES qt-mobile/qml/mobile-resources.qrc)
 	if(ANDROID)
 		add_library(subsurface-mobile SHARED ${MOBILE_SRC} ${SUBSURFACE_PKG} ${SUBSURFACE_RESOURCES} ${MOBILE_RESOURCES})

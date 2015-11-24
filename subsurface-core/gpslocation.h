@@ -13,9 +13,11 @@ class GpsLocation : QObject
 {
 	Q_OBJECT
 public:
-	GpsLocation(QObject *parent);
-	bool applyLocations();
+	GpsLocation(void (*showMsgCB)(const char *msg), QObject *parent);
+	void applyLocations();
 	int getGpsNum() const;
+	QString getUserid(QString user, QString passwd);
+	bool hasLocationsSource();
 
 private:
 	QGeoPositionInfo lastPos;
@@ -23,6 +25,8 @@ private:
 	void status(QString msg);
 	QSettings *geoSettings;
 	QNetworkReply *reply;
+	QString userAgent;
+	void (*showMessageCB)(const char *msg);
 
 signals:
 
@@ -32,6 +36,7 @@ public slots:
 	void updateTimeout();
 	void uploadToServer();
 	void postError(QNetworkReply::NetworkError error);
+	void getUseridError(QNetworkReply::NetworkError error);
 	void clearGpsData();
 
 };
