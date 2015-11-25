@@ -787,8 +787,8 @@ static void add_plan_to_notes(struct diveplan *diveplan, struct dive *dive, bool
 		lastsetpoint = dp->setpoint;
 		lastentered = dp->entered;
 	} while ((dp = nextdp) != NULL);
-	// Note: the tag to *open* this tbody and table are conditional upon: if (!plan_verbatim)
-	len += snprintf(buffer + len, sz_buffer - len, "</tbody></table></div>"); // yet this is unconditional?
+	if (!plan_verbatim)
+		len += snprintf(buffer + len, sz_buffer - len, "</tbody></table></div>");
 
 	dive->cns = 0;
 	dive->maxcns = 0;
