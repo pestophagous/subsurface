@@ -3,9 +3,9 @@
 
 #include "units.h"
 #include <QObject>
-#include <QGeoCoordinate>
-#include <QGeoPositionInfoSource>
-#include <QGeoPositionInfo>
+#include <QtPositioning/QGeoCoordinate>
+#include <QtPositioning/QGeoPositionInfoSource>
+#include <QtPositioning/QGeoPositionInfo>
 #include <QSettings>
 #include <QNetworkReply>
 
