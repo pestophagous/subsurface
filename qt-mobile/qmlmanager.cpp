@@ -33,8 +33,6 @@ QMLManager::QMLManager() :
 
 	setDistanceThreshold(prefs.distance_threshold);
 	setTimeThreshold(prefs.time_threshold / 60);
-	if (!same_string(prefs.cloud_storage_email, "") && !same_string(prefs.cloud_storage_password, ""))
-		loadDives();
 }
 
 QMLManager::~QMLManager()
@@ -90,6 +88,12 @@ void QMLManager::savePreferences()
 
 void QMLManager::loadDives()
 {
+	if (same_string(prefs.cloud_storage_email, "") || same_string(prefs.cloud_storage_password, "")) {
+		qmlUiShowMessage("Please set up cloud storage credentials");
+		appendTextToLog("Unable to load dives; cloud storage credentials missing");
+		return;
+	}
+
 	qmlUiShowMessage("Loading dives...");
 	appendTextToLog("Loading dives...");
 	QString url;
@@ -104,22 +108,26 @@ void QMLManager::loadDives()
 	int error = parse_file(fileNamePrt.data());
 	if (!error) {
 		report_error("filename is now %s", fileNamePrt.data());
-		qmlUiShowMessage(get_error_string());
-		appendTextToLog(get_error_string());
+		const char *error_string = get_error_string();
+		qmlUiShowMessage(error_string);
+		appendTextToLog(error_string);
 		set_filename(fileNamePrt.data(), true);
-		appendTextToLog(fileNamePrt.data());
 	} else {
-		qmlUiShowMessage(get_error_string());
-		appendTextToLog(get_error_string());
+		report_error("failed to open file %s", fileNamePrt.data());
+		const char *error_string = get_error_string();
+		qmlUiShowMessage(error_string);
+		appendTextToLog(error_string);
 	}
 	process_dives(false, false);
 
 	int i;
 	struct dive *d;
 
+	DiveListModel::instance()->clear();
 	for_each_dive(i, d) {
 		DiveListModel::instance()->addDive(d);
 	}
+	appendTextToLog(QString("%1 dives loaded").arg(i));
 }
 
 void QMLManager::commitChanges(QString diveId, QString suit, QString buddy, QString diveMaster, QString notes)

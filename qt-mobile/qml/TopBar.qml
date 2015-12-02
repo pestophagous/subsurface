@@ -5,6 +5,7 @@ import QtQuick.Window 2.2
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.2
+import org.kde.plasma.mobilecomponents 0.2 as MobileComponents
 import org.subsurfacedivelog.mobile 1.0
 
 Rectangle {
@@ -12,77 +13,47 @@ Rectangle {
 
 	property bool goBack: (stackView.depth > 1)
 
-	color: theme.accentColor
-	Layout.minimumHeight: units.gridUnit * 2 + units.largeSpacing
+	color: subsurfaceTheme.accentColor
+	Layout.minimumHeight: MobileComponents.Units.gridUnit * 2
 	Layout.fillWidth: true
 	Layout.margins: 0
 	RowLayout {
 		anchors.bottom: topPart.bottom
-		anchors.bottomMargin: units.largeSpacing / 2
+		anchors.bottomMargin: MobileComponents.Units.smallSpacing
 		anchors.left: topPart.left
-		anchors.leftMargin: units.largeSpacing / 2
+		anchors.leftMargin: MobileComponents.Units.smallSpacing
 		anchors.right: topPart.right
-		anchors.rightMargin: units.largeSpacing / 2
+		anchors.rightMargin: MobileComponents.Units.smallSpacing
 		Item {
 			Layout.preferredHeight: subsurfaceLogo.height
+			Rectangle { color: "green"; anchors.fill: parent; }
 			Image {
 				id: subsurfaceLogo
 				source: "qrc:/qml/subsurface-mobile-icon.png"
 				anchors {
 					top: parent.top
+					topMargin: MobileComponents.Units.smallSpacing * -1
 					left: parent.left
 				}
-				width: units.gridUnit * 2
+				width: MobileComponents.Units.gridUnit
 				height: width
 			}
-			Text {
+			MobileComponents.Label {
 				text: qsTr("Subsurface")
 				height: subsurfaceLogo.height
 				anchors {
 					left: subsurfaceLogo.right
 					bottom: subsurfaceLogo.bottom
-					leftMargin: units.gridUnit / 2
+					leftMargin: MobileComponents.Units.gridUnit / 2
 				}
-				font.pointSize: units.fontMetrics.font.pointSize * 1.5
+				font.weight: Font.Light
 				verticalAlignment: Text.AlignBottom
 				Layout.fillWidth: false
-				color: theme.accentTextColor
+				color: subsurfaceTheme.accentTextColor
 			}
 		}
 		Item {
 			Layout.fillWidth: true
 		}
-		Button {
-			id: prefsButton
-			// Display back arrow or menu button
-			text: topPart.goBack ? "\u2190" : "\u22ee"
-			anchors.right: parent.right
-			Layout.preferredWidth: units.gridUnit * 2
-			Layout.preferredHeight: parent.height
-			style: ButtonStyle {
-				background: Rectangle {
-					implicitWidth: units.gridUnit * 2
-					color: theme.accentColor
-				}
-				label: Text {
-					id: txt
-					color: theme.accentTextColor
-					font.pointSize: units.fontMetrics.font.pointSize * 2
-					font.bold: true
-					text: control.text
-					horizontalAlignment: Text.AlignHCenter
-					verticalAlignment: Text.AlignVCenter
-				}
-			}
-			onClicked: {
-				if (topPart.goBack) {
-					stackView.pop()
-				} else {
-					prefsMenu.popup()
-				}
-			}
-		}
-
 	}
-
 }
