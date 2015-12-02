@@ -2,7 +2,7 @@
 #define DIVEEVENTITEM_H
 
 #include "divepixmapitem.h"
-
+#include "units.h"
 class DiveCartesianAxis;
 class DivePlotDataModel;
 struct event;
@@ -29,6 +29,13 @@ private:
 	DiveCartesianAxis *hAxis;
 	DivePlotDataModel *dataModel;
 	struct event *internalEvent;
+
+	duration_t check_duration;
+	int check_type;
+	int check_flags;
+	int check_value;
+	bool check_deleted;
+	size_t check_namelen;
 };
 
 #endif // DIVEEVENTITEM_H

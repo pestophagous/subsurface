@@ -7,6 +7,8 @@
 #include "gettextfromc.h"
 #include "metrics.h"
 
+#include "util-assert.h"
+
 extern struct ev_select *ev_namelist;
 extern int evn_used;
 
@@ -14,7 +16,13 @@ DiveEventItem::DiveEventItem(QObject *parent) : DivePixmapItem(parent),
 	vAxis(NULL),
 	hAxis(NULL),
 	dataModel(NULL),
-	internalEvent(NULL)
+	internalEvent(NULL),
+	check_duration(),
+	check_type(0),
+	check_flags(0),
+	check_value(0),
+	check_deleted(false),
+	check_namelen(0)
 {
 	setFlag(ItemIgnoresTransformations);
 }
@@ -49,6 +57,13 @@ void DiveEventItem::setEvent(struct event *ev)
 	if (!ev)
 		return;
 	internalEvent = ev;
+	check_duration = internalEvent->time;
+	check_type = internalEvent->type;
+	check_flags = internalEvent->flags;
+	check_value = internalEvent->value;
+	check_deleted = internalEvent->deleted;
+	check_namelen = strlen(internalEvent->name);
+
 	setupPixmap();
 	setupToolTipString();
 	recalculatePos(true);
@@ -151,6 +166,13 @@ void DiveEventItem::recalculatePos(bool instant)
 {
 	if (!vAxis || !hAxis || !internalEvent || !dataModel)
 		return;
+
+	FASSERT( check_duration.seconds == internalEvent->time.seconds, "mangled duration" );
+	FASSERT( check_type == internalEvent->type, "mangled type" );
+	FASSERT( check_flags == internalEvent->flags, "mangled falgs" );
+	FASSERT( check_value == internalEvent->value, "mangled value" );
+	FASSERT( check_deleted == internalEvent->deleted, "mangled deleted" );
+	FASSERT( check_namelen == strlen(internalEvent->name), "mangled name" );
 
 	QModelIndexList result = dataModel->match(dataModel->index(0, DivePlotDataModel::TIME), Qt::DisplayRole, internalEvent->time.seconds);
 	if (result.isEmpty()) {
