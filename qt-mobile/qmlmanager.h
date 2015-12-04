@@ -6,8 +6,6 @@
 
 #include "gpslocation.h"
 
-void qmlUiShowMessage(const char *errorString);
-
 class QMLManager : public QObject
 {
 	Q_OBJECT
@@ -18,9 +16,12 @@ class QMLManager : public QObject
 	Q_PROPERTY(bool locationServiceEnabled READ locationServiceEnabled WRITE setLocationServiceEnabled NOTIFY locationServiceEnabledChanged)
 	Q_PROPERTY(int distanceThreshold READ distanceThreshold WRITE setDistanceThreshold NOTIFY distanceThresholdChanged)
 	Q_PROPERTY(int timeThreshold READ timeThreshold WRITE setTimeThreshold NOTIFY timeThresholdChanged)
+	Q_PROPERTY(bool loadFromCloud READ loadFromCloud WRITE setLoadFromCloud NOTIFY loadFromCloudChanged)
 public:
 	QMLManager();
 	~QMLManager();
+
+	static QMLManager *instance();
 
 	QString cloudUserName() const;
 	void setCloudUserName(const QString &cloudUserName);
@@ -40,12 +41,16 @@ public:
 	int timeThreshold() const;
 	void setTimeThreshold(int time);
 
+	bool loadFromCloud() const;
+	void setLoadFromCloud(bool done);
+
 	QString logText() const;
 	void setLogText(const QString &logText);
 	void appendTextToLog(const QString &newText);
 
 public slots:
 	void savePreferences();
+	void saveCloudCredentials();
 	void loadDives();
 	void commitChanges(QString diveId, QString suit, QString buddy, QString diveMaster, QString notes);
 	void saveChanges();
@@ -64,6 +69,8 @@ private:
 	int m_distanceThreshold;
 	int m_timeThreshold;
 	GpsLocation *locationProvider;
+	bool m_loadFromCloud;
+	static QMLManager *m_instance;
 
 signals:
 	void cloudUserNameChanged();
@@ -73,6 +80,7 @@ signals:
 	void logTextChanged();
 	void timeThresholdChanged();
 	void distanceThresholdChanged();
+	void loadFromCloudChanged();
 };
 
 #endif

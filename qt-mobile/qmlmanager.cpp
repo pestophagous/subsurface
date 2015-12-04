@@ -9,17 +9,21 @@
 #include "qthelper.h"
 #include "qt-gui.h"
 
-void qmlUiShowMessage(const char *errorString)
+QMLManager *QMLManager::m_instance = NULL;
+
+static void appendTextToLogStandalone(const char *text)
 {
-	if (qqWindowObject && !qqWindowObject->setProperty("messageText", QVariant(errorString)))
-		qDebug() << "couldn't set property messageText to" << errorString;
+	QMLManager *mgr = QMLManager::instance();
+	if (mgr)
+		mgr->appendTextToLog(QString(text));
 }
 
 QMLManager::QMLManager() :
 	m_locationServiceEnabled(false)
 {
+	m_instance = this;
 	// create location manager service
-	locationProvider = new GpsLocation(&qmlUiShowMessage, this);
+	locationProvider = new GpsLocation(&appendTextToLogStandalone, this);
 
 	// Initialize cloud credentials.
 	setCloudUserName(prefs.cloud_storage_email);
@@ -37,18 +41,28 @@ QMLManager::QMLManager() :
 
 QMLManager::~QMLManager()
 {
+	m_instance = NULL;
+}
+
+QMLManager *QMLManager::instance()
+{
+	return m_instance;
 }
 
 void QMLManager::savePreferences()
 {
 	QSettings s;
-	bool cloudCredentialsChanged = false;
 	s.beginGroup("LocationService");
 	s.setValue("time_threshold", timeThreshold() * 60);
 	prefs.time_threshold = timeThreshold() * 60;
 	s.setValue("distance_threshold", distanceThreshold());
 	prefs.distance_threshold = distanceThreshold();
-	s.endGroup();
+}
+
+void QMLManager::saveCloudCredentials()
+{
+	QSettings s;
+	bool cloudCredentialsChanged = false;
 	s.beginGroup("CloudStorage");
 	s.setValue("email", cloudUserName());
 	s.setValue("save_password_local", saveCloudPassword());
@@ -84,21 +98,20 @@ void QMLManager::savePreferences()
 			}
 		}
 	}
+	if (cloudCredentialsChanged)
+		loadDives();
 }
 
 void QMLManager::loadDives()
 {
 	if (same_string(prefs.cloud_storage_email, "") || same_string(prefs.cloud_storage_password, "")) {
-		qmlUiShowMessage("Please set up cloud storage credentials");
 		appendTextToLog("Unable to load dives; cloud storage credentials missing");
 		return;
 	}
 
-	qmlUiShowMessage("Loading dives...");
 	appendTextToLog("Loading dives...");
 	QString url;
 	if (getCloudURL(url)) {
-		qmlUiShowMessage(get_error_string());
 		appendTextToLog(get_error_string());
 		return;
 	}
@@ -109,14 +122,13 @@ void QMLManager::loadDives()
 	if (!error) {
 		report_error("filename is now %s", fileNamePrt.data());
 		const char *error_string = get_error_string();
-		qmlUiShowMessage(error_string);
 		appendTextToLog(error_string);
 		set_filename(fileNamePrt.data(), true);
 	} else {
 		report_error("failed to open file %s", fileNamePrt.data());
 		const char *error_string = get_error_string();
-		qmlUiShowMessage(error_string);
 		appendTextToLog(error_string);
+		return;
 	}
 	process_dives(false, false);
 
@@ -128,6 +140,7 @@ void QMLManager::loadDives()
 		DiveListModel::instance()->addDive(d);
 	}
 	appendTextToLog(QString("%1 dives loaded").arg(i));
+	setLoadFromCloud(true);
 }
 
 void QMLManager::commitChanges(QString diveId, QString suit, QString buddy, QString diveMaster, QString notes)
@@ -161,21 +174,22 @@ void QMLManager::commitChanges(QString diveId, QString suit, QString buddy, QStr
 
 void QMLManager::saveChanges()
 {
-	qmlUiShowMessage("Saving dives.");
+	if (!loadFromCloud()) {
+		appendTextToLog("Don't save dives without loading from the cloud, first.");
+		return;
+	}
+	appendTextToLog("Saving dives.");
 	QString fileName;
 	if (getCloudURL(fileName)) {
-		qmlUiShowMessage(get_error_string());
 		appendTextToLog(get_error_string());
 		return;
 	}
 
 	if (save_dives(fileName.toUtf8().data())) {
-		qmlUiShowMessage(get_error_string());
 		appendTextToLog(get_error_string());
 		return;
 	}
 
-	qmlUiShowMessage("Dives saved.");
 	appendTextToLog("Dive saved.");
 	set_filename(fileName.toUtf8().data(), true);
 	mark_divelist_changed(false);
@@ -183,7 +197,6 @@ void QMLManager::saveChanges()
 
 void QMLManager::addDive()
 {
-	qmlUiShowMessage("Adding new dive.");
 	appendTextToLog("Adding new dive.");
 	DiveListModel::instance()->startAddDive();
 }
@@ -220,7 +233,6 @@ void QMLManager::appendTextToLog(const QString &newText)
 	m_logText += "\n" + newText;
 	emit logTextChanged();
 }
-
 
 bool QMLManager::saveCloudPassword() const
 {
@@ -285,4 +297,15 @@ void QMLManager::setTimeThreshold(int time)
 {
 	m_timeThreshold = time;
 	emit timeThresholdChanged();
+}
+
+bool QMLManager::loadFromCloud() const
+{
+	return m_loadFromCloud;
+}
+
+void QMLManager::setLoadFromCloud(bool done)
+{
+	m_loadFromCloud = done;
+	emit loadFromCloudChanged();
 }
