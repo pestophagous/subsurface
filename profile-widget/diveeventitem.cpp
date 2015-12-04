@@ -19,10 +19,6 @@ DiveEventItem::DiveEventItem(QObject *parent) : DivePixmapItem(parent),
 	setFlag(ItemIgnoresTransformations);
 }
 
-DiveEventItem::~DiveEventItem()
-{
-	free(internalEvent);
-}
 
 void DiveEventItem::setHorizontalAxis(DiveCartesianAxis *axis)
 {
@@ -52,14 +48,7 @@ void DiveEventItem::setEvent(struct event *ev)
 {
 	if (!ev)
 		return;
-
-	free(internalEvent);
-	// logic for copying ev partially copied from copy_events.
-	// maybe dive.c should have a 'copy_event' used here and by copy_events?
-	int size = sizeof(*ev) + strlen(ev->name) + 1;
-	internalEvent = (struct event*) malloc(size);
-	memcpy(internalEvent, ev, size);
-	internalEvent->next = NULL;
+	internalEvent = ev;
 	setupPixmap();
 	setupToolTipString();
 	recalculatePos(true);
