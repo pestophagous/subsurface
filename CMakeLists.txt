@@ -21,7 +21,7 @@ option(USE_LIBGIT23_API "allow building with libgit2 master" OFF)
 option(FORCE_LIBSSH "force linking with libssh to workaround libgit2 bug" ON)
 option(SUBSURFACE_MOBILE "build the QtQuick version for mobile device" OFF)
 option(FBSUPPORT "allow posting to Facebook" ON)
-option(BTSUPPORT "enable support for QtBluetooth (requires Qt5.4 or newer)" OFF) # off for pestophagous
+option(BTSUPPORT "enable support for QtBluetooth (requires Qt5.4 or newer)" ON)
 option(FTDISUPPORT "enable support for libftdi based serial" OFF)
 option(DISABLE_PLUGINS "disable support for social media plugins" OFF)
 option(SMARTTRAK_IMPORT "enable building SmartTrak divelogs import tool (requires glib2 and libmdb)" OFF)
@@ -86,7 +86,7 @@ include(cmake/Modules/pkgconfig_helper.cmake)
 pkg_config_library(LIBXML libxml-2.0 REQUIRED)
 pkg_config_library(LIBSQLITE3 sqlite3 REQUIRED)
 pkg_config_library(LIBXSLT libxslt REQUIRED)
-#pkg_config_library(LIBZIP libzip REQUIRED) # pesto branch change. i built my own libzip
+pkg_config_library(LIBZIP libzip REQUIRED)
 pkg_config_library(LIBUSB libusb-1.0 QUIET)
 
 if(SMARTTRAK_IMPORT)
@@ -217,8 +217,6 @@ if(SUBSURFACE_MOBILE)
 	set(QT_QUICK_PKG Quick)
 	set(QT_QUICK_LIB Qt5::Quick)
 	add_definitions(-DSUBSURFACE_MOBILE)
-	#set(QT_LOCATION_PKG Location)           # not working on jessie right now. pestophagous
-	#set(QT_LOCATION_LIB Qt5::Positioning)   # not working on jessie right now. pestophagous
 endif()
 if(ANDROID)
 	set(ANDROID_PKG AndroidExtras)
@@ -370,18 +368,16 @@ endif()
 # this is only needed on Ubuntu (why do these idiots break everything?)
 # but shouldn't hurt on other Linux versions
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux" AND NOT ANDROID)
-	#set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES} -lpthread)       # pesto branch change. i built my own libzip
-	set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES} -lpthread -lzip)  # pesto branch change. i built my own libzip
+	set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES} -lpthread)
 endif()
 
-set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES}  /usr/lib/x86_64-linux-gnu/libQt5Positioning.so.5.3.2) #pestophagous
+set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES}  /usr/lib/x86_64-linux-gnu/libQt5Positioning.so) #pestophagous
 
 # create the executables
 if(SUBSURFACE_MOBILE)
 	if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
 		set(SUBSURFACE_TARGET Subsurface-mobile)
 	else()
-		set(SUBSURFACE_LINK_LIBRARIES ${SUBSURFACE_LINK_LIBRARIES}  ~/Documents/SHARED/subsurface_container/install-root/lib/libdivecomputer.a)#pestophagous
 		set(SUBSURFACE_TARGET subsurface-mobile)
 	endif()
 	set(MOBILE_SRC
