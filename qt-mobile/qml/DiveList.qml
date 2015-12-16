@@ -20,6 +20,7 @@ MobileComponents.Page {
 			checked: diveListView.currentIndex == model.index
 
 			property real detailsOpacity : 0
+			property int horizontalPadding: MobileComponents.Units.gridUnit / 2 - MobileComponents.Units.smallSpacing  + 1
 
 			//When clicked, the mode changes to details view
 
@@ -28,6 +29,10 @@ MobileComponents.Page {
 				detailsWindow.width = parent.width
 				detailsWindow.location = location
 				detailsWindow.dive_id = id
+				detailsWindow.diveNumber = diveNumber
+				detailsWindow.duration = duration
+				detailsWindow.depth = depth
+				detailsWindow.rating = rating
 				detailsWindow.buddy = buddy
 				detailsWindow.suit = suit
 				detailsWindow.airtemp = airtemp
@@ -36,11 +41,12 @@ MobileComponents.Page {
 				detailsWindow.notes = notes
 				detailsWindow.number = diveNumber
 				detailsWindow.date = date
+				detailsWindow.weight = weight
 				stackView.push(detailsWindow)
 			}
 
 			Item {
-				width: parent.width - MobileComponents.Units.smallSpacing * 2
+				width: parent.width - MobileComponents.Units.gridUnit
 				height: childrenRect.height - MobileComponents.Units.smallSpacing
 
 				MobileComponents.Label {
@@ -51,6 +57,7 @@ MobileComponents.Page {
 					maximumLineCount: 1 // needed for elide to work at all
 					anchors {
 						left: parent.left
+						leftMargin: horizontalPadding
 						top: parent.top
 						right: dateLabel.left
 					}
@@ -66,10 +73,11 @@ MobileComponents.Page {
 					}
 				}
 				Row {
-					id: descriptionText
 					anchors {
 						left: parent.left
+						leftMargin: horizontalPadding
 						right: parent.right
+						rightMargin: horizontalPadding
 						bottom: numberText.bottom
 					}
 					MobileComponents.Label {
@@ -110,7 +118,7 @@ MobileComponents.Page {
 	Component {
 		id: tripHeading
 		Item {
-			width: page.width - MobileComponents.Units.smallSpacing * 2
+			width: page.width - MobileComponents.Units.gridUnit
 			height: childrenRect.height + MobileComponents.Units.smallSpacing * 2
 
 			MobileComponents.Heading {
@@ -119,7 +127,7 @@ MobileComponents.Page {
 				anchors {
 					top: parent.top
 					left: parent.left
-					leftMargin: MobileComponents.Units.smallSpacing
+					leftMargin: MobileComponents.Units.gridUnit / 2
 					right: parent.right
 				}
 				level: 2
@@ -129,7 +137,8 @@ MobileComponents.Page {
 				anchors {
 					top: sectionText.bottom
 					left: parent.left
-					leftMargin: MobileComponents.Units.smallSpacing
+					leftMargin: MobileComponents.Units.gridUnit * -2
+					rightMargin: MobileComponents.Units.gridUnit * -2
 					right: parent.right
 				}
 				color: subsurfaceTheme.accentColor
@@ -160,15 +169,22 @@ MobileComponents.Page {
 			section.property: "trip"
 			section.criteria: ViewSection.FullString
 			section.delegate: tripHeading
+			header: MobileComponents.Heading {
+				x: MobileComponents.Units.gridUnit / 2
+				height: paintedHeight + MobileComponents.Units.gridUnit / 2
+				verticalAlignment: Text.AlignBottom
+
+				text: "Dive Log"
+				opacity: 0.8 - startPage.opacity
+				visible: opacity > 0
+			}
 		}
 	}
 	StartPage {
+		id: startPage
 		anchors.fill: parent
 		opacity: (diveListView.count == 0) ? 1.0 : 0
 		visible: opacity > 0
 		Behavior on opacity { NumberAnimation { duration: MobileComponents.Units.shortDuration } }
-		Component.onCompleted: {
-			print("diveListView.count " + diveListView.count);
-		}
 	}
 }

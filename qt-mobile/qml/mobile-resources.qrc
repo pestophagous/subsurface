@@ -6,6 +6,8 @@
 		<file>CloudCredentials.qml</file>
 		<file>DiveList.qml</file>
 		<file>DiveDetails.qml</file>
+		<file>DiveDetailsEdit.qml</file>
+		<file>DiveDetailsView.qml</file>
 		<file>DownloadFromDiveComputer.qml</file>
 		<file>Log.qml</file>
 		<file>TopBar.qml</file>
@@ -19,6 +21,7 @@
 		<file alias="org/kde/plasma/mobilecomponents/ActionGroup.qml">mobilecomponents/ActionGroup.qml</file>
 		<file alias="org/kde/plasma/mobilecomponents/ApplicationWindow.qml">mobilecomponents/ApplicationWindow.qml</file>
 		<file alias="org/kde/plasma/mobilecomponents/GlobalDrawer.qml">mobilecomponents/GlobalDrawer.qml</file>
+		<file alias="org/kde/plasma/mobilecomponents/ContextDrawer.qml">mobilecomponents/ContextDrawer.qml</file>
 		<file alias="org/kde/plasma/mobilecomponents/Page.qml">mobilecomponents/Page.qml</file>
 		<file alias="org/kde/plasma/mobilecomponents/Icon.qml">mobilecomponents/Icon.qml</file>
 		<file alias="org/kde/plasma/mobilecomponents/Heading.qml">mobilecomponents/Heading.qml</file>
@@ -36,5 +39,8 @@
 		<file alias="org/kde/plasma/mobilecomponents/icons/go-next.svg">mobilecomponents/icons/go-next.svg</file>
 		<file alias="org/kde/plasma/mobilecomponents/icons/go-previous.svg">mobilecomponents/icons/go-previous.svg</file>
 		<file alias="org/kde/plasma/mobilecomponents/icons/distribute-horizontal-x.svg">mobilecomponents/icons/distribute-horizontal-x.svg</file>
+		<file alias="org/kde/plasma/mobilecomponents/icons/document-edit.svg">mobilecomponents/icons/document-edit.svg</file>
+		<file alias="org/kde/plasma/mobilecomponents/icons/document-save.svg">mobilecomponents/icons/document-save.svg</file>
+		<file alias="org/kde/plasma/mobilecomponents/icons/view-readermode.svg">mobilecomponents/icons/view-readermode.svg</file>
 	</qresource>
 </RCC>

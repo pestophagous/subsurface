@@ -9,6 +9,7 @@ import org.subsurfacedivelog.mobile 1.0
 import org.kde.plasma.mobilecomponents 0.2 as MobileComponents
 
 MobileComponents.ApplicationWindow {
+	id: rootItem
 	title: qsTr("Subsurface mobile")
 	property bool fullscreen: true
 
@@ -18,101 +19,97 @@ MobileComponents.ApplicationWindow {
 
 	visible: true
 
-	globalDrawer: MobileComponents.GlobalDrawer{
+	globalDrawer: MobileComponents.GlobalDrawer {
 		title: "Subsurface"
 		titleIcon: "qrc:/qml/subsurface-mobile-icon.png"
 
 		bannerImageSource: "dive.jpg"
 		actions: [
-		Action {
-			text: "Preferences"
-			onTriggered: {
-				stackView.push(prefsWindow)
-			}
-		},
-
-		Action {
-			text: "Cloud login credentials"
-			onTriggered: {
-				stackView.push(cloudCredWindow)
-			}
-		},
-
-		Action {
-			text: "Load Dives"
-			onTriggered: {
-				manager.loadDives();
-			}
-		},
-
-		Action {
-			text: "Download Dives"
-			onTriggered: {
-				stackView.push(downloadDivesWindow)
-			}
-		},
-
-		Action {
-			text: "Add Dive"
-			onTriggered: {
-				manager.addDive();
-				stackView.push(detailsWindow)
-			}
-		},
-
-		Action {
-			text: "Save Changes"
-			onTriggered: {
-				manager.saveChanges();
-			}
-		},
-
-		MobileComponents.ActionGroup {
-			text: "GPS"
 			Action {
-			text: "Run location service"
-			checkable: true
-			checked: manager.locationServiceEnabled
-			onToggled: {
-				manager.locationServiceEnabled = checked;
-			}
-		}
-		Action {
-				text: "Apply GPS data to dives"
+				text: "Cloud credentials"
 				onTriggered: {
+					stackView.push(cloudCredWindow)
+				}
+			},
+			Action {
+				text: "Preferences"
+				onTriggered: {
+					stackView.push(prefsWindow)
+				}
+			},
+
+			MobileComponents.ActionGroup {
+				text: "Manage dives"
+				Action {
+					text: "Download from computer"
+					onTriggered: {
+						stackView.push(downloadDivesWindow)
+					}
+				}
+				Action {
+					text: "Add dive manually"
+					onTriggered: {
+						manager.addDive();
+						stackView.push(detailsWindow)
+					}
+				}
+				Action {
+					text: "Refresh"
+					onTriggered: {
+						manager.loadDives();
+					}
+				}
+				Action {
+					text: "Upload to cloud"
+					onTriggered: {
+						manager.saveChanges();
+					}
+				}
+			},
+
+			MobileComponents.ActionGroup {
+				text: "GPS"
+				Action {
+					text: "GPS-tag dives"
+					onTriggered: {
 						manager.applyGpsData();
+					}
 				}
-		}
 
-		Action {
-				text: "Send GPS data to server"
-				onTriggered: {
+				Action {
+					text: "Upload GPS data"
+					onTriggered: {
 						manager.sendGpsData();
+					}
 				}
-		}
 
-		Action {
-				text: "Clear stored GPS data"
-				onTriggered: {
+				Action {
+					text: "Clear GPS cache"
+					onTriggered: {
 						manager.clearGpsData();
+					}
 				}
-		}
-	},
+			},
 
-		Action {
-			text: "View Log"
-			onTriggered: {
-				stackView.push(logWindow)
-			}
-		},
+			MobileComponents.ActionGroup {
+				text: "Developer"
+				Action {
+					text: "App log"
+					onTriggered: {
+						stackView.push(logWindow)
+					}
+				}
 
-		Action {
-			text: "Theme Information"
-			onTriggered: {
-				stackView.push(themetest)
+				Action {
+					text: "Theme information"
+					onTriggered: {
+						stackView.push(themetest)
+					}
+				}
 			}
-		}
-	    ]
+
+		] // end actions
+
 		MouseArea {
 			height: childrenRect.height
 			width: MobileComponents.Units.gridUnit * 10
@@ -142,6 +139,12 @@ MobileComponents.ApplicationWindow {
 				locationCheckbox.checked = !locationCheckbox.checked
 			}
 		}
+	}
+
+	contextDrawer: MobileComponents.ContextDrawer {
+		id: contextDrawer
+		actions: rootItem.pageStack.currentPage ? rootItem.pageStack.currentPage.contextualActions : null
+		title: "Actions"
 	}
 
 	QtObject {
@@ -198,7 +201,6 @@ MobileComponents.ApplicationWindow {
 	}
 
 	Component.onCompleted: {
-		print("MobileComponents.Units.gridUnit is: " + MobileComponents.Units.gridUnit);
-		manager.loadDives();
+		manager.finishSetup();
 	}
 }

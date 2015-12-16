@@ -10,7 +10,8 @@ import org.kde.plasma.mobilecomponents 0.2 as MobileComponents
 
 MobileComponents.Page {
 	id: logWindow
-	width: parent.width
+	width: parent.width - MobileComponents.Units.gridUnit
+	anchors.margins: MobileComponents.Units.gridUnit / 2
 	objectName: "Log"
 	flickable: logFlick
 	ScrollView {
@@ -20,28 +21,18 @@ MobileComponents.Page {
 			anchors.fill: parent
 			contentHeight: logContent.height
 			clip: true
-			Item {
-				id: logContent
+			ColumnLayout {
 				width: logFlick.width
-				height: childrenRect.height + MobileComponents.Units.smallSpacing * 2
-
-				ColumnLayout {
-					anchors {
-						left: parent.left
-						right: parent.right
-						top: parent.top
-						margins: MobileComponents.Units.smallSpacing
-					}
-					spacing: MobileComponents.Units.smallSpacing
-
-					Text {
-						wrapMode: Text.WrapAnywhere
-						text: manager.logText
-					}
-					Item {
-						height: MobileComponents.Units.gridUnit * 3
-						width: height
-					}
+				spacing: MobileComponents.Units.smallSpacing
+				MobileComponents.Heading {
+					text: "Application Log"
+				}
+				MobileComponents.Label {
+					id: logContent
+					Layout.preferredWidth: parent.width
+					Layout.maximumWidth: parent.width
+					wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+					text: manager.logText
 				}
 			}
 		}

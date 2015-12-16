@@ -7,21 +7,20 @@ Item {
 	ColumnLayout {
 		id: startpage
 		anchors.fill: parent
-		anchors.margins: MobileComponents.Units.largeSpacing
+		anchors.margins: MobileComponents.Units.gridUnit / 2
 
 		property int buttonWidth: welcomeText.width * 0.66
 
-		MobileComponents.Label {
+		MobileComponents.Heading {
 			Layout.bottomMargin: MobileComponents.Units.largeSpacing
 			text: "Subsurface Divelog"
-			font.pointSize: welcomeText.font.pointSize * 2
 		}
 
 		MobileComponents.Label {
 			id: welcomeText
 			Layout.fillWidth: true
 			Layout.bottomMargin: MobileComponents.Units.largeSpacing
-			text: "No recorded dives found. You can download your dives to this device from the Subsurface cloud storage service, from your dive computer, or add them manually."
+			text: manager.startPageText
 			wrapMode: Text.WordWrap
 			Layout.columnSpan: 2
 		}
