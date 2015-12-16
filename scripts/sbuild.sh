@@ -53,8 +53,8 @@ rm subsurface/build/profile-widget/libsubsurface_profile.a
 rm subsurface/build/qt-models/libsubsurface_models.a
 rm subsurface/build/subsurface-core/libsubsurface_corelib.a
 
-rm subsurface/build/subsurface
-rm install-root/bin/subsurface
+rm subsurface/build/subsurface-mobile
+rm install-root/bin/subsurface-mobile
 
 # make sure we find our own packages first (e.g., libgit2 only uses pkg_config to find libssh2)
 export PKG_CONFIG_PATH=$INSTALL_ROOT/lib/pkgconfig:$PKG_CONFIG_PATH
@@ -82,6 +82,7 @@ cd build
 # not sure at what point -DCMAKE_INSTALL_PREFIX=$INSTALL_ROOT (with a .. trailing) got in here. what is that?
 
 cmake   -DCMAKE_VERBOSE_MAKEFILE=ON \
+	-DSUBSURFACE_MOBILE=ON \
 	-DCMAKE_BUILD_TYPE=Debug \
 	-DCMAKE_INSTALL_PREFIX=$INSTALL_ROOT .. \
 	-DLIBGIT2_INCLUDE_DIR=$INSTALL_ROOT/include \
